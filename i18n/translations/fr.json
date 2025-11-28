@@ -1,0 +1,21 @@
+{
+  "HOME_PAGE": {
+    "META": {
+      "TITLE": "Librairie en ligne - {name}",
+      "DESCRIPTION": "Bienvenue dans la librairie en ligne de {name} ! Découvrez nos livres."
+    }
+  },
+  "AUTH": {
+    "LOGIN": "Se connecter",
+    "LOADING": "Chargement...",
+    "PASSWORD": "Mot de passe",
+    "ERRORS": {
+      "GENERIC": "Une erreur inattendue est survenue.",
+      "TOO_SHORT": "Le mot de passe est trop court.",
+      "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
+      "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
+      "PASSWORD_INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
+      "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard."
+    }
+  }
+}

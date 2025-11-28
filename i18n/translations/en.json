@@ -1,0 +1,21 @@
+{
+  "HOME_PAGE": {
+    "META": {
+      "TITLE": "Library shop - {name}",
+      "DESCRIPTION": "Welcome to {name}'s library shop! Explore all our books."
+    }
+  },
+  "AUTH": {
+    "LOADING": "Loading...",
+    "LOGIN": "Sign in",
+    "PASSWORD": "Password",
+    "ERRORS": {
+      "GENERIC": "An unexpected error occurred.",
+      "TOO_SHORT": "Password is too short.",
+      "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
+      "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
+      "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
+      "TOO_MANY_REQUESTS": "Too many requests. Please try again later."
+    }
+  }
+}
