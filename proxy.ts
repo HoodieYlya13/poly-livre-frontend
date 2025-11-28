@@ -5,8 +5,8 @@ import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { SUPPORTED_LOCALES } from "./i18n/utils";
 import {
-  getMiddlewareCookie,
-  setMiddlewareCookie,
+  getProxyCookie,
+  setProxyCookie,
 } from "./utils/cookies/server/cookiesServer";
 
 const intlMiddleware = createMiddleware(routing);
@@ -32,9 +32,9 @@ function getLimiter(path: string) {
   });
 }
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
-  const ip = getMiddlewareCookie(req, "user_ip") || "127.0.0.1";
+  const ip = getProxyCookie(req, "user_ip") || "127.0.0.1";
 
   let res: NextResponse = NextResponse.next();
 
@@ -62,7 +62,7 @@ export async function middleware(req: NextRequest) {
     res = intlMiddleware(req);
 
     const pathLocale = pathname.split("/")[1];
-    const preferredLocale = getMiddlewareCookie(req, "preferred_locale");
+    const preferredLocale = getProxyCookie(req, "preferred_locale");
 
     if (
       pathLocale &&
@@ -70,13 +70,13 @@ export async function middleware(req: NextRequest) {
       preferredLocale &&
       pathLocale !== preferredLocale
     ) {
-      setMiddlewareCookie(res, "locale_mismatch", pathLocale, {
+      setProxyCookie(res, "locale_mismatch", pathLocale, {
         httpOnly: false,
       });
     }
 
     if (isTesting) {
-      const isAuthorized = getMiddlewareCookie(req, "isAuthorized");
+      const isAuthorized = getProxyCookie(req, "isAuthorized");
 
       if (!pathname.endsWith("/auth-testing-mode") && !isAuthorized) {
         const redirectUrl = req.nextUrl.clone();
@@ -85,7 +85,7 @@ export async function middleware(req: NextRequest) {
       }
     }
 
-    const hasPreferredLocale = getMiddlewareCookie(req, "preferred_locale");
+    const hasPreferredLocale = getProxyCookie(req, "preferred_locale");
     if (!hasPreferredLocale) {
       const acceptLang = req.headers.get("accept-language");
       const browserLocale = acceptLang?.split(",")[0]?.split("-")[0]?.trim();
@@ -93,7 +93,7 @@ export async function middleware(req: NextRequest) {
         browserLocale &&
         (SUPPORTED_LOCALES as readonly string[]).includes(browserLocale);
       if (isSupportedLocale)
-        setMiddlewareCookie(res, "preferred_locale", browserLocale);
+        setProxyCookie(res, "preferred_locale", browserLocale);
     }
   }
 

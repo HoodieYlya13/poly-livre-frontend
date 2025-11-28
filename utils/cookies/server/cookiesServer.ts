@@ -35,20 +35,30 @@ export async function getServerCookie(
   return (await cookies()).get(name)?.value;
 }
 
-export function setMiddlewareCookie(
-  res: NextResponse,
+export function setProxyCookie(
+  response: NextResponse,
   name: string,
   value: string,
-  options: Partial<any> = {}
+  options: Partial<{
+    maxAge: number;
+    path: string;
+    httpOnly: boolean;
+    secure: boolean;
+    sameSite: "lax" | "strict" | "none";
+  }> = {}
 ) {
-  res.cookies.set(name, value, {
+  response.cookies.set({
+    name,
+    value,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
     path: "/",
-    maxAge: 60 * 60 * 24 * 365,
     ...options,
   });
 }
 
-export function getMiddlewareCookie(
+export function getProxyCookie(
   req: NextRequest,
   name: string
 ): string | undefined {
