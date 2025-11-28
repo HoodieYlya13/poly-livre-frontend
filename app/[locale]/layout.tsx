@@ -9,9 +9,9 @@ import { getTranslations } from "next-intl/server";
 
 interface LayoutProps {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     locale: LocaleLanguages;
-  };
+  }>;
 }
 
 const geistSans = Geist({
@@ -24,14 +24,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata({ params }: { params: { locale: LocaleLanguages } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: LocaleLanguages }>;
+}): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'HOME_PAGE' });
+  const t = await getTranslations({ locale, namespace: "HOME_PAGE" });
   const name = "PolyLivre";
 
   return {
-    title: t('META.TITLE', { name }),
-    description: t('META.DESCRIPTION', { name }),
+    title: t("META.TITLE", { name }),
+    description: t("META.DESCRIPTION", { name }),
   };
 }
 
