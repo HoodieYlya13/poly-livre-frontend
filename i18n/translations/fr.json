@@ -14,6 +14,7 @@
     "EMAIL_LABEL": "Adresse email",
     "SEND_MAGIC_LINK": "Envoyer un lien magique",
     "MAGIC_LINK_SENT": "Lien magique envoyé ! Vérifiez votre email.",
+    "CHECK_YOUR_EMAIL": "Vérifiez votre email à ",
     "PASSWORD": "Mot de passe",
     "ERRORS": {
       "GENERIC": "Une erreur inattendue est survenue.",

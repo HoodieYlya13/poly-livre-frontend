@@ -88,13 +88,13 @@ export default function LocaleMismatch({
       <div className="flex gap-3">
         <button
           onClick={handleStay}
-          className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors cursor-pointer custom-shadow custom-shadow-hover"
         >
           {t("KEEP", { locale: locale.toUpperCase() })}
         </button>
         <button
           onClick={handleSwitch}
-          className="flex-1 px-4 py-2 text-sm font-medium text-white bg-black hover:bg-gray-800 rounded-lg transition-colors shadow-sm"
+          className="flex-1 px-4 py-2 text-sm font-medium text-white bg-black hover:bg-gray-800 rounded-lg transition-colors cursor-pointer custom-shadow custom-shadow-hover"
         >
           {t("SWITCH", { locale: localeMismatch.toUpperCase() })}
         </button>

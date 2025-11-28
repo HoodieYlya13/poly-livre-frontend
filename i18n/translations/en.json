@@ -14,6 +14,7 @@
     "EMAIL_LABEL": "Email address",
     "SEND_MAGIC_LINK": "Send Magic Link",
     "MAGIC_LINK_SENT": "Magic Link sent! Check your email.",
+    "CHECK_YOUR_EMAIL": "Check your email at ",
     "PASSWORD": "Password",
     "ERRORS": {
       "GENERIC": "An unexpected error occurred.",
