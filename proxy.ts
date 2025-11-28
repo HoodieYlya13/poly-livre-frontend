@@ -75,14 +75,24 @@ export async function proxy(req: NextRequest) {
       });
     }
 
-    if (isTesting) {
-      const isAuthorized = getProxyCookie(req, "isAuthorized");
+    const isAuthorized = getProxyCookie(req, "isAuthorized");
+    if (
+      isTesting &&
+      !pathname.endsWith("/auth-testing-mode") &&
+      !isAuthorized
+    ) {
+      const redirectUrl = req.nextUrl.clone();
+      redirectUrl.pathname = "/auth-testing-mode";
+      return NextResponse.redirect(redirectUrl);
+    }
 
-      if (!pathname.endsWith("/auth-testing-mode") && !isAuthorized) {
-        const redirectUrl = req.nextUrl.clone();
-        redirectUrl.pathname = "/auth-testing-mode";
-        return NextResponse.redirect(redirectUrl);
-      }
+    if (
+      (!isTesting || isAuthorized) &&
+      pathname.endsWith("/auth-testing-mode")
+    ) {
+      const redirectUrl = req.nextUrl.clone();
+      redirectUrl.pathname = "/";
+      return NextResponse.redirect(redirectUrl);
     }
 
     const hasPreferredLocale = getProxyCookie(req, "preferred_locale");

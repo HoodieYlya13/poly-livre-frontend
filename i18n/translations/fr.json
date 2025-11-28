@@ -8,6 +8,12 @@
   "AUTH": {
     "LOGIN": "Se connecter",
     "LOADING": "Chargement...",
+    "LOGIN_TITLE": "Connectez-vous à votre compte",
+    "SIGN_IN_PASSKEY": "Se connecter avec une Passkey",
+    "OR": "Ou continuer avec l'email",
+    "EMAIL_LABEL": "Adresse email",
+    "SEND_MAGIC_LINK": "Envoyer un lien magique",
+    "MAGIC_LINK_SENT": "Lien magique envoyé ! Vérifiez votre email.",
     "PASSWORD": "Mot de passe",
     "ERRORS": {
       "GENERIC": "Une erreur inattendue est survenue.",
@@ -15,7 +21,12 @@
       "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
       "PASSWORD_INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
-      "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard."
+      "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
+      "PASSKEY_SUCCESS": "Authentification réussie avec Passkey !",
+      "PASSKEY_FAILED": "Échec de l'authentification Passkey.",
+      "PASSKEY_ERROR": "Une erreur est survenue lors de l'authentification Passkey.",
+      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
+      "MAGIC_LINK_ERROR": "Une erreur est survenue lors de l'envoi du lien magique."
     }
   },
   "LOCALE_MISMATCH": {

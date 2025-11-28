@@ -11,6 +11,7 @@ interface FormProps {
     error?: string;
     disabled?: boolean;
   };
+  successText?: string;
   errors?: Partial<{
     type: string | number;
 
@@ -23,7 +24,8 @@ export default function Form({
     children,
     handleSubmit,
     buttonProps,
-    errors
+    successText,
+    errors,
 }: FormProps) {
   const [isCoolingDown, setIsCoolingDown] = useState(false);
 
@@ -52,6 +54,7 @@ export default function Form({
         disabled={buttonProps.disabled || isCoolingDown}
       />
 
+      {successText && <p className="text-sm text-green-500">{successText}</p>}
       {errors && <RootErrors errors={errors} />}
     </form>
   );

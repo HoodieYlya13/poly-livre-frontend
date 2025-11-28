@@ -8,6 +8,12 @@
   "AUTH": {
     "LOADING": "Loading...",
     "LOGIN": "Sign in",
+    "LOGIN_TITLE": "Sign in to your account",
+    "SIGN_IN_PASSKEY": "Sign in with Passkey",
+    "OR": "Or continue with email",
+    "EMAIL_LABEL": "Email address",
+    "SEND_MAGIC_LINK": "Send Magic Link",
+    "MAGIC_LINK_SENT": "Magic Link sent! Check your email.",
     "PASSWORD": "Password",
     "ERRORS": {
       "GENERIC": "An unexpected error occurred.",
@@ -15,7 +21,12 @@
       "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
       "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
-      "TOO_MANY_REQUESTS": "Too many requests. Please try again later."
+      "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
+      "PASSKEY_SUCCESS": "Successfully authenticated with Passkey!",
+      "PASSKEY_FAILED": "Passkey authentication failed.",
+      "PASSKEY_ERROR": "An error occurred during Passkey authentication.",
+      "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
+      "MAGIC_LINK_ERROR": "An error occurred while sending Magic Link."
     }
   },
   "LOCALE_MISMATCH": {

@@ -81,7 +81,7 @@ export default function LanguageSwitcher({
                   width={24}
                   height={16}
                   alt={alt}
-                  className="cursor-pointer border custom-shadow"
+                  className="cursor-pointer border custom-shadow custom-shadow-hover"
                 />
               </button>
             ))
@@ -98,7 +98,7 @@ export default function LanguageSwitcher({
                 width={24}
                 height={16}
                 alt={alt}
-                className="cursor-pointer border custom-shadow"
+                className="cursor-pointer border custom-shadow custom-shadow-hover"
               />
             </button>
           ))}

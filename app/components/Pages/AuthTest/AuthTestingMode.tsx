@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import SignInTestingMode from "./shared/SignInTestingMode";
 import Form from "../../UI/shared/components/Form";
 import { useAuthTestingModeForm } from "@/hooks/authTestingMode/useAuthTestingModeForm";
-import { authTestingModeSubmitHandler } from "@/utils/authTestingMode/authSubmitHandler";
+import { authTestingModeSubmitHandler } from "@/utils/authTestingMode/authTestingModeSubmitHandler";
 
 export default function AuthTestingMode() {
   const t = useTranslations('AUTH');

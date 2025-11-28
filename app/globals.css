@@ -103,7 +103,7 @@ body {
   transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
 
-.custom-shadow:hover {
+.custom-shadow-hover:hover {
   box-shadow: 2px 4px 16px #00000029;
   transform: scale3d(1.01, 1.01, 1.01);
 }
