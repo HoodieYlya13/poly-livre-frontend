@@ -4,13 +4,12 @@ import { routing } from "../../i18n/routing";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Metadata } from "next";
-import { LocaleLanguages } from "@/i18n/utils";
 import { getTranslations } from "next-intl/server";
 
 interface LayoutProps {
   children: React.ReactNode;
   params: Promise<{
-    locale: LocaleLanguages;
+    locale: string;
   }>;
 }
 
@@ -27,7 +26,7 @@ const geistMono = Geist_Mono({
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: LocaleLanguages }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "HOME_PAGE" });
