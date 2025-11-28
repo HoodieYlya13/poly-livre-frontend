@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logout from "./Logout";
+import { APP_NAME } from "@/utils/constants";
 
 export default function NavBarClient() {
   return (
@@ -16,7 +17,7 @@ export default function NavBarClient() {
           className="size-10 md:size-15"
           priority
         />
-        <span>PolyLivre</span>
+        <span>{APP_NAME}</span>
       </Link>
 
       <Logout />

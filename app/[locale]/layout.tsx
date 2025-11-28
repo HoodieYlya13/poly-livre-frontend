@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { APP_NAME } from "@/utils/constants";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -30,7 +31,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "HOME_PAGE" });
-  const name = "PolyLivre";
+  const name = APP_NAME;
 
   return {
     title: t("META.TITLE", { name }),
