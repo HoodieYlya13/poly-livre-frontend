@@ -10,13 +10,15 @@ export async function authSubmitHandler(
   try {
     clearErrors();
     
-    const response = await fetch("/api/auth/magic-link/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: data.email }),
-    });
+    const response = await fetch(
+      "http://localhost:8080/auth/magic-link/request?email=" + data.email,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     
     const json = await response.json();
 

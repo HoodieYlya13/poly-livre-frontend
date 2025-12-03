@@ -1,10 +1,16 @@
-import PageBuilder from "../../components/UI/PageBuilder/PageBuilder";
-import Auth from "../../components/Auth/Auth";
+import PageLayout from "../../components/UI/PageLayout/PageLayout";
+import Auth from "../../components/Pages/Auth/Auth";
+import { getUserAccessToken } from "@/utils/cookies/server/getUserAccessToken";
+import { redirect } from "next/navigation";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const token = await getUserAccessToken();
+
+  if (token) redirect("/");
+
   return (
-    <PageBuilder>
+    <PageLayout>
       <Auth />
-    </PageBuilder>
+    </PageLayout>
   );
 }

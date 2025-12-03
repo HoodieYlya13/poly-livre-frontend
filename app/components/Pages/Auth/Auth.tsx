@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import Input from "../UI/shared/elements/Input";
-import Button from "../UI/shared/elements/Button";
-import Form from "../UI/shared/components/Form";
+import Input from "../../UI/shared/elements/Input";
+import Button from "../../UI/shared/elements/Button";
+import Form from "../../UI/shared/components/Form";
 import { useAuthMagicLinkForm } from "@/hooks/authMagicLinkForm/authMagicLinkForm";
 import { authSubmitHandler } from "@/utils/auth/authSubmitHandler";
 import { handlePasskeyLogin } from "@/utils/auth/handlePasskeyLogin";

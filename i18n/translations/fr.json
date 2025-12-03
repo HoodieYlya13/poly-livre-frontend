@@ -18,6 +18,7 @@
     "PASSWORD": "Mot de passe",
     "ERRORS": {
       "GENERIC": "Une erreur inattendue est survenue.",
+      "AUTHENTICATION_PROBLEM": "Veuillez vous reconnecter.",
       "TOO_SHORT": "Le mot de passe est trop court.",
       "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
@@ -25,7 +26,7 @@
       "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
       "PASSKEY_SUCCESS": "Authentification réussie avec Passkey !",
       "PASSKEY_FAILED": "Échec de l'authentification Passkey.",
-      "PASSKEY_ERROR": "Une erreur est survenue lors de l'authentification Passkey.",
+      "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
       "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
       "MAGIC_LINK_ERROR": "Une erreur est survenue lors de l'envoi du lien magique."
     }

@@ -2,22 +2,22 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { getPreferredLocaleClientSide, LocaleLanguages } from "@/i18n/utils";
+import { LocaleLanguages } from "@/i18n/utils";
 import { setClientCookie } from "@/utils/cookies/client/cookiesClient";
 import { useTranslations } from "next-intl";
 
 interface LocaleMismatchProps {
-  localeMismatch: string;
+  locale: LocaleLanguages;
+  localeMismatch: LocaleLanguages;
 }
 
 export default function LocaleMismatch({
+  locale,
   localeMismatch,
 }: LocaleMismatchProps) {
   const [isVisible, setIsVisible] = useState(true);
   const router = useRouter();
   const t = useTranslations("LOCALE_MISMATCH");
-
-  const locale = getPreferredLocaleClientSide() as LocaleLanguages;
 
   if (!isVisible) return null;
 
@@ -30,9 +30,8 @@ export default function LocaleMismatch({
     segments[1] = localeMismatch;
     const newPath = segments.join("/") + search + hash;
 
-    setClientCookie("preferred_locale", localeMismatch as LocaleLanguages, {
+    setClientCookie("preferred_locale", localeMismatch, {
       path: "/",
-      maxAge: 60 * 60 * 24 * 365,
       sameSite: "Lax",
     });
 
@@ -57,7 +56,6 @@ export default function LocaleMismatch({
     setIsVisible(false);
     setClientCookie("preferred_locale", locale, {
       path: "/",
-      maxAge: 60 * 60 * 24 * 365,
       sameSite: "Lax",
     });
     setClientCookie("locale_mismatch", "", {

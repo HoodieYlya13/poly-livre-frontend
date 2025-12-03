@@ -1,30 +1,25 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export function setServerCookie({
-  name,
-  value,
-  response,
-  options = {},
-}: {
-  name: string;
-  value: string;
-  response: NextResponse;
-  options?: Partial<{
+export async function setServerCookie(
+  name: string,
+  value: string,
+  options: Partial<{
     maxAge: number;
     path: string;
-    httpOnly: boolean;
-    secure: boolean;
-    sameSite: "lax" | "strict" | "none";
-  }>;
-}) {
-  response.cookies.set({
+    httpOnly?: boolean;
+    secure?: boolean;
+    sameSite?: "lax" | "strict" | "none";
+  }> = {}
+) {
+  (await cookies()).set({
     name,
     value,
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
+    maxAge: 60 * 60 * 24,
     ...options,
   });
 }
@@ -35,6 +30,10 @@ export async function getServerCookie(
   return (await cookies()).get(name)?.value;
 }
 
+export async function deleteServerCookie(name: string) {
+  (await cookies()).delete(name);
+}
+
 export function setProxyCookie(
   response: NextResponse,
   name: string,
@@ -42,9 +41,9 @@ export function setProxyCookie(
   options: Partial<{
     maxAge: number;
     path: string;
-    httpOnly: boolean;
-    secure: boolean;
-    sameSite: "lax" | "strict" | "none";
+    httpOnly?: boolean;
+    secure?: boolean;
+    sameSite?: "lax" | "strict" | "none";
   }> = {}
 ) {
   response.cookies.set({
@@ -54,6 +53,7 @@ export function setProxyCookie(
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
+    maxAge: 60 * 60 * 24,
     ...options,
   });
 }
@@ -65,7 +65,7 @@ export function getProxyCookie(
   return req.cookies.get(name)?.value;
 }
 
-export function deleteCookie(name: string, response: NextResponse) {
+export function deleteProxyCookie(name: string, response: NextResponse) {
   response.cookies.set({
     name,
     value: "",

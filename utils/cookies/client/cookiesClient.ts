@@ -10,10 +10,10 @@ export function setClientCookie(
 ) {
   let cookieStr = `${name}=${encodeURIComponent(value)}`;
 
-  if (options.path) cookieStr += `; path=${options.path}`;
-  if (options.maxAge) cookieStr += `; max-age=${options.maxAge}`;
+  cookieStr += `; path=${options.path || "/"}`;
+  cookieStr += `; max-age=${options.maxAge || 60 * 60 * 24}`;
   if (options.secure) cookieStr += `; secure`;
-  if (options.sameSite) cookieStr += `; SameSite=${options.sameSite}`;
+  cookieStr += `; SameSite=${options.sameSite || "Lax"}`;
 
   document.cookie = cookieStr;
 }

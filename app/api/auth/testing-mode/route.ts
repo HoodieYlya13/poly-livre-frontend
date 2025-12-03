@@ -7,11 +7,8 @@ export async function POST(req: Request) {
   if (password === "IA2R_Owners") {
     const response = NextResponse.json({ ok: true });
 
-    setServerCookie({
-      name: "isAuthorized",
-      value: "true",
-      response,
-      options: { maxAge: 60 * 60 * 24 * 31 },
+    await setServerCookie("isAuthorized", "true", {
+      maxAge: 60 * 60 * 24 * 31,
     });
 
     return response;

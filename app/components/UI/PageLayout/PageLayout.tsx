@@ -5,8 +5,10 @@ import clsx from "clsx";
 import Aurora from "./NavBar/shared/Aurora";
 import LocaleMismatch from "./LocaleMismatch";
 import { getServerCookie } from "@/utils/cookies/server/cookiesServer";
+import { LocaleLanguages } from "@/i18n/utils";
+import { getPreferredLocale } from "@/utils/cookies/server/getPreferredLocale";
 
-interface PageBuilderProps {
+interface PageLayoutProps {
   children: React.ReactNode;
   padding?: boolean;
   showNavBar?: boolean;
@@ -14,21 +16,26 @@ interface PageBuilderProps {
   auroraBackground?: boolean;
 }
 
-export default async function PageBuilder({
+export default async function PageLayout({
   children,
   padding = true,
   showNavBar = true,
   showFooter = true,
   auroraBackground = false,
-}: PageBuilderProps) {
-  const localeMismatch = await getServerCookie("locale_mismatch");
+}: PageLayoutProps) {
+  const locale = (await getPreferredLocale()) as LocaleLanguages;
+
+  const localeMismatch = (await getServerCookie("locale_mismatch")) as
+    | LocaleLanguages
+    | undefined;
+
   return (
     <div className="flex flex-col bg-black text-white font-black">
-      {showNavBar && <NavBar />}
+      {showNavBar && <NavBar locale={locale} localeMismatch={localeMismatch} />}
 
       {auroraBackground && <Aurora speed={0.3} />}
 
-      {localeMismatch && <LocaleMismatch localeMismatch={localeMismatch} />}
+      {localeMismatch && <LocaleMismatch locale={locale} localeMismatch={localeMismatch} />}
 
       <div className="flex flex-col z-10">
         <main
