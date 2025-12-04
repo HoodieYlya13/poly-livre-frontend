@@ -27,6 +27,10 @@ export async function verifyMagicLink(token: string) {
       maxAge: data.expiresIn,
     });
 
+    await setServerCookie("user_name", data.username, {
+      maxAge: data.expiresIn,
+    });
+
     await setServerCookie("user_email", data.email, {
       maxAge: data.expiresIn,
     });

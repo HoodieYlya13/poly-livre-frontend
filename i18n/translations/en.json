@@ -42,7 +42,20 @@
       "DESCRIPTION": "Register a passkey to log in without a password or email link.",
       "BUTTON": "Register New Passkey",
       "BUTTON_LOADING": "Registering...",
-      "NAME_LABEL": "Passkey Name"
+      "NAME_LABEL": "Passkey Name",
+      "PASSKEY_REGISTER_SUCCESS": "Passkey registered successfully.",
+      "PASSKEY_REGISTER_FAILED": "Passkey registration failed.",
+      "PASSKEY_REGISTER_ERROR": "An error occurred while registering passkey."
+    },
+    "USERNAME": {
+      "TITLE": "Username",
+      "DESCRIPTION": "Register a username to log in without a password or email link.",
+      "BUTTON": "Register New Username",
+      "BUTTON_LOADING": "Registering...",
+      "NAME_LABEL": "Username",
+      "LOADING": "Loading...",
+      "UPDATE": "Update",
+      "USERNAME_UPDATED": "Username updated successfully."
     }
   },
   "MAGIC_LINK": {

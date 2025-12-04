@@ -1,37 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import Input from "../../UI/shared/elements/Input";
-import { handlePasskeyRegistration } from "@/utils/auth/passkey/handlePasskeyRegistration";
 import { useTranslations } from "next-intl";
-import Form from "../../UI/shared/components/Form";
-import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
+import Input from "@/app/components/UI/shared/elements/Input";
+import Form from "@/app/components/UI/shared/components/Form";
+import { useUpdateUsernameForm } from "@/hooks/forms/useUpdateUsernameForm";
+import { updateUsername } from "@/utils/profile/user";
 
-interface PasskeyRegistrationProps {
-  email: string;
+interface UserNameProps {
+    token: string;
 }
 
-export default function PasskeyRegistration({
-  email,
-}: PasskeyRegistrationProps) {
-  const t = useTranslations("PROFILE.PASSKEY");
-  const form = useUpdatePasskeyNameForm();
+export default function UserName({ token }: UserNameProps) {
+  const t = useTranslations("PROFILE.USERNAME");
+  const form = useUpdateUsernameForm();
   const [successText, setSuccessText] = useState<string | null>(null);
 
   return (
     <div className="flex w-full grow justify-center items-center py-4">
       <Form
         handleSubmit={form.handleSubmit(async (data) => {
-          await handlePasskeyRegistration(
-            email,
-            data.name,
+          await updateUsername(
+            token,
+            data.username,
             form.clearErrors,
             form.setError,
             setSuccessText
           );
         })}
         buttonProps={{
-          label: t(form.formState.isSubmitting ? "BUTTON_LOADING" : "BUTTON"),
+          label: t(form.formState.isSubmitting ? "LOADING" : "UPDATE"),
           error:
             form.formState.isSubmitted &&
             Object.keys(form.formState.errors).some((k) => k !== "root")
@@ -51,12 +49,12 @@ export default function PasskeyRegistration({
         <p className="text-sm text-gray-400">{t("DESCRIPTION")}</p>
 
         <Input
-          id="passkey-name"
+          id="username"
           label={t("NAME_LABEL")}
           type="text"
-          {...form.register("name")}
+          {...form.register("username")}
           focusOnMount
-          error={form.formState.errors.name?.message}
+          error={form.formState.errors.username?.message}
         />
       </Form>
     </div>

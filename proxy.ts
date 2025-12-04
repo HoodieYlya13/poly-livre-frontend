@@ -82,6 +82,16 @@ export async function proxy(req: NextRequest) {
       return NextResponse.redirect(redirectUrl);
     }
 
+    const userAccessToken = getProxyCookie(req, "user_access_token");
+    if (userAccessToken) {
+      const userName = getProxyCookie(req, "user_name");
+      if (!userName && !pathname.endsWith("/profile/user-name")) {
+        const redirectUrl = req.nextUrl.clone();
+        redirectUrl.pathname = "/profile/user-name";
+        return NextResponse.redirect(redirectUrl);
+      }
+    }
+
     const pathLocale = pathname.split("/")[1];
     let preferredLocale = getProxyCookie(req, "preferred_locale");
     

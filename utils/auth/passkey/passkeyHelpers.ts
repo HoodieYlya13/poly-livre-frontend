@@ -62,6 +62,10 @@ export async function verifyPasskeyLogin(credential: unknown) {
       maxAge: data.expiresIn,
     });
 
+    await setServerCookie("user_name", data.username, {
+      maxAge: data.expiresIn,
+    });
+
     await setServerCookie("user_email", data.email, {
       maxAge: data.expiresIn,
     });

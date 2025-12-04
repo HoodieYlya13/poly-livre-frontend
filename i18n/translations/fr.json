@@ -42,7 +42,20 @@
       "DESCRIPTION": "Enregistrez une Passkey pour vous connecter sans mot de passe ni lien email.",
       "BUTTON": "Enregistrer une nouvelle Passkey",
       "BUTTON_LOADING": "Enregistrement...",
-      "NAME_LABEL": "Nom de la Passkey"
+      "NAME_LABEL": "Nom de la Passkey",
+      "PASSKEY_REGISTER_SUCCESS": "Passkey enregistrée avec succès.",
+      "PASSKEY_REGISTER_FAILED": "Échec de l'enregistrement de la Passkey.",
+      "PASSKEY_REGISTER_ERROR": "Une erreur est survenue lors de l'enregistrement de la Passkey."
+    },
+    "USERNAME": {
+      "TITLE": "Nom d'utilisateur",
+      "DESCRIPTION": "Enregistrez un nom d'utilisateur pour vous connecter sans mot de passe ni lien email.",
+      "BUTTON": "Enregistrer un nouveau nom d'utilisateur",
+      "BUTTON_LOADING": "Enregistrement...",
+      "NAME_LABEL": "Nom d'utilisateur",
+      "LOADING": "Chargement...",
+      "UPDATE": "Mettre à jour",
+      "USERNAME_UPDATED": "Nom d'utilisateur mis à jour avec succès."
     }
   },
   "MAGIC_LINK": {
