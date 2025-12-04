@@ -31,6 +31,28 @@
       "MAGIC_LINK_ERROR": "An error occurred while sending Magic Link."
     }
   },
+  "PROFILE": {
+    "TITLE": "Profile",
+    "SECURITY": "Security",
+    "ERRORS": {
+      "EMAIL_NOT_FOUND": "Could not retrieve user email. Please log in again."
+    },
+    "PASSKEY": {
+      "TITLE": "Passkey",
+      "DESCRIPTION": "Register a passkey to log in without a password or email link.",
+      "BUTTON": "Register New Passkey",
+      "BUTTON_LOADING": "Registering...",
+      "NAME_LABEL": "Passkey Name"
+    }
+  },
+  "MAGIC_LINK": {
+    "VERIFYING": "Verifying your magic link...",
+    "FAILED": {
+      "TITLE": "Verification Failed",
+      "DESCRIPTION": "The magic link is invalid or has expired."
+    },
+    "BACK_TO_LOGIN": "Back to Login"
+  },
   "LOCALE_MISMATCH": {
     "TITLE": "Switch Language?",
     "DESCRIPTION": "We detected that your preferred language is <important>{preferredLocale}</important>, but you are viewing the site in <important>{currentLocale}</important>.",

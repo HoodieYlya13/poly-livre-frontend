@@ -30,8 +30,17 @@ export async function getServerCookie(
   return (await cookies()).get(name)?.value;
 }
 
+export async function getServerCookies(): Promise<string> {
+  return (await cookies()).toString();
+}
+
 export async function deleteServerCookie(name: string) {
   (await cookies()).delete(name);
+}
+
+export async function deleteServerCookies(names: string[]) {
+  const cookieStore = await cookies();
+  for (const name of names) cookieStore.delete(name);
 }
 
 export function setProxyCookie(

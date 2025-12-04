@@ -6,8 +6,8 @@ import Input from "../../UI/shared/elements/Input";
 import Button from "../../UI/shared/elements/Button";
 import Form from "../../UI/shared/components/Form";
 import { useAuthMagicLinkForm } from "@/hooks/authMagicLinkForm/authMagicLinkForm";
-import { authSubmitHandler } from "@/utils/auth/authSubmitHandler";
-import { handlePasskeyLogin } from "@/utils/auth/handlePasskeyLogin";
+import { authSubmitHandler } from "@/utils/auth/magicLink/authSubmitHandler";
+import { handlePasskeyLogin } from "@/utils/auth/passkey/handlePasskeyLogin";
 import Link from "next/link";
 
 export default function Auth() {

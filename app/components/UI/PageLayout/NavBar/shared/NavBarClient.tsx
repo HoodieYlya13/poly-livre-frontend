@@ -45,7 +45,7 @@ export default function NavBarClient({ locale, localeMismatch, token }: NavBarCl
       <div className="flex items-center gap-2">
         <LocaleSwitcher storedLocale={locale} localeMismatch={localeMismatch} />
 
-        <Link href="/auth">
+        <Link href={token ? "/profile" : "/auth"}>
           <MyAccountIcon />
         </Link>
 

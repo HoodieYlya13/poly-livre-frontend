@@ -19,6 +19,7 @@ export default function SignInTestingMode({ register, errors }: SignInTestingMod
       error={errors.password && t(`ERRORS.${errors.password.message}`)}
       autoComplete="current-password"
       id="password"
+      focusOnMount
     />
   );
 }

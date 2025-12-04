@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { setServerCookie } from "../cookies/server/cookiesServer";
+import { setServerCookie } from "../../cookies/server/cookiesServer";
 
 export async function verifyMagicLink(token: string) {
   try {
@@ -26,10 +26,14 @@ export async function verifyMagicLink(token: string) {
     await setServerCookie("user_id", data.userId, {
       maxAge: data.expiresIn,
     });
+
+    await setServerCookie("user_email", data.email, {
+      maxAge: data.expiresIn,
+    });
   } catch (error) {
     console.error("Magic link verification error:", error);
     return { success: false, error: "Verification failed" };
   }
 
-  redirect("/");
+  redirect("/profile");
 }
