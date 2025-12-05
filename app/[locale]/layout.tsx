@@ -6,6 +6,11 @@ import "../globals.css";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { APP_NAME } from "@/utils/constants";
+import {
+  Theme,
+  ThemeProvider,
+} from "../components/UI/shared/components/ThemeProvider";
+import { getServerCookie } from "@/utils/cookies/server/cookiesServer";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -41,15 +46,18 @@ export async function generateMetadata({
 
 export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
+  const theme = (await getServerCookie("theme")) as Theme | undefined;
 
   if (!hasLocale(routing.locales, locale)) notFound();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider defaultTheme={theme}>{children}</ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

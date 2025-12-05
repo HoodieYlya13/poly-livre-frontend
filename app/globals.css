@@ -16,6 +16,13 @@
 
 :root {
   --size: max(100vw, 100vh);
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 /* Firefox */
@@ -58,7 +65,7 @@
 html,
 body {
   overscroll-behavior: none;
-  background-color: black;
+  background-color: var(--background);
 }
 
 .input-focus-glow:focus-within::after {

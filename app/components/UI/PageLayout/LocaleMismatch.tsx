@@ -68,7 +68,7 @@ export default function LocaleMismatch({
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 bg-white p-6 rounded-xl shadow-2xl border border-gray-100 flex flex-col gap-4 max-w-sm animate-in slide-in-from-bottom-5 fade-in duration-300">
+    <div className="fixed bottom-5 right-5 z-50 bg-background p-6 rounded-xl shadow-2xl border border-gray-100 flex flex-col gap-4 max-w-sm animate-in slide-in-from-bottom-5 fade-in duration-300">
       <div className="flex flex-col gap-1">
         <h3 className="font-semibold text-lg text-gray-900">{t("TITLE")}</h3>
         <p className="text-sm text-gray-600">
@@ -92,7 +92,7 @@ export default function LocaleMismatch({
         </button>
         <button
           onClick={handleSwitch}
-          className="flex-1 px-4 py-2 text-sm font-medium text-white bg-black hover:bg-gray-800 rounded-lg transition-colors cursor-pointer custom-shadow custom-shadow-hover"
+          className="flex-1 px-4 py-2 text-sm font-medium text-foreground bg-background hover:bg-gray-800 rounded-lg transition-colors cursor-pointer custom-shadow custom-shadow-hover"
         >
           {t("SWITCH", { locale: localeMismatch.toUpperCase() })}
         </button>

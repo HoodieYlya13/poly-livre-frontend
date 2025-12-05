@@ -30,12 +30,14 @@ export default async function PageLayout({
     | undefined;
 
   return (
-    <div className="flex flex-col bg-black text-white font-black">
+    <div className="flex flex-col bg-background text-foreground font-black transition-colors duration-300">
       {showNavBar && <NavBar locale={locale} localeMismatch={localeMismatch} />}
 
       {auroraBackground && <Aurora speed={0.3} />}
 
-      {localeMismatch && <LocaleMismatch locale={locale} localeMismatch={localeMismatch} />}
+      {localeMismatch && (
+        <LocaleMismatch locale={locale} localeMismatch={localeMismatch} />
+      )}
 
       <div className="flex flex-col z-10">
         <main
