@@ -25,30 +25,30 @@ export async function updateUsername(
     if (!json.username)
       return setError("root", { message: "USERNAME_UPDATE_FAILED" });
 
-    setClientCookie("user_name", username, {
+    setClientCookie("user_name", json.username, {
       maxAge: json.expiresIn,
-    }); // FIXME: does not update when set
+    });
 
     setSuccessText("USERNAME_UPDATED");
-    window.location.href = "/profile"; // TODO: add delay or find a better solution
+    return true;
   } catch {
     setError("root", { message: "GENERIC" });
+    return false;
   }
 }
 
 export async function getUser(token: string) {
-    try {
-      const response = await fetch("http://localhost:8080/users/me", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const json = await response.json();
-      return json;
-    } catch {
-        return null;
-    }
+  try {
+    const response = await fetch("http://localhost:8080/users/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const json = await response.json();
+    return json;
+  } catch {
+    return null;
+  }
 }
-  

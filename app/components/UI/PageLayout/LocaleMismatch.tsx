@@ -30,15 +30,10 @@ export default function LocaleMismatch({
     segments[1] = localeMismatch;
     const newPath = segments.join("/") + search + hash;
 
-    setClientCookie("preferred_locale", localeMismatch, {
-      path: "/",
-      sameSite: "Lax",
-    });
+    setClientCookie("preferred_locale", localeMismatch);
 
     setClientCookie("locale_mismatch", "", {
-      path: "/",
       maxAge: 0,
-      sameSite: "Lax",
     });
 
     router.push(newPath);
@@ -54,14 +49,9 @@ export default function LocaleMismatch({
     const newPath = segments.join("/") + search + hash;
 
     setIsVisible(false);
-    setClientCookie("preferred_locale", locale, {
-      path: "/",
-      sameSite: "Lax",
-    });
+    setClientCookie("preferred_locale", locale);
     setClientCookie("locale_mismatch", "", {
-      path: "/",
       maxAge: 0,
-      sameSite: "Lax",
     });
 
     router.push(newPath);

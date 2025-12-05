@@ -38,10 +38,9 @@ export default function Form<T extends FieldValues>({
   const errors = form.formState.errors.root?.message;
 
   useEffect(() => {
-    if (errors) {
-      toast.error(t(`ERRORS.${errors}`));
-    }
-  }, [errors, t]);
+    if (errors) toast.error(t(`ERRORS.${errors}`));
+    if (successText) toast.success(successText);
+  }, [errors, successText, t]);
 
   const handleSubmitWithCooldown = (e: React.FormEvent<HTMLFormElement>) => {
     if (isCoolingDown) return e.preventDefault();
@@ -65,7 +64,6 @@ export default function Form<T extends FieldValues>({
         disabled={buttonDisabled}
       />
 
-      {successText && <p className="text-sm text-green-500">{successText}</p>}
       {errors && (
         <p className="text-red-500 text-shadow-md">{t(`ERRORS.${errors}`)}</p>
       )}

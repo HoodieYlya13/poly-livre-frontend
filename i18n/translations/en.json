@@ -24,6 +24,7 @@
     "MAGIC_LINK_SENT": "Magic Link sent! Check your email.",
     "CHECK_YOUR_EMAIL": "Check your email at ",
     "PASSWORD": "Password",
+    "HELLO": "Hello, {username}!",
     "ERRORS": {
       "AUTHENTICATION_PROBLEM": "Please log in again.",
       "TOO_SHORT": "Password is too short.",
@@ -60,6 +61,7 @@
   },
   "MAGIC_LINK": {
     "VERIFYING": "Verifying your magic link...",
+    "HELLO": "Hello, {username}!",
     "FAILED": {
       "TITLE": "Verification Failed",
       "DESCRIPTION": "The magic link is invalid or has expired."

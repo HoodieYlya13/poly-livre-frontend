@@ -66,13 +66,14 @@ export async function verifyPasskeyLogin(credential: unknown) {
 
     await setServerCookie("user_name", data.username, {
       maxAge: data.expiresIn,
+      httpOnly: false,
     });
 
     await setServerCookie("user_email", data.email, {
       maxAge: data.expiresIn,
     });
 
-    return { success: true };
+    return { success: true, username: data.username };
   } catch (error) {
     console.error("verifyPasskeyLogin error:", error);
     return { success: false, error: "Verification failed" };

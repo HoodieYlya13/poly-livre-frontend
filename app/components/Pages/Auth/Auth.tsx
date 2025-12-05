@@ -9,10 +9,13 @@ import { useAuthMagicLinkForm } from "@/hooks/forms/useAuthMagicLinkForm";
 import { authSubmitHandler } from "@/utils/auth/magicLink/authSubmitHandler";
 import { handlePasskeyLogin } from "@/utils/auth/passkey/handlePasskeyLogin";
 import Link from "next/link";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function Auth() {
   const t = useTranslations("AUTH");
   const form = useAuthMagicLinkForm();
+  const router = useRouter();
 
   const [isPasskeyLogin, setIsPasskeyLogin] = useState(false);
   const [emailProviderLink, setEmailProviderLink] = useState<{
@@ -22,6 +25,20 @@ export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [successText, setSuccessText] = useState<string | null>(null);
   const [errorText, setErrorText] = useState<string | null>(null);
+
+  const onPasskeyLogin = async () => {
+    setIsPasskeyLogin(true);
+    setEmailProviderLink(null);
+    const username = await handlePasskeyLogin(
+      setLoading,
+      setErrorText,
+      setSuccessText
+    );
+    if (username) {
+      toast.success(t("HELLO", { username }));
+      router.push("/profile");
+    }
+  };
 
   const emailProviderLinkMemo = useMemo(() => {
     const email = form.watch("email");
@@ -96,11 +113,7 @@ export default function Auth() {
         <h2 className="text-2xl font-bold text-center">{t("LOGIN_TITLE")}</h2>
         <div className="flex flex-col gap-4">
           <Button
-            onClick={() => {
-              setIsPasskeyLogin(true);
-              setEmailProviderLink(null);
-              handlePasskeyLogin(setLoading, setErrorText, setSuccessText);
-            }}
+            onClick={onPasskeyLogin}
             type="button"
             disabled={loading}
             child={loading ? t("LOADING") : t("SIGN_IN_PASSKEY")}
@@ -129,6 +142,7 @@ export default function Auth() {
               error={form.formState.errors.email?.message}
             />
 
+          {/* TODO: Maybe use <Activity /> component ? */}
             {!isPasskeyLogin && successText && emailProviderLink && (
               <p className="text-sm text-dark mt-2">
                 {t("CHECK_YOUR_EMAIL")}{" "}

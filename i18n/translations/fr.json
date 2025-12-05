@@ -24,6 +24,7 @@
     "MAGIC_LINK_SENT": "Lien magique envoyé ! Vérifiez votre email.",
     "CHECK_YOUR_EMAIL": "Vérifiez votre email à ",
     "PASSWORD": "Mot de passe",
+    "HELLO": "Bonjour, {username}!",
     "ERRORS": {
       "AUTHENTICATION_PROBLEM": "Veuillez vous reconnecter.",
       "TOO_SHORT": "Le mot de passe est trop court.",
@@ -60,6 +61,7 @@
   },
   "MAGIC_LINK": {
     "VERIFYING": "Vérification de votre lien magique...",
+    "HELLO": "Bonjour, {username}!",
     "FAILED": {
       "TITLE": "Échec de la vérification",
       "DESCRIPTION": "Le lien magique est invalide ou a expiré."

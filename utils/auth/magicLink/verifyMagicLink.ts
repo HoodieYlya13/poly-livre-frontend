@@ -1,6 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { setServerCookie } from "../../cookies/server/cookiesServer";
 
 export async function verifyMagicLink(token: string) {
@@ -27,17 +26,22 @@ export async function verifyMagicLink(token: string) {
       maxAge: data.expiresIn,
     });
 
-    await setServerCookie("user_name", data.username, {
-      maxAge: data.expiresIn,
-    });
-
     await setServerCookie("user_email", data.email, {
       maxAge: data.expiresIn,
     });
+
+    if (data.username) {
+      await setServerCookie("user_name", data.username, {
+        maxAge: data.expiresIn,
+        httpOnly: false,
+      });
+
+      return { success: true, username: data.username };
+    }
+
+    return { success: true };
   } catch (error) {
     console.error("Magic link verification error:", error);
     return { success: false, error: "Verification failed" };
   }
-
-  redirect("/profile");
 }

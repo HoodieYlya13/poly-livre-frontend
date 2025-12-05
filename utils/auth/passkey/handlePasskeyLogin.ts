@@ -19,11 +19,13 @@ export async function handlePasskeyLogin(
 
     const verificationRes = await verifyPasskeyLogin(asseResp);
 
-    if (verificationRes.success) window.location.href = "/profile";
+    if (verificationRes.success) return verificationRes.username;
     else setErrorText("PASSKEY_FAILED");
+    return false;
   } catch (error) {
     console.error(error);
     setErrorText("PASSKEY_ERROR");
+    return false;
   } finally {
     setLoading(false);
   }

@@ -6,28 +6,31 @@ import Input from "@/app/components/UI/shared/elements/Input";
 import Form from "@/app/components/UI/shared/components/Form";
 import { useUpdateUsernameForm } from "@/hooks/forms/useUpdateUsernameForm";
 import { updateUsername } from "@/utils/profile/user";
+import { useRouter } from "next/navigation";
 
 interface UserNameProps {
-    token: string;
+  token: string;
 }
 
 export default function UserName({ token }: UserNameProps) {
   const t = useTranslations("PROFILE.USERNAME");
   const form = useUpdateUsernameForm();
   const [successText, setSuccessText] = useState<string | null>(null);
+  const router = useRouter();
 
   return (
     <div className="flex w-full grow justify-center items-center py-4">
       <Form
         form={form}
         handleSubmit={form.handleSubmit(async (data) => {
-          await updateUsername(
+          const success = await updateUsername(
             token,
             data.username,
             form.clearErrors,
             form.setError,
             setSuccessText
           );
+          if (success) router.push("/profile");
         })}
         buttonLabel={t("UPDATE")}
         successText={successText ? t(successText) : undefined}
