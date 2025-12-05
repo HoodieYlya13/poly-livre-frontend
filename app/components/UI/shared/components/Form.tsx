@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import SubmitButton from "../elements/SubmitButton";
 import { useTranslations } from "next-intl";
 import { UseFormReturn, FieldValues } from "react-hook-form";
+import { toast } from "sonner";
 
 interface FormProps<T extends FieldValues> {
   children: React.ReactNode;
@@ -35,6 +36,12 @@ export default function Form<T extends FieldValues>({
         0) ||
     isCoolingDown;
   const errors = form.formState.errors.root?.message;
+
+  useEffect(() => {
+    if (errors) {
+      toast.error(t(`ERRORS.${errors}`));
+    }
+  }, [errors, t]);
 
   const handleSubmitWithCooldown = (e: React.FormEvent<HTMLFormElement>) => {
     if (isCoolingDown) return e.preventDefault();

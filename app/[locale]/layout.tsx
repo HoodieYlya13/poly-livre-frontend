@@ -11,6 +11,7 @@ import {
   ThemeProvider,
 } from "../components/UI/shared/components/ThemeProvider";
 import { getServerCookie } from "@/utils/cookies/server/cookiesServer";
+import { Toaster } from "../components/UI/shared/components/Toaster";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -51,12 +52,36 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   if (!hasLocale(routing.locales, locale)) notFound();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={theme === "dark" ? "dark" : ""}
+    >
+      <head>
+        <script
+          // not dangerous because I know what I'm doing ;)
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = '${theme === "dark" || theme === "light" ? theme : "system"}';
+                  var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (theme === 'dark' || (theme === 'system' && systemDark)) document.documentElement.classList.add('dark');
+                  else document.documentElement.classList.remove('dark');
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider>
-          <ThemeProvider defaultTheme={theme}>{children}</ThemeProvider>
+          <ThemeProvider defaultTheme={theme}>
+            {children}
+            <Toaster />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
