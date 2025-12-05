@@ -19,10 +19,8 @@ export async function handlePasskeyLogin(
 
     const verificationRes = await verifyPasskeyLogin(asseResp);
 
-    if (verificationRes.success) {
-      setSuccessText("PASSKEY_SUCCESS");
-      window.location.href = "/profile";
-    } else setErrorText("PASSKEY_FAILED");
+    if (verificationRes.success) window.location.href = "/profile";
+    else setErrorText("PASSKEY_FAILED");
   } catch (error) {
     console.error(error);
     setErrorText("PASSKEY_ERROR");

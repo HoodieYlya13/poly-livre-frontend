@@ -1,39 +1,43 @@
 import React from "react";
 import { useState } from "react";
 import SubmitButton from "../elements/SubmitButton";
-import RootErrors from "../elements/RootErrors";
+import { useTranslations } from "next-intl";
+import { UseFormReturn, FieldValues } from "react-hook-form";
 
-interface FormProps {
+interface FormProps<T extends FieldValues> {
   children: React.ReactNode;
+  form: UseFormReturn<T>;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  buttonProps: {
-    label: string;
-    error?: string;
-    disabled?: boolean;
-  };
+  buttonLabel: string;
   successText?: string;
-  errors?: Partial<{
-    type: string | number;
-
-    message: string;
-  }> &
-    Record<string, Partial<{ type: string | number; message: string }>>;
 }
 
-export default function Form({
-    children,
-    handleSubmit,
-    buttonProps,
-    successText,
-    errors,
-}: FormProps) {
+export default function Form<T extends FieldValues>({
+  children,
+  form,
+  handleSubmit,
+  buttonLabel,
+  successText,
+}: FormProps<T>) {
+  const t = useTranslations("FORM");
   const [isCoolingDown, setIsCoolingDown] = useState(false);
 
+  const buttonError =
+    form.formState.isSubmitted &&
+    Object.keys(form.formState.errors).some((k) => k !== "root")
+      ? t("ERRORS.CORRECT_FIELDS_BEFORE_SUBMIT")
+      : undefined;
+  const buttonDisabled =
+    form.formState.isSubmitting ||
+    Object.values(form.watch()).every((value) => !value) ||
+    (form.formState.isSubmitted &&
+      Object.keys(form.formState.errors).filter((k) => k !== "root").length >
+        0) ||
+    isCoolingDown;
+  const errors = form.formState.errors.root?.message;
+
   const handleSubmitWithCooldown = (e: React.FormEvent<HTMLFormElement>) => {
-    if (isCoolingDown) {
-      e.preventDefault();
-      return;
-    }
+    if (isCoolingDown) return e.preventDefault();
     setIsCoolingDown(true);
     setTimeout(() => {
       setIsCoolingDown(false);
@@ -49,13 +53,15 @@ export default function Form({
       {children}
 
       <SubmitButton
-        label={buttonProps.label}
-        error={buttonProps.error}
-        disabled={buttonProps.disabled || isCoolingDown}
+        label={form.formState.isSubmitting ? t("LOADING") : buttonLabel}
+        error={buttonError}
+        disabled={buttonDisabled}
       />
 
       {successText && <p className="text-sm text-green-500">{successText}</p>}
-      {errors && <RootErrors errors={errors} />}
+      {errors && (
+        <p className="text-red-500 text-shadow-md">{t(`ERRORS.${errors}`)}</p>
+      )}
     </form>
   );
 }

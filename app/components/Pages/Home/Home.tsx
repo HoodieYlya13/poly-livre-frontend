@@ -5,7 +5,7 @@ export default function Home() {
   const t = useTranslations("HOME_PAGE");
 
   return (
-    <div className="flex grow flex-col items-center justify-center bg-white text-black">
+    <div className="flex grow flex-col items-center justify-center bg-white text-black pt-20 md:pt-30">
       <h1 className="text-3xl font-semibold">
         {t("META.TITLE", { name: APP_NAME })}
       </h1>

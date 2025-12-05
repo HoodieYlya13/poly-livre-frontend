@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Input from "../../UI/shared/elements/Input";
+import Input from "../../../UI/shared/elements/Input";
 import { handlePasskeyRegistration } from "@/utils/auth/passkey/handlePasskeyRegistration";
 import { useTranslations } from "next-intl";
-import Form from "../../UI/shared/components/Form";
+import Form from "../../../UI/shared/components/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
 
 interface PasskeyRegistrationProps {
@@ -21,6 +21,7 @@ export default function PasskeyRegistration({
   return (
     <div className="flex w-full grow justify-center items-center py-4">
       <Form
+        form={form}
         handleSubmit={form.handleSubmit(async (data) => {
           await handlePasskeyRegistration(
             email,
@@ -30,22 +31,8 @@ export default function PasskeyRegistration({
             setSuccessText
           );
         })}
-        buttonProps={{
-          label: t(form.formState.isSubmitting ? "BUTTON_LOADING" : "BUTTON"),
-          error:
-            form.formState.isSubmitted &&
-            Object.keys(form.formState.errors).some((k) => k !== "root")
-              ? t("ERRORS.CORRECT_FIELDS_BEFORE_SUBMIT")
-              : undefined,
-          disabled:
-            form.formState.isSubmitting ||
-            Object.values(form.watch()).every((value) => !value) ||
-            (form.formState.isSubmitted &&
-              Object.keys(form.formState.errors).filter((k) => k !== "root")
-                .length > 0),
-        }}
+        buttonLabel={t("BUTTON")}
         successText={successText ? t(successText) : undefined}
-        errors={form.formState.errors.root}
       >
         <h3 className="text-lg font-bold">{t("TITLE")}</h3>
         <p className="text-sm text-gray-400">{t("DESCRIPTION")}</p>

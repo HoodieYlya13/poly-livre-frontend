@@ -55,7 +55,7 @@ export async function proxy(req: NextRequest) {
 
       if (!success)
         return NextResponse.json(
-          { error: "TOO_MANY_REQUESTS" },
+          { error: "TOO_MANY_REQUESTS" }, // TODO: add inside generic errors
           { status: 429 }
         );
     }

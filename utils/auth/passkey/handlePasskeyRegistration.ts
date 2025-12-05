@@ -28,10 +28,9 @@ export async function handlePasskeyRegistration(
       passkeyName
     );
 
-    if (verificationRes.success) setSuccessText("PASSKEY_REGISTER_SUCCESS");
-    else setError("root", { message: "PASSKEY_REGISTER_FAILED" });
+    if (verificationRes.success) return setSuccessText("PASSKEY_REGISTER_SUCCESS"); // TODO: handle the case when passkey already exists for the device
   } catch (error) {
     console.error(error);
-    setError("root", { message: "GENERIC" });
+    setError("root", { message: "PASSKEY_ERROR" });
   }
 }

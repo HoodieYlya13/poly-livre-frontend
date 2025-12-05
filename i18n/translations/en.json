@@ -5,6 +5,14 @@
       "DESCRIPTION": "Welcome to {name}'s library shop! Explore all our books."
     }
   },
+  "FORM": {
+    "LOADING": "Loading...",
+    "ERRORS": {
+      "GENERIC": "An unexpected error occurred.",
+      "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
+      "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again."
+    }
+  },
   "AUTH": {
     "LOADING": "Loading...",
     "LOGIN": "Sign in",
@@ -17,23 +25,20 @@
     "CHECK_YOUR_EMAIL": "Check your email at ",
     "PASSWORD": "Password",
     "ERRORS": {
-      "GENERIC": "An unexpected error occurred.",
       "AUTHENTICATION_PROBLEM": "Please log in again.",
       "TOO_SHORT": "Password is too short.",
       "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
-      "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
       "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
       "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
-      "PASSKEY_SUCCESS": "Successfully authenticated with Passkey!",
       "PASSKEY_FAILED": "Passkey authentication failed.",
       "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
-      "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
-      "MAGIC_LINK_ERROR": "An error occurred while sending Magic Link."
+      "MAGIC_LINK_FAILED": "Failed to send Magic Link."
     }
   },
   "PROFILE": {
     "TITLE": "Profile",
     "SECURITY": "Security",
+    "CHANGE_USER_NAME": "Change user name",
     "ERRORS": {
       "EMAIL_NOT_FOUND": "Could not retrieve user email. Please log in again."
     },
@@ -41,19 +46,14 @@
       "TITLE": "Passkey",
       "DESCRIPTION": "Register a passkey to log in without a password or email link.",
       "BUTTON": "Register New Passkey",
-      "BUTTON_LOADING": "Registering...",
       "NAME_LABEL": "Passkey Name",
-      "PASSKEY_REGISTER_SUCCESS": "Passkey registered successfully.",
-      "PASSKEY_REGISTER_FAILED": "Passkey registration failed.",
-      "PASSKEY_REGISTER_ERROR": "An error occurred while registering passkey."
+      "PASSKEY_REGISTER_SUCCESS": "Passkey registered successfully."
     },
     "USERNAME": {
       "TITLE": "Username",
       "DESCRIPTION": "Register a username to log in without a password or email link.",
       "BUTTON": "Register New Username",
-      "BUTTON_LOADING": "Registering...",
       "NAME_LABEL": "Username",
-      "LOADING": "Loading...",
       "UPDATE": "Update",
       "USERNAME_UPDATED": "Username updated successfully."
     }

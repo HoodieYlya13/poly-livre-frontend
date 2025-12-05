@@ -77,6 +77,7 @@ export default function Auth() {
   return (
     <div className="flex w-full grow justify-center items-center py-4">
       <Form
+        form={form}
         handleSubmit={(e) => {
           setIsPasskeyLogin(false);
           setEmailProviderLink(emailProviderLinkMemo);
@@ -89,22 +90,8 @@ export default function Auth() {
             );
           })(e);
         }}
-        buttonProps={{
-          label: t(form.formState.isSubmitting ? "LOADING" : "LOGIN"),
-          error:
-            form.formState.isSubmitted &&
-            Object.keys(form.formState.errors).some((k) => k !== "root")
-              ? t("ERRORS.CORRECT_FIELDS_BEFORE_SUBMIT")
-              : undefined,
-          disabled:
-            form.formState.isSubmitting ||
-            Object.values(form.watch()).every((value) => !value) ||
-            (form.formState.isSubmitted &&
-              Object.keys(form.formState.errors).filter((k) => k !== "root")
-                .length > 0),
-        }}
+        buttonLabel={t("SEND_MAGIC_LINK")}
         successText={successText ? t(successText) : undefined}
-        errors={form.formState.errors.root}
       >
         <h2 className="text-2xl font-bold text-center">{t("LOGIN_TITLE")}</h2>
         <div className="flex flex-col gap-4">

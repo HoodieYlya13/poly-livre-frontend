@@ -2,10 +2,12 @@
 
 import { BACKEND_URL } from "@/utils/constants";
 import {
+  deleteServerUserCookies,
   getServerCookies,
   setServerCookie,
 } from "@/utils/cookies/server/cookiesServer";
 import { getUserAccessToken } from "@/utils/cookies/server/getUserAccessToken";
+import { redirect } from "next/navigation";
 
 export async function getPasskeyLoginOptions() {
   try {
@@ -77,8 +79,11 @@ export async function verifyPasskeyLogin(credential: unknown) {
   }
 }
 
-export async function getPasskeyRegistrationOptions(email: string, passkeyName: string) {
-  // TODO: useSuspenseQuery, suspense, activity, https://youtu.be/Ubbb1RK7iFs?si=QrN0yxMwxjfJF49X
+export async function getPasskeyRegistrationOptions(
+  email: string,
+  passkeyName: string
+) {
+  // FIXME: useSuspenseQuery, suspense, activity, https://youtu.be/Ubbb1RK7iFs?si=QrN0yxMwxjfJF49X
   try {
     const token = await getUserAccessToken();
     const response = await fetch(
@@ -92,11 +97,21 @@ export async function getPasskeyRegistrationOptions(email: string, passkeyName: 
           Authorization: `Bearer ${token}`,
         },
       }
-    );    
+    );
 
-    if (!response.ok) throw new Error("Failed to get registration options");
+    if (response.ok) return await response.json();
 
-    return await response.json();
+    const errorBody = await response.json();
+    if (errorBody.code) {
+      console.error(
+        "getPasskeyRegistrationOptions error:",
+        errorBody.description
+      );
+      await deleteServerUserCookies();
+      redirect("/auth");
+    }
+
+    throw new Error("Failed to get registration options");
   } catch (error) {
     console.error("getPasskeyRegistrationOptions error:", error);
     throw error;
@@ -122,13 +137,23 @@ export async function verifyPasskeyRegistration(
         },
         body: JSON.stringify(credential),
       }
-    );    
+    );
 
-    if (!response.ok) throw new Error("Registration verification failed");
+    if (response.ok) return { success: true };
 
-    return { success: true };
+    const errorBody = await response.json();
+    if (errorBody.code) {
+      console.error(
+        "getPasskeyRegistrationOptions error:",
+        errorBody.description
+      );
+      await deleteServerUserCookies();
+      redirect("/auth");
+    }
+
+    throw new Error("Registration verification failed");
   } catch (error) {
     console.error("verifyPasskeyRegistration error:", error);
-    return { success: false, error: "Verification failed" };
+    return { success: false };
   }
 }

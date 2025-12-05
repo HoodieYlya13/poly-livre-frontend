@@ -5,6 +5,14 @@
       "DESCRIPTION": "Bienvenue dans la librairie en ligne de {name} ! Découvrez nos livres."
     }
   },
+  "FORM": {
+    "LOADING": "Chargement...",
+    "ERRORS": {
+      "GENERIC": "Une erreur inattendue est survenue.",
+      "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
+      "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer."
+    }
+  },
   "AUTH": {
     "LOGIN": "Se connecter",
     "LOADING": "Chargement...",
@@ -17,23 +25,20 @@
     "CHECK_YOUR_EMAIL": "Vérifiez votre email à ",
     "PASSWORD": "Mot de passe",
     "ERRORS": {
-      "GENERIC": "Une erreur inattendue est survenue.",
       "AUTHENTICATION_PROBLEM": "Veuillez vous reconnecter.",
       "TOO_SHORT": "Le mot de passe est trop court.",
       "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
-      "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
       "PASSWORD_INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
       "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
-      "PASSKEY_SUCCESS": "Authentification réussie avec Passkey !",
       "PASSKEY_FAILED": "Échec de l'authentification Passkey.",
       "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
-      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
-      "MAGIC_LINK_ERROR": "Une erreur est survenue lors de l'envoi du lien magique."
+      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique."
     }
   },
   "PROFILE": {
     "TITLE": "Profil",
     "SECURITY": "Sécurité",
+    "CHANGE_USER_NAME": "Changer nom d'utilisateur",
     "ERRORS": {
       "EMAIL_NOT_FOUND": "Impossible de récupérer l'email de l'utilisateur. Veuillez vous reconnecter."
     },
@@ -41,19 +46,14 @@
       "TITLE": "Passkey",
       "DESCRIPTION": "Enregistrez une Passkey pour vous connecter sans mot de passe ni lien email.",
       "BUTTON": "Enregistrer une nouvelle Passkey",
-      "BUTTON_LOADING": "Enregistrement...",
       "NAME_LABEL": "Nom de la Passkey",
-      "PASSKEY_REGISTER_SUCCESS": "Passkey enregistrée avec succès.",
-      "PASSKEY_REGISTER_FAILED": "Échec de l'enregistrement de la Passkey.",
-      "PASSKEY_REGISTER_ERROR": "Une erreur est survenue lors de l'enregistrement de la Passkey."
+      "PASSKEY_REGISTER_SUCCESS": "Passkey enregistrée avec succès."
     },
     "USERNAME": {
       "TITLE": "Nom d'utilisateur",
       "DESCRIPTION": "Enregistrez un nom d'utilisateur pour vous connecter sans mot de passe ni lien email.",
       "BUTTON": "Enregistrer un nouveau nom d'utilisateur",
-      "BUTTON_LOADING": "Enregistrement...",
       "NAME_LABEL": "Nom d'utilisateur",
-      "LOADING": "Chargement...",
       "UPDATE": "Mettre à jour",
       "USERNAME_UPDATED": "Nom d'utilisateur mis à jour avec succès."
     }

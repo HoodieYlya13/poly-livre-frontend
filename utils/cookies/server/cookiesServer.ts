@@ -43,6 +43,17 @@ export async function deleteServerCookies(names: string[]) {
   for (const name of names) cookieStore.delete(name);
 }
 
+export async function deleteServerUserCookies() {
+  const cookieStore = await cookies();
+  for (const name of [
+    "user_access_token",
+    "user_email",
+    "user_id",
+    "user_name",
+  ])
+    cookieStore.delete(name);
+}
+
 export function setProxyCookie(
   response: NextResponse,
   name: string,

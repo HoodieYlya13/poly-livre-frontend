@@ -20,7 +20,7 @@ export async function authSubmitHandler(
       }
     );
     
-    const json = await response.json();
+    const json = await response.json(); // TODO: verify response when backend fixed
 
     if (!json.success)
       return setError("root", { message: "MAGIC_LINK_FAILED" });

@@ -20,7 +20,7 @@ export async function authTestingModeSubmitHandler(
 
     const message = json.error || "AUTHENTICATION_PROBLEM";
 
-    if (message) return setError("root", { message });
+    if (message) return setError("password", { message });
   } catch {
     setError("root", { message: "GENERIC" });
   }
