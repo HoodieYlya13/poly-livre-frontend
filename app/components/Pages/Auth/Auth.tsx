@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import Input from "../../UI/shared/elements/Input";
 import Button from "../../UI/shared/elements/Button";
@@ -25,20 +25,6 @@ export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [successText, setSuccessText] = useState<string | null>(null);
   const [errorText, setErrorText] = useState<string | null>(null);
-
-  const onPasskeyLogin = async () => {
-    setIsPasskeyLogin(true);
-    setEmailProviderLink(null);
-    const username = await handlePasskeyLogin(
-      setLoading,
-      setErrorText,
-      setSuccessText
-    );
-    if (username) {
-      toast.success(t("HELLO", { username }));
-      router.push("/profile");
-    }
-  };
 
   const emailProviderLinkMemo = useMemo(() => {
     const email = form.watch("email");
@@ -90,23 +76,44 @@ export default function Auth() {
       url: provider.getUrl ? provider.getUrl(tld) : provider.url!,
     };
   }, [form]);
+  
+  const onPasskeyLogin = useCallback(async () => {
+    setIsPasskeyLogin(true);
+    setEmailProviderLink(null);
+    const username = await handlePasskeyLogin(
+      setLoading,
+      setErrorText,
+      setSuccessText
+    );
+    if (username) {
+      toast.success(t("HELLO", { username }));
+      router.push("/profile");
+    }
+  }, [router, t, setLoading, setErrorText, setSuccessText, setIsPasskeyLogin]);
+
+  const onSubmit = useCallback(
+    async (data: {email: string}) => {
+      await authSubmitHandler(
+        data,
+        form.clearErrors,
+        form.setError,
+        setSuccessText
+      );
+    },
+    [form.clearErrors, form.setError, setSuccessText]
+  );
+
+  const onMagicLinkLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    setIsPasskeyLogin(false);
+    setEmailProviderLink(emailProviderLinkMemo);
+    form.handleSubmit(onSubmit)(e);
+  };
 
   return (
     <div className="flex w-full grow justify-center items-center py-4">
       <Form
         form={form}
-        handleSubmit={(e) => {
-          setIsPasskeyLogin(false);
-          setEmailProviderLink(emailProviderLinkMemo);
-          form.handleSubmit(async (data) => {
-            await authSubmitHandler(
-              data,
-              form.clearErrors,
-              form.setError,
-              setSuccessText
-            );
-          })(e);
-        }}
+        handleSubmit={onMagicLinkLogin}
         buttonLabel={t("SEND_MAGIC_LINK")}
         successText={successText ? t(successText) : undefined}
       >

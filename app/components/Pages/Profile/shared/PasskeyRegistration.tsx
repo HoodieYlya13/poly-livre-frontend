@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Input from "../../../UI/shared/elements/Input";
 import { handlePasskeyRegistration } from "@/utils/auth/passkey/handlePasskeyRegistration";
 import { useTranslations } from "next-intl";
@@ -18,19 +18,24 @@ export default function PasskeyRegistration({
   const form = useUpdatePasskeyNameForm();
   const [successText, setSuccessText] = useState<string | null>(null);
 
+  const onSubmit = useCallback(
+    async (data: { name: string }) => {
+      await handlePasskeyRegistration(
+        email,
+        data.name,
+        form.clearErrors,
+        form.setError,
+        setSuccessText
+      );
+    },
+    [email, form.clearErrors, form.setError, setSuccessText]
+  );
+
   return (
     <div className="flex w-full grow justify-center items-center py-4">
       <Form
         form={form}
-        handleSubmit={form.handleSubmit(async (data) => {
-          await handlePasskeyRegistration(
-            email,
-            data.name,
-            form.clearErrors,
-            form.setError,
-            setSuccessText
-          );
-        })}
+        handleSubmit={form.handleSubmit(onSubmit)}
         buttonLabel={t("BUTTON")}
         successText={successText ? t(successText) : undefined}
       >

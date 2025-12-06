@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslations } from "next-intl";
 import Input from "@/app/components/UI/shared/elements/Input";
 import Form from "@/app/components/UI/shared/components/Form";
@@ -19,20 +19,25 @@ export default function UserName({ token, username }: UserNameProps) {
   const [successText, setSuccessText] = useState<string | null>(null);
   const router = useRouter();
 
+  const onSubmit = useCallback(
+    async (data: { username: string }) => {
+      const success = await updateUsername(
+        token,
+        data.username,
+        form.clearErrors,
+        form.setError,
+        setSuccessText
+      );
+      if (success) router.push("/profile");
+    },
+    [token, form.clearErrors, form.setError, router]
+  );
+
   return (
     <div className="flex w-full grow justify-center items-center py-4">
       <Form
         form={form}
-        handleSubmit={form.handleSubmit(async (data) => {
-          const success = await updateUsername(
-            token,
-            data.username,
-            form.clearErrors,
-            form.setError,
-            setSuccessText
-          );
-          if (success) router.push("/profile");
-        })}
+        handleSubmit={form.handleSubmit(onSubmit)}
         buttonLabel={t("UPDATE")}
         successText={successText ? t(successText) : undefined}
       >

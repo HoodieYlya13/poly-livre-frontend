@@ -5,22 +5,28 @@ import SignInTestingMode from "./shared/SignInTestingMode";
 import Form from "../../UI/shared/components/Form";
 import { useAuthTestingModeForm } from "@/hooks/forms/useAuthTestingModeForm";
 import { authTestingModeSubmitHandler } from "@/utils/authTestingMode/authTestingModeSubmitHandler";
+import { useCallback } from "react";
 
 export default function AuthTestingMode() {
   const t = useTranslations("AUTH");
   const form = useAuthTestingModeForm();
 
+  const onSubmit = useCallback(
+    async (data: { password: string }) => {
+      await authTestingModeSubmitHandler(
+        data,
+        form.clearErrors,
+        form.setError
+      );
+    },
+    [form.clearErrors, form.setError]
+  );
+
   return (
     <section className="flex flex-1 w-full items-center justify-center p-4">
       <Form
         form={form}
-        handleSubmit={form.handleSubmit(async (data) => {
-          await authTestingModeSubmitHandler(
-            data,
-            form.clearErrors,
-            form.setError
-          );
-        })}
+        handleSubmit={form.handleSubmit(onSubmit)}
         buttonLabel={t("LOGIN")}
       >
         <SignInTestingMode
