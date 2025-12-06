@@ -10,11 +10,12 @@ import { useRouter } from "next/navigation";
 
 interface UserNameProps {
   token: string;
+  username?: string;
 }
 
-export default function UserName({ token }: UserNameProps) {
+export default function UserName({ token, username }: UserNameProps) {
   const t = useTranslations("PROFILE.USERNAME");
-  const form = useUpdateUsernameForm();
+  const form = useUpdateUsernameForm(username);
   const [successText, setSuccessText] = useState<string | null>(null);
   const router = useRouter();
 

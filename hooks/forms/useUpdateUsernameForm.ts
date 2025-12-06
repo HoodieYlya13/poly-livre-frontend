@@ -1,10 +1,18 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdateUsernameSchema, UpdateUsernameValues } from "@/schemas/updateUsernameFormSchema";
+import {
+  createUpdateUsernameSchema,
+  UpdateUsernameValues,
+} from "@/schemas/updateUsernameFormSchema";
 
-export function useUpdateUsernameForm() {
+export function useUpdateUsernameForm(username?: string) {
   const form = useForm<UpdateUsernameValues>({
-    resolver: zodResolver(UpdateUsernameSchema),
+    resolver: zodResolver(createUpdateUsernameSchema(username)),
+    defaultValues: {
+      username,
+    },
+    mode: "onSubmit",
+    reValidateMode: "onChange",
   });
 
   return {

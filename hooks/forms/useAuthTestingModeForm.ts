@@ -5,6 +5,8 @@ import { LoginTestingModeSchema, LoginTestingModeValues } from "@/schemas/authTe
 export function useAuthTestingModeForm() {
   const form = useForm<LoginTestingModeValues>({
     resolver: zodResolver(LoginTestingModeSchema),
+    mode: "onBlur",
+    reValidateMode: "onChange",
   });
 
   return {

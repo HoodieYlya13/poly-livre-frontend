@@ -59,7 +59,8 @@
       "UPDATE": "Update",
       "USERNAME_UPDATED": "Username updated successfully.",
       "USERNAME_HAS_WHITESPACE": "Username cannot have whitespace.",
-      "USERNAME_TOO_LONG": "Username is too long."
+      "USERNAME_TOO_LONG": "Username is too long.",
+      "USERNAME_SAME": "New username cannot be the same as the current one."
     }
   },
   "MAGIC_LINK": {
