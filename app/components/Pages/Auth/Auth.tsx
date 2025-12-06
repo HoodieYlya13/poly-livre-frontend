@@ -139,10 +139,13 @@ export default function Auth() {
               label={t("EMAIL_LABEL")}
               {...form.register("email")}
               focusOnMount
-              error={form.formState.errors.email?.message}
+              error={
+                form.formState.errors.email?.message &&
+                t(form.formState.errors.email?.message)
+              }
             />
 
-          {/* TODO: Maybe use <Activity /> component ? */}
+            {/* TODO: Maybe use <Activity /> component ? */}
             {!isPasskeyLogin && successText && emailProviderLink && (
               <p className="text-sm text-dark mt-2">
                 {t("CHECK_YOUR_EMAIL")}{" "}

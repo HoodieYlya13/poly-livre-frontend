@@ -28,6 +28,7 @@
     "ERRORS": {
       "AUTHENTICATION_PROBLEM": "Please log in again.",
       "TOO_SHORT": "Password is too short.",
+      "TOO_LONG": "Password is too long.",
       "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
       "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
       "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
@@ -56,7 +57,9 @@
       "BUTTON": "Register New Username",
       "NAME_LABEL": "Username",
       "UPDATE": "Update",
-      "USERNAME_UPDATED": "Username updated successfully."
+      "USERNAME_UPDATED": "Username updated successfully.",
+      "USERNAME_HAS_WHITESPACE": "Username cannot have whitespace.",
+      "USERNAME_TOO_LONG": "Username is too long."
     }
   },
   "MAGIC_LINK": {

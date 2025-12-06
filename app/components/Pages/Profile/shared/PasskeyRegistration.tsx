@@ -43,7 +43,10 @@ export default function PasskeyRegistration({
           type="text"
           {...form.register("name")}
           focusOnMount
-          error={form.formState.errors.name?.message}
+          error={
+            form.formState.errors.name?.message &&
+            t(form.formState.errors.name?.message)
+          }
         />
       </Form>
     </div>

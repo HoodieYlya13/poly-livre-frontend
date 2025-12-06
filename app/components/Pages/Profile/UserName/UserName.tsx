@@ -44,7 +44,10 @@ export default function UserName({ token }: UserNameProps) {
           type="text"
           {...form.register("username")}
           focusOnMount
-          error={form.formState.errors.username?.message}
+          error={
+            form.formState.errors.username?.message &&
+            t(form.formState.errors.username?.message)
+          }
         />
       </Form>
     </div>
