@@ -4,14 +4,25 @@ type FetchOptions = RequestInit & {
   token?: string;
 };
 
+export interface APIErrorResponse {
+  code: string;
+  description: string;
+  timestamp: string;
+}
+
 export class ApiError extends Error {
   status: number;
   data: unknown;
+  code?: string;
+  timestamp?: string;
 
   constructor(status: number, message: string, data?: unknown) {
     super(message);
     this.status = status;
     this.data = data;
+
+    if (data && typeof data === "object" && "code" in data) this.code = (data as APIErrorResponse).code;
+    if (data && typeof data === "object" && "timestamp" in data) this.timestamp = (data as APIErrorResponse).timestamp;
   }
 }
 
@@ -51,16 +62,16 @@ export async function fetchApi<T>(
 
     if (!response.ok) {
       let errorData;
+      let message = response.statusText || "API_UNKNOWN_ERROR";
+
       try {
         errorData = await response.json();
+        if (errorData && typeof errorData === "object" && "code" in errorData)
+          message = (errorData as APIErrorResponse).code;
       } catch {
         errorData = null;
       }
-      throw new ApiError(
-        response.status,
-        response.statusText || "API Error",
-        errorData
-      );
+      throw new ApiError(response.status, message, errorData);
     }
 
     if (response.status === 204) return {} as T;

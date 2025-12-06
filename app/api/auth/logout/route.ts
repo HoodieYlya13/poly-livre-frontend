@@ -8,7 +8,7 @@ export async function POST() {
   if (userAccessToken)
     // TODO: delete the cookie in the backend too
 
-    await deleteServerUserCookies();
+  await deleteServerUserCookies();
 
   return NextResponse.json({ success: true });
 }

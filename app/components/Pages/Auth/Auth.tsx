@@ -76,23 +76,23 @@ export default function Auth() {
       url: provider.getUrl ? provider.getUrl(tld) : provider.url!,
     };
   }, [form]);
-  
+
   const onPasskeyLogin = useCallback(async () => {
     setIsPasskeyLogin(true);
     setEmailProviderLink(null);
-    const username = await handlePasskeyLogin(
+    const result = await handlePasskeyLogin(
       setLoading,
       setErrorText,
       setSuccessText
     );
-    if (username) {
-      toast.success(t("HELLO", { username }));
+    if (result.success && result.username) {
+      toast.success(t("HELLO", { username: result.username }));
       router.push("/profile");
-    }
+    } else if (result.error) toast.error(t(`ERRORS.${result.error}`));
   }, [router, t, setLoading, setErrorText, setSuccessText, setIsPasskeyLogin]);
 
   const onSubmit = useCallback(
-    async (data: {email: string}) => {
+    async (data: { email: string }) => {
       await authSubmitHandler(
         data,
         form.clearErrors,

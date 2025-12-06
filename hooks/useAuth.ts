@@ -15,7 +15,18 @@ export const useAuth = () => {
     }
   }, [router]);
 
+  const reconnect = useCallback(async () => {
+    try {
+      await authApi.logout();
+    } catch (e) {
+      console.error("Reconnect failed", e);
+    } finally {
+      router.push("/auth");
+    }
+  }, [router]);
+
   return {
     logout,
+    reconnect,
   };
 };

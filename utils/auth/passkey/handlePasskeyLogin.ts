@@ -15,17 +15,21 @@ export async function handlePasskeyLogin(
   try {
     const options = await getPasskeyLoginOptions();
 
-    const asseResp = await startAuthentication(options);
+    const asseResp = await startAuthentication({ optionsJSON: options });
 
     const verificationRes = await verifyPasskeyLogin(asseResp);
 
-    if (verificationRes.success) return verificationRes.username;
-    else setErrorText("PASSKEY_FAILED");
-    return false;
-  } catch (error) {
-    console.error(error);
-    setErrorText("PASSKEY_ERROR");
-    return false;
+    if (verificationRes.success)
+      return { success: true, username: verificationRes.username };
+
+    throw verificationRes.error;
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error && error.message.startsWith("AUTH_00")
+        ? error.message
+        : "PASSKEY_ERROR";
+    setErrorText(message);
+    return { success: false, error: message };
   } finally {
     setLoading(false);
   }

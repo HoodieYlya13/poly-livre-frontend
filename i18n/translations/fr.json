@@ -10,7 +10,12 @@
     "ERRORS": {
       "GENERIC": "Une erreur inattendue est survenue.",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
-      "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer."
+      "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
+      "PASSKEY_ALREADY_EXISTS": "Passkey déjà existante pour cet appareil",
+      "AUTH_001": "Échec de l'authentification",
+      "AUTH_002": "Non autorisé (NOT USED YET)",
+      "AUTH_003": "Session invalide",
+      "AUTH_004": "Session expirée"
     }
   },
   "AUTH": {
@@ -34,7 +39,11 @@
       "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
       "PASSKEY_FAILED": "Échec de l'authentification Passkey.",
       "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
-      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique."
+      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
+      "AUTH_001": "Échec de l'authentification",
+      "AUTH_002": "Non autorisé",
+      "AUTH_003": "Session invalide",
+      "AUTH_004": "Session expirée"
     }
   },
   "PROFILE": {

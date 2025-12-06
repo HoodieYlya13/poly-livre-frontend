@@ -13,14 +13,15 @@ export async function handlePasskeyRegistration(
   passkeyName: string,
   clearErrors: () => void,
   setError: UseFormSetError<UpdatePasskeyNameValues>,
-  setSuccessText: React.Dispatch<React.SetStateAction<string | null>>
+  setSuccessText: React.Dispatch<React.SetStateAction<string | null>>,
+  reconnect: () => void
 ) {
+  clearErrors();
+  setSuccessText(null);
   try {
-    clearErrors();
-
     const options = await getPasskeyRegistrationOptions(email, passkeyName);
 
-    const attResp = await startRegistration(options);
+    const attResp = await startRegistration({ optionsJSON: options });
 
     const verificationRes = await verifyPasskeyRegistration(
       email,
@@ -28,9 +29,18 @@ export async function handlePasskeyRegistration(
       passkeyName
     );
 
-    if (verificationRes.success) return setSuccessText("PASSKEY_REGISTER_SUCCESS"); // TODO: handle the case when passkey already exists for the device
-  } catch (error) {
-    console.error(error);
-    setError("root", { message: "PASSKEY_ERROR" });
+    if (verificationRes.success)
+      return setSuccessText("PASSKEY_REGISTER_SUCCESS");
+  } catch (error: unknown) {
+    let message = "PASSKEY_ERROR";
+
+    if (error instanceof Error) {
+      if (error.name === "InvalidStateError") message = "PASSKEY_ALREADY_EXISTS";
+      else if (error.message.startsWith("AUTH_00")) message = error.message;
+    }
+
+    setError("root", { message });
+    if (message !== "PASSKEY_ERROR" && message !== "PASSKEY_ALREADY_EXISTS")
+      reconnect();
   }
 }

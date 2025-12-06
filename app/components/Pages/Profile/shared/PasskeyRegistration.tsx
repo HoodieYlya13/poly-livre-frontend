@@ -6,6 +6,7 @@ import { handlePasskeyRegistration } from "@/utils/auth/passkey/handlePasskeyReg
 import { useTranslations } from "next-intl";
 import Form from "../../../UI/shared/components/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
+import { useAuth } from "@/hooks/useAuth";
 
 interface PasskeyRegistrationProps {
   email: string;
@@ -16,6 +17,7 @@ export default function PasskeyRegistration({
 }: PasskeyRegistrationProps) {
   const t = useTranslations("PROFILE.PASSKEY");
   const form = useUpdatePasskeyNameForm();
+  const { reconnect } = useAuth();
   const [successText, setSuccessText] = useState<string | null>(null);
 
   const onSubmit = useCallback(
@@ -25,10 +27,11 @@ export default function PasskeyRegistration({
         data.name,
         form.clearErrors,
         form.setError,
-        setSuccessText
+        setSuccessText,
+        reconnect
       );
     },
-    [email, form.clearErrors, form.setError, setSuccessText]
+    [email, form.clearErrors, form.setError, setSuccessText, reconnect]
   );
 
   return (

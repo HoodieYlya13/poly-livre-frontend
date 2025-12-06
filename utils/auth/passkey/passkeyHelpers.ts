@@ -2,18 +2,18 @@
 
 import { authApi } from "@/api/auth.api";
 import {
-  deleteServerUserCookies,
   getServerCookies,
   setServerCookie,
 } from "@/utils/cookies/server/cookiesServer";
 import { getUserAccessToken } from "@/utils/cookies/server/getUserAccessToken";
-import { redirect } from "next/navigation";
+
+// FIXME: useSuspenseQuery, suspense, activity, https://youtu.be/Ubbb1RK7iFs?si=QrN0yxMwxjfJF49X
 
 export async function getPasskeyLoginOptions() {
   try {
     const response = await authApi.loginStartPasskey();
 
-    if (!response.ok) throw new Error("Failed to get login options");
+    if (!response.ok) throw new Error("AUTH_002");
 
     let [name, value] = "";
     const setCookieHeader = response.headers.get("set-cookie");
@@ -29,7 +29,7 @@ export async function getPasskeyLoginOptions() {
 
     return await response.json();
   } catch (error) {
-    console.error("getPasskeyLoginOptions error:", error);
+    console.error("getPasskeyLoginOptions error:");
     throw error;
   }
 }
@@ -60,7 +60,7 @@ export async function verifyPasskeyLogin(credential: unknown) {
     return { success: true, username: data.username };
   } catch (error) {
     console.error("verifyPasskeyLogin error:", error);
-    return { success: false, error: "Verification failed" };
+    return { success: false, error };
   }
 }
 
@@ -68,31 +68,14 @@ export async function getPasskeyRegistrationOptions(
   email: string,
   passkeyName: string
 ) {
-  // FIXME: useSuspenseQuery, suspense, activity, https://youtu.be/Ubbb1RK7iFs?si=QrN0yxMwxjfJF49X
   try {
     const token = await getUserAccessToken();
-    if (!token) {
-      console.error("No token");
-      await deleteServerUserCookies();
-      redirect("/auth");
-    }
+    if (!token) throw new Error("AUTH_004");
 
     const response = await authApi.registerPasskeyStart(email, passkeyName, token);
     if (response.ok) return await response.json();
-
-    const errorBody = await response.json();
-    if (errorBody.code) {
-      console.error(
-        "getPasskeyRegistrationOptions error:",
-        errorBody.description
-      );
-      await deleteServerUserCookies();
-      redirect("/auth");
-    }
-
-    throw new Error("Failed to get registration options");
   } catch (error) {
-    console.error("getPasskeyRegistrationOptions error:", error);
+    console.error("getPasskeyRegistrationOptions error:");
     throw error;
   }
 }
@@ -104,11 +87,7 @@ export async function verifyPasskeyRegistration(
 ) {
   try {
     const token = await getUserAccessToken();
-    if (!token) {
-      console.error("No token");
-      await deleteServerUserCookies();
-      redirect("/auth");
-    }
+    if (!token) throw new Error("AUTH_004");
 
     const response = await authApi.registerPasskeyFinish(
       credential,
@@ -117,18 +96,7 @@ export async function verifyPasskeyRegistration(
     );
 
     if (response.ok) return { success: true };
-
-    const errorBody = await response.json();
-    if (errorBody.code) {
-      console.error(
-        "getPasskeyRegistrationOptions error:",
-        errorBody.description
-      );
-      await deleteServerUserCookies();
-      redirect("/auth");
-    }
-
-    throw new Error("Registration verification failed");
+    return { success: false };
   } catch (error) {
     console.error("verifyPasskeyRegistration error:", error);
     return { success: false };

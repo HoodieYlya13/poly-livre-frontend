@@ -10,7 +10,12 @@
     "ERRORS": {
       "GENERIC": "An unexpected error occurred.",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
-      "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again."
+      "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
+      "PASSKEY_ALREADY_EXISTS": "Passkey already exists for this device",
+      "AUTH_001": "Authentication failed",
+      "AUTH_002": "Unauthorized (NOT USED YET)",
+      "AUTH_003": "Invalid session",
+      "AUTH_004": "Session expired"
     }
   },
   "AUTH": {
@@ -34,7 +39,11 @@
       "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
       "PASSKEY_FAILED": "Passkey authentication failed.",
       "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
-      "MAGIC_LINK_FAILED": "Failed to send Magic Link."
+      "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
+      "AUTH_001": "Authentication failed",
+      "AUTH_002": "Unauthorized",
+      "AUTH_003": "Invalid session",
+      "AUTH_004": "Session expired"
     }
   },
   "PROFILE": {
