@@ -1,6 +1,6 @@
 "use server";
 
-import { BACKEND_URL } from "@/utils/constants";
+import { authApi } from "@/api/auth.api";
 import {
   deleteServerUserCookies,
   getServerCookies,
@@ -11,12 +11,7 @@ import { redirect } from "next/navigation";
 
 export async function getPasskeyLoginOptions() {
   try {
-    const response = await fetch(`${BACKEND_URL}/auth/passkey/login/start`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await authApi.loginStartPasskey();
 
     if (!response.ok) throw new Error("Failed to get login options");
 
@@ -43,18 +38,7 @@ export async function verifyPasskeyLogin(credential: unknown) {
   try {
     const cookieHeader = await getServerCookies();
 
-    const response = await fetch(`${BACKEND_URL}/auth/passkey/login/finish`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: cookieHeader,
-      },
-      body: JSON.stringify(credential),
-    });
-
-    if (!response.ok) throw new Error("Login verification failed");
-
-    const data = await response.json();
+    const data = await authApi.loginPasskeyFinish(credential, cookieHeader);
 
     await setServerCookie("user_access_token", data.token, {
       maxAge: data.expiresIn,
@@ -87,19 +71,13 @@ export async function getPasskeyRegistrationOptions(
   // FIXME: useSuspenseQuery, suspense, activity, https://youtu.be/Ubbb1RK7iFs?si=QrN0yxMwxjfJF49X
   try {
     const token = await getUserAccessToken();
-    const response = await fetch(
-      `${BACKEND_URL}/auth/passkey/register/start?email=${encodeURIComponent(
-        email
-      )}&name=${encodeURIComponent(passkeyName)}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    if (!token) {
+      console.error("No token");
+      await deleteServerUserCookies();
+      redirect("/auth");
+    }
 
+    const response = await authApi.registerPasskeyStart(email, passkeyName, token);
     if (response.ok) return await response.json();
 
     const errorBody = await response.json();
@@ -126,18 +104,16 @@ export async function verifyPasskeyRegistration(
 ) {
   try {
     const token = await getUserAccessToken();
-    const response = await fetch(
-      `${BACKEND_URL}/auth/passkey/register/finish?email=${encodeURIComponent(
-        email
-      )}&name=${encodeURIComponent(passkeyName)}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(credential),
-      }
+    if (!token) {
+      console.error("No token");
+      await deleteServerUserCookies();
+      redirect("/auth");
+    }
+
+    const response = await authApi.registerPasskeyFinish(
+      credential,
+      email,
+      passkeyName
     );
 
     if (response.ok) return { success: true };

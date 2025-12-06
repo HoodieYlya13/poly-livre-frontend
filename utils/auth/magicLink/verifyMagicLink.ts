@@ -1,22 +1,11 @@
 "use server";
 
+import { authApi } from "@/api/auth.api";
 import { setServerCookie } from "../../cookies/server/cookiesServer";
 
 export async function verifyMagicLink(token: string) {
   try {
-    const response = await fetch(
-      `http://localhost:8080/auth/magic-link/verify?token=${token}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    if (!response.ok) throw new Error("Verification failed");
-
-    const data = await response.json();
+    const data = await authApi.verifyMagicLink(token);
 
     await setServerCookie("user_access_token", data.token, {
       maxAge: data.expiresIn,

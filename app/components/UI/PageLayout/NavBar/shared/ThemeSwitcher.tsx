@@ -1,11 +1,11 @@
 "use client";
 
-import { useContext, useState } from "react";
-import { ThemeProviderContext } from "../../../shared/components/ThemeProvider";
+import { useState } from "react";
+import { useTheme } from "@/hooks/useTheme";
 import Switcher from "./Switcher";
 
 export default function ThemeSwitcher() {
-  const { theme, setTheme } = useContext(ThemeProviderContext);
+  const { theme, setTheme } = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
 

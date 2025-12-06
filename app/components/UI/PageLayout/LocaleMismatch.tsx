@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LocaleLanguages } from "@/i18n/utils";
-import { setClientCookie } from "@/utils/cookies/client/cookiesClient";
+import { deleteClientCookie, setClientCookie } from "@/utils/cookies/client/cookiesClient";
 import { useTranslations } from "next-intl";
 
 interface LocaleMismatchProps {
@@ -32,9 +32,7 @@ export default function LocaleMismatch({
 
     setClientCookie("preferred_locale", localeMismatch);
 
-    setClientCookie("locale_mismatch", "", {
-      maxAge: 0,
-    });
+    deleteClientCookie("locale_mismatch");
 
     router.push(newPath);
   };
@@ -50,9 +48,7 @@ export default function LocaleMismatch({
 
     setIsVisible(false);
     setClientCookie("preferred_locale", locale);
-    setClientCookie("locale_mismatch", "", {
-      maxAge: 0,
-    });
+    deleteClientCookie("locale_mismatch");
 
     router.push(newPath);
   };

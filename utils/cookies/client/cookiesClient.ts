@@ -25,3 +25,7 @@ export function getClientCookie(name: string): string | undefined {
     .find((row) => row.startsWith(`${name}=`))
     ?.split("=")[1];
 }
+
+export function deleteClientCookie(name: string) {
+  setClientCookie(name, "", { maxAge: -1 });
+}

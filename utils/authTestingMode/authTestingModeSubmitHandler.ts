@@ -1,5 +1,6 @@
 import { UseFormSetError } from "react-hook-form";
 import { LoginTestingModeValues } from "@/schemas/authTestingModeSchema";
+import { authApi } from "@/api/auth.api";
 
 export async function authTestingModeSubmitHandler(
   data: LoginTestingModeValues,
@@ -9,10 +10,7 @@ export async function authTestingModeSubmitHandler(
   try {
     clearErrors();
     
-    const response = await fetch("/api/auth/testing-mode", {
-      method: "POST",
-      body: JSON.stringify({ ...data }),
-    });
+    const response = await authApi.loginTestingMode(data.password);
     
     const json = await response.json();
 

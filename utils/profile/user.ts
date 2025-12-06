@@ -1,6 +1,7 @@
 import { UseFormSetError } from "react-hook-form";
 import { UpdateUsernameValues } from "@/schemas/updateUsernameFormSchema";
 import { setClientCookie } from "../cookies/client/cookiesClient";
+import { userApi } from "@/api/user.api";
 
 export async function updateUsername(
   token: string,
@@ -12,15 +13,7 @@ export async function updateUsername(
   try {
     clearErrors();
 
-    const response = await fetch("http://localhost:8080/users/" + username, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const json = await response.json();
+    const json = await userApi.updateUsername(username, token);
 
     if (!json.username)
       return setError("root", { message: "USERNAME_UPDATE_FAILED" });
@@ -39,14 +32,7 @@ export async function updateUsername(
 
 export async function getUser(token: string) {
   try {
-    const response = await fetch("http://localhost:8080/users/me", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const json = await response.json();
+    const json = await userApi.getMe(token);
     return json;
   } catch {
     return null;

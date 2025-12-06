@@ -1,7 +1,7 @@
 'use client';
 
-import { logout } from '@/utils/auth/logout';
 import Button from '../../../shared/elements/Button';
+import { useAuth } from '@/hooks/useAuth';
 
 function LogoutIcon() {
   return (
@@ -18,6 +18,8 @@ function LogoutIcon() {
 }
 
 export default function Logout() {
+  const { logout } = useAuth();
+
   return (
     <Button
       onClick={() => logout()}
