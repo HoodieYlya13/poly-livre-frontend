@@ -8,10 +8,11 @@
   "FORM": {
     "LOADING": "Chargement...",
     "ERRORS": {
-      "GENERIC": "Une erreur inattendue est survenue.",
+      "GENERIC": "Une erreur inattendue est survenue. (VERIFY USAGE)",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
       "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
       "PASSKEY_ALREADY_EXISTS": "Passkey déjà existante pour cet appareil",
+      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
       "AUTH_001": "Échec de l'authentification",
       "AUTH_002": "Non autorisé (NOT USED YET)",
       "AUTH_003": "Session invalide",
@@ -75,11 +76,12 @@
   "MAGIC_LINK": {
     "VERIFYING": "Vérification de votre lien magique...",
     "HELLO": "Bonjour, {username}!",
-    "FAILED": {
-      "TITLE": "Échec de la vérification",
-      "DESCRIPTION": "Le lien magique est invalide ou a expiré."
-    },
-    "BACK_TO_LOGIN": "Retour à la connexion"
+    "ERRORS": {
+      "AUTH_001": "Échec de l'authentification",
+      "AUTH_002": "Non autorisé",
+      "AUTH_003": "Session invalide",
+      "AUTH_004": "Session expirée"
+    }
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Changer de langue ?",

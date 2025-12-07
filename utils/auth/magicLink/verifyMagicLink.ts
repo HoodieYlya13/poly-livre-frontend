@@ -31,6 +31,10 @@ export async function verifyMagicLink(token: string) {
     return { success: true };
   } catch (error) {
     console.error("Magic link verification error:", error);
-    return { success: false, error: "Verification failed" };
+    const message =
+      error instanceof Error && error.message.startsWith("AUTH_00")
+        ? error.message
+        : "GENERIC";
+    return { success: false, error: message };
   }
 }

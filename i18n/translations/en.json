@@ -8,10 +8,11 @@
   "FORM": {
     "LOADING": "Loading...",
     "ERRORS": {
-      "GENERIC": "An unexpected error occurred.",
+      "GENERIC": "An unexpected error occurred. (VERIFY USAGE)",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
       "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
       "PASSKEY_ALREADY_EXISTS": "Passkey already exists for this device",
+      "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
       "AUTH_001": "Authentication failed",
       "AUTH_002": "Unauthorized (NOT USED YET)",
       "AUTH_003": "Invalid session",
@@ -75,11 +76,12 @@
   "MAGIC_LINK": {
     "VERIFYING": "Verifying your magic link...",
     "HELLO": "Hello, {username}!",
-    "FAILED": {
-      "TITLE": "Verification Failed",
-      "DESCRIPTION": "The magic link is invalid or has expired."
-    },
-    "BACK_TO_LOGIN": "Back to Login"
+    "ERRORS": {
+      "AUTH_001": "Authentication failed",
+      "AUTH_002": "Unauthorized",
+      "AUTH_003": "Invalid session",
+      "AUTH_004": "Session expired"
+    }
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Switch Language?",

@@ -13,11 +13,15 @@ export async function authSubmitHandler(
 
     const json = await authApi.loginMagicLink(data.email); // TODO: verify response when backend fixed
 
-    if (!json.success)
-      return setError("root", { message: "MAGIC_LINK_FAILED" });
+    if (json.success)
+      return setSuccessText("MAGIC_LINK_SENT");
+  } catch (error: unknown) {
+    console.error("authSubmitHandler error:", error);
+    const message =
+      error instanceof Error && (error.message.startsWith("AUTH_00") || error.message.startsWith("MAGIC_LINK_FAILED"))
+        ? error.message
+        : "MAGIC_LINK_FAILED";
 
-    setSuccessText("MAGIC_LINK_SENT");
-  } catch {
-    setError("root", { message: "GENERIC" });
+    setError("root", { message });
   }
 }
