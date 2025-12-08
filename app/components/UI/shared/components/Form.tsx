@@ -37,12 +37,12 @@ export default function Form<T extends FieldValues>({
       Object.keys(form.formState.errors).filter((k) => k !== "root").length >
         0) ||
     isCoolingDown;
-  const errors = form.formState.errors.root?.message;
+  const rootErrors = form.formState.errors.root?.message;
 
   useEffect(() => {
-    if (errors) toast.error(errorT.getError(errors));
+    if (rootErrors) toast.error(errorT.getError(rootErrors));
     if (successText) toast.success(successText);
-  }, [errors, successText, errorT]);
+  }, [rootErrors, successText, errorT]);
 
   const handleSubmitWithCooldown = (e: React.FormEvent<HTMLFormElement>) => {
     if (isCoolingDown) return e.preventDefault();
@@ -66,8 +66,8 @@ export default function Form<T extends FieldValues>({
         disabled={buttonDisabled}
       />
 
-      {errors && (
-        <p className="text-red-500 text-shadow-md">{errorT.getError(errors)}</p>
+      {rootErrors && (
+        <p className="text-red-500 text-shadow-md">{errorT.getError(rootErrors)}</p>
       )}
     </form>
   );

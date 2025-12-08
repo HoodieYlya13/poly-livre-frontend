@@ -1,26 +1,21 @@
 "use server";
 
-import { getErrorMessage } from "@/api/api.errors";
+import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
 import { setServerCookie } from "@/utils/cookies/cookiesServer";
-import { checkRateLimit } from "@/utils/rateLimit";
 
 export async function loginTestingModeAction(password: string) {
-  try {
-    await checkRateLimit("authTestingMode");
+  return baseServerAction(
+    "authTestingMode",
+    async () => {
+      const response = await authApi.loginTestingMode(password);
 
-    const response = await authApi.loginTestingMode(password);
+      if (!response) throw new Error("PASSWORD_INCORRECT");
 
-    if (!response) throw new Error("PASSWORD_INCORRECT");
-
-    return await setServerCookie("isAuthorized", "true", {
-      maxAge: 60 * 60 * 24 * 31,
-    });
-  } catch (error) {
-    console.error("loginTestingMode error:");
-    
-    const message = getErrorMessage(error);
-
-    throw new Error(message);
-  }
+      return await setServerCookie("isAuthorized", "true", {
+        maxAge: 60 * 60 * 24 * 31,
+      });
+    },
+    {}
+  );
 }

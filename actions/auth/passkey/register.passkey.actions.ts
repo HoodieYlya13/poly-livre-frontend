@@ -1,22 +1,23 @@
 "use server";
 
+import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
-import { checkRateLimit } from "@/utils/rateLimit";
 
 export async function getPasskeyRegistrationOptionsAction(
   email: string,
   passkeyName: string
 ) {
-  try {
-    await checkRateLimit("authRegisterPasskeyStart");
+  return baseServerAction(
+    "authRegisterPasskeyStart",
+    async () => {
+      const response = await authApi.registerPasskeyStart(email, passkeyName);
 
-    const response = await authApi.registerPasskeyStart(email, passkeyName);
-
-    return await response.json();
-  } catch (error) {
-    console.error("getPasskeyRegistrationOptions error:");
-    throw error;
-  }
+      return await response.json();
+    },
+    {
+      rawError: true,
+    }
+  );
 }
 
 export async function verifyPasskeyRegistrationAction(
@@ -24,18 +25,15 @@ export async function verifyPasskeyRegistrationAction(
   email: string,
   passkeyName: string
 ) {
-  try {
-    await checkRateLimit("authRegisterPasskeyFinish");
+  return baseServerAction(
+    "authRegisterPasskeyFinish",
+    async () => {
+      await authApi.registerPasskeyFinish(credential, email, passkeyName);
 
-    await authApi.registerPasskeyFinish(
-      credential,
-      email,
-      passkeyName
-    );
-
-    return true;
-  } catch (error) {
-    console.error("verifyPasskeyRegistration error:");
-    throw error;
-  }
+      return true;
+    },
+    {
+      rawError: true,
+    }
+  );
 }

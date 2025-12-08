@@ -27,6 +27,7 @@
     "TOO_SHORT": "Password is too short.",
     "TOO_LONG": "Password is too long.",
     "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
+    "USERNAME_UPDATE_FAILED": "Failed to update username.",
     "USERNAME_HAS_WHITESPACE": "Username cannot have whitespace.",
     "USERNAME_TOO_LONG": "Username is too long.",
     "USERNAME_SAME": "New username cannot be the same as the current one."

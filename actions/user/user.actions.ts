@@ -1,36 +1,32 @@
 "use server";
 
-import { getErrorMessage } from "@/api/api.errors";
 import { userApi } from "@/api/user.api";
 import { setServerCookie } from "@/utils/cookies/cookiesServer";
-import { checkRateLimit } from "@/utils/rateLimit";
+import { baseServerAction } from "../base.server.actions";
 
 export async function updateUsernameAction(username: string) {
-  try {
-    await checkRateLimit("userUpdateUsername");
+  return baseServerAction(
+    "updateUsername",
+    async () => {
+      const json = await userApi.updateUsername(username);
 
-    const json = await userApi.updateUsername(username);
-
-    return await setServerCookie("user_name", json.username, {
-      maxAge: json.expiresIn,
-      httpOnly: false,
-    });
-  } catch (error) {
-    console.error("updateUsername error:");
-
-    const message = getErrorMessage(error, "USERNAME_UPDATE_FAILED");
-
-    throw new Error(message);
-  }
+      return await setServerCookie("user_name", json.username, {
+        maxAge: json.expiresIn,
+        httpOnly: false,
+      });
+    },
+    {
+      fallback: "USERNAME_UPDATE_FAILED",
+    }
+  );
 }
 
 export async function getUserAction() {
-  try {
-    await checkRateLimit("userGetUser");
-
-    return await userApi.getMe();
-  } catch (error) {
-    console.error("getUser error:");
-    throw error;
-  }
+  return baseServerAction(
+    "getUser",
+    async () => {
+      return await userApi.getMe();
+    },
+    {}
+  );
 }

@@ -16,6 +16,7 @@ export function getErrorMessage(
         case error.message.startsWith("AUTH_00"):
         case error.message.startsWith("SYST_00"):
         case error.message === "TOO_MANY_REQUESTS":
+        case error.message === "PASSWORD_INCORRECT":
           message = error.message;
           break;
       }

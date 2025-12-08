@@ -27,6 +27,7 @@
     "TOO_SHORT": "Le mot de passe est trop court.",
     "TOO_LONG": "Le mot de passe est trop long.",
     "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
+    "USERNAME_UPDATE_FAILED": "Échec de la mise à jour du nom d'utilisateur.",
     "USERNAME_HAS_WHITESPACE": "Le nom d'utilisateur ne peut pas contenir d'espace.",
     "USERNAME_TOO_LONG": "Le nom d'utilisateur est trop long.",
     "USERNAME_SAME": "Le nouveau nom d'utilisateur ne peut pas être identique à l'actuel."
