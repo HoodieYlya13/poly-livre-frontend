@@ -38,7 +38,7 @@ export default function PasskeyRegistration({
             error.message !== "PASSKEY_ALREADY_EXISTS"
           )
             reconnect();
-        } else form.setError("root", { message: "GENERIC" });
+        } else form.setError("root", { message: "" });
       }
     },
     [email, form, setSuccessText, reconnect]

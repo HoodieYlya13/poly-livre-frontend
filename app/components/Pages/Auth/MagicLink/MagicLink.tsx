@@ -27,7 +27,7 @@ export default function MagicLink({ token }: MagicLinkProps) {
         router.push("/profile");
       } catch (error) {
         toast.error(
-          errorT.getError(error instanceof Error ? error.message : "GENERIC")
+          errorT.getError(error instanceof Error ? error.message : "")
         );
         router.push("/auth");
       }

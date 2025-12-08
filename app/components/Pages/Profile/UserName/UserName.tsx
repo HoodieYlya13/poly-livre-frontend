@@ -37,7 +37,7 @@ export default function UserName({ username }: UserNameProps) {
           });
 
           if (error.message.startsWith("AUTH_00")) reconnect();
-        } else form.setError("root", { message: "GENERIC" });
+        } else form.setError("root", { message: "" });
       }
     },
     [form, router, reconnect]

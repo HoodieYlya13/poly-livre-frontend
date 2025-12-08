@@ -89,7 +89,7 @@ export default function Auth() {
       router.push("/profile");
       toast.success(t("HELLO", { username }));
     } catch (error) {
-      const errorFinal = error instanceof Error ? error.message : "GENERIC";
+      const errorFinal = error instanceof Error ? error.message : "";
       setErrorText(errorFinal);
       toast.error(errorT.getError(errorFinal));
     } finally {
@@ -115,7 +115,7 @@ export default function Auth() {
         toast.success(t("MAGIC_LINK_SENT"));
       } catch (error) {
         form.setError("root", {
-          message: error instanceof Error ? error.message : "GENERIC",
+          message: error instanceof Error ? error.message : "",
         });
       }
     },

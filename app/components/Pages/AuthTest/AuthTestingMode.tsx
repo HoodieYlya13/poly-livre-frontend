@@ -30,9 +30,7 @@ export default function AuthTestingMode() {
             }
           );
         } else {
-          form.setError("root", {
-            message: "GENERIC",
-          });
+          form.setError("root", { message: "" });
         }
       }
     },
