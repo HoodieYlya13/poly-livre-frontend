@@ -20,7 +20,7 @@ export default function LocaleSwitcher({
   const [showAll, setShowAll] = useState(false);
 
   const switchTo = async (locale: LocaleLanguages) => {
-    setClientCookie("preferred_locale", locale);
+    await setClientCookie("preferred_locale", locale);
 
     const pathname = window.location.pathname;
     const search = window.location.search;

@@ -8,7 +8,7 @@ import {
 } from "react";
 import { setClientCookie } from "@/utils/cookies/client/cookiesClient";
 
-export type Theme = "dark" | "light" | "system";
+export type Theme = "dark" | "light";
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ export type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: "system",
+  theme: "light",
   setTheme: () => null,
 };
 
@@ -31,7 +31,7 @@ export const ThemeProviderContext =
 
 export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
   children,
-  defaultTheme = "system",
+  defaultTheme = "light",
   storageKey = "theme",
   ...props
 }) => {
@@ -41,21 +41,6 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
     const root = window.document.documentElement;
 
     root.classList.remove("light", "dark");
-
-    if (theme === "system") {
-      const media = window.matchMedia("(prefers-color-scheme: dark)");
-      const applySystemTheme = () => {
-        const systemTheme = media.matches ? "dark" : "light";
-        root.classList.remove("light", "dark");
-        root.classList.add(systemTheme);
-      };
-
-      applySystemTheme();
-
-      media.addEventListener("change", applySystemTheme);
-      return () => media.removeEventListener("change", applySystemTheme);
-    }
-
     root.classList.add(theme);
   }, [theme]);
 

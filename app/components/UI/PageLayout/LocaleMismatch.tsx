@@ -3,7 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LocaleLanguages } from "@/i18n/utils";
-import { deleteClientCookie, setClientCookie } from "@/utils/cookies/client/cookiesClient";
+import {
+  deleteClientCookie,
+  setClientCookie,
+} from "@/utils/cookies/client/cookiesClient";
 import { useTranslations } from "next-intl";
 
 interface LocaleMismatchProps {
@@ -22,7 +25,7 @@ export default function LocaleMismatch({
   if (!isVisible) return null;
 
   // FIXME: flashing when switching languages
-  const handleSwitch = () => {
+  const handleSwitch = async () => {
     const pathname = window.location.pathname;
     const search = window.location.search;
     const hash = window.location.hash;
@@ -31,14 +34,16 @@ export default function LocaleMismatch({
     segments[1] = localeMismatch;
     const newPath = segments.join("/") + search + hash;
 
-    setClientCookie("preferred_locale", localeMismatch, { httpOnly: false });
+    await setClientCookie("preferred_locale", localeMismatch, {
+      httpOnly: false,
+    });
 
     deleteClientCookie("locale_mismatch");
 
     router.push(newPath);
   };
 
-  const handleStay = () => {
+  const handleStay = async () => {
     const pathname = window.location.pathname;
     const search = window.location.search;
     const hash = window.location.hash;
@@ -48,7 +53,7 @@ export default function LocaleMismatch({
     const newPath = segments.join("/") + search + hash;
 
     setIsVisible(false);
-    setClientCookie("preferred_locale", locale, { httpOnly: false });
+    await setClientCookie("preferred_locale", locale, { httpOnly: false });
     deleteClientCookie("locale_mismatch");
 
     router.push(newPath);

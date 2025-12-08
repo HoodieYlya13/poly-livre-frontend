@@ -25,7 +25,7 @@ export async function updateUsernameAction(username: string) {
       (error.message.startsWith("AUTH_00") || // TODO: handle reconect
         error.message === "TOO_MANY_REQUESTS")
         ? error.message
-        : "USERNAME_UPDATE_FAILED"; // TODO: verify if not generic instead
+        : "USERNAME_UPDATE_FAILED";
 
     throw new Error(message);
   }

@@ -12,7 +12,6 @@ import {
 } from "../components/UI/shared/components/ThemeProvider";
 import { getServerCookie } from "@/utils/cookies/server/cookiesServer";
 import { Toaster } from "../components/UI/shared/components/Toaster";
-import ThemeScript from "../components/UI/shared/components/ThemeScript";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -58,9 +57,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       suppressHydrationWarning
       className={theme === "dark" ? "dark" : ""}
     >
-      <head>
-        <ThemeScript theme={theme} />
-      </head>
+      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
