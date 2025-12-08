@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE } from "@/utils/constants";
+import { DEFAULT_LOCALE } from "@/utils/config";
 import en from "react-phone-number-input/locale/en";
 import fr from "react-phone-number-input/locale/fr";
 
@@ -22,9 +22,7 @@ export function getPreferredLocaleClientSide(
   toUpperCase = false
 ): LocaleLanguages | LocaleLanguagesUpperCase {
   if (typeof document === "undefined")
-    return toUpperCase
-      ? DEFAULT_LOCALE_UPPERCASE
-      : DEFAULT_LOCALE;
+    return toUpperCase ? DEFAULT_LOCALE_UPPERCASE : DEFAULT_LOCALE;
 
   const preferredLocale = document.cookie
     .split("; ")

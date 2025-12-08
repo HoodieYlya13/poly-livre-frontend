@@ -1,4 +1,4 @@
-import { config } from "@/utils/config";
+import { BACKEND_URL } from "@/utils/config";
 
 type FetchOptions = RequestInit & {
   token?: string;
@@ -21,8 +21,10 @@ export class ApiError extends Error {
     this.status = status;
     this.data = data;
 
-    if (data && typeof data === "object" && "code" in data) this.code = (data as APIErrorResponse).code;
-    if (data && typeof data === "object" && "timestamp" in data) this.timestamp = (data as APIErrorResponse).timestamp;
+    if (data && typeof data === "object" && "code" in data)
+      this.code = (data as APIErrorResponse).code;
+    if (data && typeof data === "object" && "timestamp" in data)
+      this.timestamp = (data as APIErrorResponse).timestamp;
   }
 }
 
@@ -44,7 +46,7 @@ export async function fetchApi<T>(
   rawResponse: boolean = false
 ): Promise<T | Response> {
   const { token, headers, ...rest } = options;
-  const url = `${config.backendBaseUrl}${
+  const url = `${BACKEND_URL}${
     endpoint.startsWith("/") ? endpoint : `/${endpoint}`
   }`;
 

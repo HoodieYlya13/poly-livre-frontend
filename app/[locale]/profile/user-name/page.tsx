@@ -12,7 +12,7 @@ export default async function ProfilePage() {
 
   return (
     <PageLayout>
-      <UserName token={token} username={username} />
+      <UserName username={username} />
     </PageLayout>
   );
 }

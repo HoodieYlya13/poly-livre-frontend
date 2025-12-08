@@ -2,11 +2,11 @@
 
 import { useCallback, useState } from "react";
 import Input from "../../../UI/shared/elements/Input";
-import { handlePasskeyRegistration } from "@/utils/auth/passkey/handlePasskeyRegistration";
 import { useTranslations } from "next-intl";
 import Form from "../../../UI/shared/components/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
 import { useAuth } from "@/hooks/useAuth";
+import { registerPasskeyAction } from "@/app/actions/auth/passkey/client.paskey.actions";
 
 interface PasskeyRegistrationProps {
   email: string;
@@ -22,16 +22,24 @@ export default function PasskeyRegistration({
 
   const onSubmit = useCallback(
     async (data: { name: string }) => {
-      await handlePasskeyRegistration(
-        email,
-        data.name,
-        form.clearErrors,
-        form.setError,
-        setSuccessText,
-        reconnect
-      );
+      form.clearErrors();
+      setSuccessText(null);
+      try {
+        await registerPasskeyAction(email, data.name);
+        form.reset();
+        setSuccessText("PASSKEY_REGISTER_SUCCESS");
+      } catch (error) {
+        if (error instanceof Error) {
+          form.setError("root", { message: error.message });
+          if (
+            error.message !== "PASSKEY_ERROR" &&
+            error.message !== "PASSKEY_ALREADY_EXISTS"
+          )
+            reconnect();
+        } else form.setError("root", { message: "GENERIC" });
+      }
     },
-    [email, form.clearErrors, form.setError, setSuccessText, reconnect]
+    [email, form, setSuccessText, reconnect]
   );
 
   return (

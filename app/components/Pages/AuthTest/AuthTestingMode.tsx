@@ -4,22 +4,39 @@ import { useTranslations } from "next-intl";
 import SignInTestingMode from "./shared/SignInTestingMode";
 import Form from "../../UI/shared/components/Form";
 import { useAuthTestingModeForm } from "@/hooks/forms/useAuthTestingModeForm";
-import { authTestingModeSubmitHandler } from "@/utils/authTestingMode/authTestingModeSubmitHandler";
 import { useCallback } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { loginTestingModeAction } from "@/app/actions/auth/testing-mode/auth.testing.mode.actions";
 
 export default function AuthTestingMode() {
   const t = useTranslations("AUTH");
+  const router = useRouter();
   const form = useAuthTestingModeForm();
 
   const onSubmit = useCallback(
     async (data: { password: string }) => {
-      await authTestingModeSubmitHandler(
-        data,
-        form.clearErrors,
-        form.setError
-      );
+      form.clearErrors();
+      try {
+        await loginTestingModeAction(data.password);
+        router.push("/");
+        toast.success(t("ACCESS_GRANTED"));
+      } catch (error) {
+        if (error instanceof Error) {
+          form.setError(
+            error.message === "PASSWORD_INCORRECT" ? "password" : "root",
+            {
+              message: error.message,
+            }
+          );
+        } else {
+          form.setError("root", {
+            message: "GENERIC",
+          });
+        }
+      }
     },
-    [form.clearErrors, form.setError]
+    [form, router, t]
   );
 
   return (

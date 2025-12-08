@@ -21,6 +21,7 @@ export default function LocaleMismatch({
 
   if (!isVisible) return null;
 
+  // FIXME: flashing when switching languages
   const handleSwitch = () => {
     const pathname = window.location.pathname;
     const search = window.location.search;
@@ -30,7 +31,7 @@ export default function LocaleMismatch({
     segments[1] = localeMismatch;
     const newPath = segments.join("/") + search + hash;
 
-    setClientCookie("preferred_locale", localeMismatch);
+    setClientCookie("preferred_locale", localeMismatch, { httpOnly: false });
 
     deleteClientCookie("locale_mismatch");
 
@@ -47,7 +48,7 @@ export default function LocaleMismatch({
     const newPath = segments.join("/") + search + hash;
 
     setIsVisible(false);
-    setClientCookie("preferred_locale", locale);
+    setClientCookie("preferred_locale", locale, { httpOnly: false });
     deleteClientCookie("locale_mismatch");
 
     router.push(newPath);

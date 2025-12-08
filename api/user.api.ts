@@ -8,8 +8,9 @@ export const userApi = {
       token,
     }),
 
-  getMe: (token: string) => fetchApi<UserDto>("/users/me", {
-    method: "GET",
-    token,
-  }),
+  getMe: (token: string) =>
+    fetchApi<UserDto>("/users/me", {
+      method: "GET",
+      token,
+    }),
 };

@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { authApi } from "@/api/auth.api";
+import { logoutAction } from "@/app/actions/auth/logout/logout.actions";
 
 export const useAuth = () => {
   const router = useRouter();
 
   const logout = useCallback(async () => {
     try {
-      await authApi.logout();
+      await logoutAction();
     } catch (e) {
       console.error("Logout failed", e);
     } finally {
@@ -17,7 +17,7 @@ export const useAuth = () => {
 
   const reconnect = useCallback(async () => {
     try {
-      await authApi.logout();
+      await logoutAction();
     } catch (e) {
       console.error("Reconnect failed", e);
     } finally {

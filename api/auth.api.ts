@@ -58,17 +58,11 @@ export const authApi = {
     ),
 
   loginTestingMode: (password: string) =>
-    fetch("/api/auth/testing-mode", {
+    fetchApi<{ success: boolean }>("/auth/testing-mode", {
       method: "POST",
-      body: JSON.stringify({ password }),
-    }),
-
-  logout: () =>
-    fetch("/api/auth/logout", {
-      method: "POST",
-      credentials: "include",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/plain",
       },
+      body: password,
     }),
 };

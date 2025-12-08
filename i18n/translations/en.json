@@ -8,15 +8,20 @@
   "FORM": {
     "LOADING": "Loading...",
     "ERRORS": {
-      "GENERIC": "An unexpected error occurred. (VERIFY USAGE)",
+      "GENERIC": "An unexpected error occurred.",
       "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
+      "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
+      "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
       "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
       "PASSKEY_ALREADY_EXISTS": "Passkey already exists for this device",
       "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
       "AUTH_001": "Authentication failed",
       "AUTH_002": "Unauthorized (NOT USED YET)",
       "AUTH_003": "Invalid session",
-      "AUTH_004": "Session expired"
+      "AUTH_004": "Session expired",
+      "SYST_001": "Validation failed for at least one field",
+      "SYST_002": "System error",
+      "API_UNKNOWN_ERROR": "An unexpected error occurred."
     }
   },
   "AUTH": {
@@ -31,8 +36,8 @@
     "CHECK_YOUR_EMAIL": "Check your email at ",
     "PASSWORD": "Password",
     "HELLO": "Hello, {username}!",
+    "ACCESS_GRANTED": "Access granted!",
     "ERRORS": {
-      "AUTHENTICATION_PROBLEM": "Please log in again.",
       "TOO_SHORT": "Password is too short.",
       "TOO_LONG": "Password is too long.",
       "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
@@ -44,7 +49,10 @@
       "AUTH_001": "Authentication failed",
       "AUTH_002": "Unauthorized",
       "AUTH_003": "Invalid session",
-      "AUTH_004": "Session expired"
+      "AUTH_004": "Session expired",
+      "SYST_001": "Validation failed for at least one field",
+      "SYST_002": "System error",
+      "API_UNKNOWN_ERROR": "An unexpected error occurred."
     }
   },
   "PROFILE": {
@@ -80,7 +88,11 @@
       "AUTH_001": "Authentication failed",
       "AUTH_002": "Unauthorized",
       "AUTH_003": "Invalid session",
-      "AUTH_004": "Session expired"
+      "AUTH_004": "Session expired",
+      "SYST_001": "Validation failed for at least one field",
+      "SYST_002": "System error",
+      "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
+      "API_UNKNOWN_ERROR": "An unexpected error occurred."
     }
   },
   "LOCALE_MISMATCH": {

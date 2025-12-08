@@ -5,15 +5,14 @@ import { useTranslations } from "next-intl";
 import Input from "@/app/components/UI/shared/elements/Input";
 import Form from "@/app/components/UI/shared/components/Form";
 import { useUpdateUsernameForm } from "@/hooks/forms/useUpdateUsernameForm";
-import { updateUsername } from "@/utils/profile/user";
 import { useRouter } from "next/navigation";
+import { updateUsernameAction } from "@/app/actions/user/user.actions";
 
 interface UserNameProps {
-  token: string;
   username?: string;
 }
 
-export default function UserName({ token, username }: UserNameProps) {
+export default function UserName({ username }: UserNameProps) {
   const t = useTranslations("PROFILE.USERNAME");
   const form = useUpdateUsernameForm(username);
   const [successText, setSuccessText] = useState<string | null>(null);
@@ -21,16 +20,19 @@ export default function UserName({ token, username }: UserNameProps) {
 
   const onSubmit = useCallback(
     async (data: { username: string }) => {
-      const success = await updateUsername(
-        token,
-        data.username,
-        form.clearErrors,
-        form.setError,
-        setSuccessText
-      );
-      if (success) router.push("/profile");
+      form.clearErrors();
+      setSuccessText(null);
+      try {
+        await updateUsernameAction(data.username);
+        setSuccessText("USERNAME_UPDATED");
+        router.push("/profile");
+      } catch (error) {
+        form.setError("root", {
+          message: error instanceof Error ? error.message : "GENERIC",
+        });
+      }
     },
-    [token, form.clearErrors, form.setError, router]
+    [form, router]
   );
 
   return (

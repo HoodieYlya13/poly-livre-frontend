@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { APP_NAME } from "@/utils/constants";
+import { APP_NAME } from "@/utils/config";
 import {
   Theme,
   ThemeProvider,

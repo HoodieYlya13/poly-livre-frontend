@@ -6,11 +6,11 @@ import Input from "../../UI/shared/elements/Input";
 import Button from "../../UI/shared/elements/Button";
 import Form from "../../UI/shared/components/Form";
 import { useAuthMagicLinkForm } from "@/hooks/forms/useAuthMagicLinkForm";
-import { authSubmitHandler } from "@/utils/auth/magicLink/authSubmitHandler";
-import { handlePasskeyLogin } from "@/utils/auth/passkey/handlePasskeyLogin";
 import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { loginMagicLinkAction } from "@/app/actions/auth/magic-link/login.magic.link.actions";
+import { loginPasskeyAction } from "@/app/actions/auth/passkey/client.paskey.actions";
 
 export default function Auth() {
   const t = useTranslations("AUTH");
@@ -80,32 +80,43 @@ export default function Auth() {
   const onPasskeyLogin = useCallback(async () => {
     setIsPasskeyLogin(true);
     setEmailProviderLink(null);
-    const result = await handlePasskeyLogin(
-      setLoading,
-      setErrorText,
-      setSuccessText
-    );
-    if (result.success && result.username) {
-      toast.success(t("HELLO", { username: result.username }));
+    setErrorText(null);
+    form.clearErrors();
+    setSuccessText(null);
+    setLoading(true);
+    try {
+      const username = await loginPasskeyAction();
       router.push("/profile");
-    } else if (result.error) toast.error(t(`ERRORS.${result.error}`));
-  }, [router, t, setLoading, setErrorText, setSuccessText, setIsPasskeyLogin]);
+      toast.success(t("HELLO", { username }));
+    } catch (error) {
+      const errorFinal = error instanceof Error ? error.message : "GENERIC";
+      setErrorText(errorFinal);
+      toast.error(t(`ERRORS.${errorFinal}`));
+    }
+    setLoading(false);
+  }, [form, router, t, setLoading, setErrorText, setSuccessText, setIsPasskeyLogin]);
 
   const onSubmit = useCallback(
     async (data: { email: string }) => {
-      await authSubmitHandler(
-        data,
-        form.clearErrors,
-        form.setError,
-        setSuccessText
-      );
+      try {
+        await loginMagicLinkAction(data.email);
+        setSuccessText("MAGIC_LINK_SENT");
+        toast.success(t("MAGIC_LINK_SENT"));
+      } catch (error) {
+        form.setError("root", {
+          message: error instanceof Error ? error.message : "GENERIC",
+        });
+      }
     },
-    [form.clearErrors, form.setError, setSuccessText]
+    [form, t, setSuccessText]
   );
 
   const onMagicLinkLogin = (e: React.FormEvent<HTMLFormElement>) => {
     setIsPasskeyLogin(false);
     setEmailProviderLink(emailProviderLinkMemo);
+    form.clearErrors();
+    setErrorText(null);
+    setSuccessText(null);
     form.handleSubmit(onSubmit)(e);
   };
 
