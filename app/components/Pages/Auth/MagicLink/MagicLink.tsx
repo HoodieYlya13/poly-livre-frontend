@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { verifyMagicLinkAction } from "@/app/actions/auth/magic-link/verify.magic.link.actions";
+import { useErrors } from "@/hooks/useErrors";
 
 interface MagicLinkProps {
   token: string;
@@ -12,6 +13,7 @@ interface MagicLinkProps {
 
 export default function MagicLink({ token }: MagicLinkProps) {
   const t = useTranslations("MAGIC_LINK");
+  const errorT = useErrors();
   const router = useRouter();
 
   useEffect(() => {
@@ -24,13 +26,17 @@ export default function MagicLink({ token }: MagicLinkProps) {
         toast.success(t("HELLO", { username }));
         router.push("/profile");
       } catch (error) {
-        toast.error(t("ERRORS." + (error instanceof Error ? error.message : "GENERIC")));
+        toast.error(
+          errorT.getError(error instanceof Error ? error.message : "GENERIC")
+        );
         router.push("/auth");
       }
     };
 
     verifyMagicLink();
-  }, [token, router, t]);
+  }, [token, router, t, errorT]);
 
-  return <p className="flex grow items-center justify-center">{t("VERIFYING")}</p>;
+  return (
+    <p className="flex grow items-center justify-center">{t("VERIFYING")}</p>
+  );
 }

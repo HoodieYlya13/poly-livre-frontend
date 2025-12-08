@@ -7,6 +7,7 @@ import Form from "../../../UI/shared/components/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
 import { useAuth } from "@/hooks/useAuth";
 import { registerPasskeyAction } from "@/app/actions/auth/passkey/client.paskey.actions";
+import { useErrors } from "@/hooks/useErrors";
 
 interface PasskeyRegistrationProps {
   email: string;
@@ -16,6 +17,7 @@ export default function PasskeyRegistration({
   email,
 }: PasskeyRegistrationProps) {
   const t = useTranslations("PROFILE.PASSKEY");
+  const errorT = useErrors();
   const form = useUpdatePasskeyNameForm();
   const { reconnect } = useAuth();
   const [successText, setSuccessText] = useState<string | null>(null);
@@ -61,7 +63,7 @@ export default function PasskeyRegistration({
           focusOnMount
           error={
             form.formState.errors.name?.message &&
-            t(form.formState.errors.name?.message)
+            errorT.getError(form.formState.errors.name?.message)
           }
         />
       </Form>

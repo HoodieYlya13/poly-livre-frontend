@@ -4,6 +4,7 @@ import SubmitButton from "../elements/SubmitButton";
 import { useTranslations } from "next-intl";
 import { UseFormReturn, FieldValues } from "react-hook-form";
 import { toast } from "sonner";
+import { useErrors } from "@/hooks/useErrors";
 
 interface FormProps<T extends FieldValues> {
   children: React.ReactNode;
@@ -20,13 +21,14 @@ export default function Form<T extends FieldValues>({
   buttonLabel,
   successText,
 }: FormProps<T>) {
-  const t = useTranslations("FORM");
+  const t = useTranslations("COMMON");
+  const errorT = useErrors();
   const [isCoolingDown, setIsCoolingDown] = useState(false);
 
   const buttonError =
     form.formState.isSubmitted &&
     Object.keys(form.formState.errors).some((k) => k !== "root")
-      ? t("ERRORS.CORRECT_FIELDS_BEFORE_SUBMIT")
+      ? errorT.getError("CORRECT_FIELDS_BEFORE_SUBMIT")
       : undefined;
   const buttonDisabled =
     form.formState.isSubmitting ||
@@ -38,9 +40,9 @@ export default function Form<T extends FieldValues>({
   const errors = form.formState.errors.root?.message;
 
   useEffect(() => {
-    if (errors) toast.error(t(`ERRORS.${errors}`));
+    if (errors) toast.error(errorT.getError(errors));
     if (successText) toast.success(successText);
-  }, [errors, successText, t]);
+  }, [errors, successText, errorT]);
 
   const handleSubmitWithCooldown = (e: React.FormEvent<HTMLFormElement>) => {
     if (isCoolingDown) return e.preventDefault();
@@ -65,7 +67,7 @@ export default function Form<T extends FieldValues>({
       />
 
       {errors && (
-        <p className="text-red-500 text-shadow-md">{t(`ERRORS.${errors}`)}</p>
+        <p className="text-red-500 text-shadow-md">{errorT.getError(errors)}</p>
       )}
     </form>
   );

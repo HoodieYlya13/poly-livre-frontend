@@ -1,28 +1,36 @@
 {
+  "COMMON": {
+    "LOADING": "Chargement..."
+  },
   "HOME_PAGE": {
     "META": {
       "TITLE": "Librairie en ligne - {name}",
       "DESCRIPTION": "Bienvenue dans la librairie en ligne de {name} ! Découvrez nos livres."
     }
   },
-  "FORM": {
-    "LOADING": "Chargement...",
-    "ERRORS": {
-      "GENERIC": "Une erreur inattendue est survenue.",
-      "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
-      "PASSWORD_INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
-      "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
-      "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
-      "PASSKEY_ALREADY_EXISTS": "Passkey déjà existante pour cet appareil",
-      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
-      "AUTH_001": "Échec de l'authentification",
-      "AUTH_002": "Non autorisé (NOT USED YET)",
-      "AUTH_003": "Session invalide",
-      "AUTH_004": "Session expirée",
-      "SYST_001": "Validation échouée pour au moins un champ",
-      "SYST_002": "Erreur système",
-      "API_UNKNOWN_ERROR": "Une erreur inattendue est survenue."
-    }
+  "ERRORS": {
+    "GENERIC": "Une erreur inattendue est survenue.",
+    "AUTH_001": "Échec de l'authentification",
+    "AUTH_002": "Non autorisé",
+    "AUTH_003": "Session invalide",
+    "AUTH_004": "Session expirée",
+    "SYST_001": "Validation échouée pour au moins un champ",
+    "SYST_002": "Erreur système",
+    "API_UNKNOWN_ERROR": "Une erreur inattendue est survenue.",
+    "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
+    "PASSWORD_INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
+    "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
+    "PASSKEY_FAILED": "Échec de l'authentification Passkey.",
+    "PASSKEY_ALREADY_EXISTS": "Passkey déjà existante pour cet appareil",
+    "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
+    "EMAIL_NOT_FOUND": "Impossible de récupérer l'email de l'utilisateur. Veuillez vous reconnecter.",
+    "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
+    "TOO_SHORT": "Le mot de passe est trop court.",
+    "TOO_LONG": "Le mot de passe est trop long.",
+    "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
+    "USERNAME_HAS_WHITESPACE": "Le nom d'utilisateur ne peut pas contenir d'espace.",
+    "USERNAME_TOO_LONG": "Le nom d'utilisateur est trop long.",
+    "USERNAME_SAME": "Le nouveau nom d'utilisateur ne peut pas être identique à l'actuel."
   },
   "AUTH": {
     "LOGIN": "Se connecter",
@@ -36,32 +44,12 @@
     "CHECK_YOUR_EMAIL": "Vérifiez votre email à ",
     "PASSWORD": "Mot de passe",
     "HELLO": "Bonjour, {username}!",
-    "ACCESS_GRANTED": "Accès accordé!",
-    "ERRORS": {
-      "TOO_SHORT": "Le mot de passe est trop court.",
-      "TOO_LONG": "Le mot de passe est trop long.",
-      "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
-      "PASSWORD_INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
-      "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
-      "PASSKEY_FAILED": "Échec de l'authentification Passkey.",
-      "PASSKEY_ERROR": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
-      "MAGIC_LINK_FAILED": "Échec de l'envoi du lien magique.",
-      "AUTH_001": "Échec de l'authentification",
-      "AUTH_002": "Non autorisé",
-      "AUTH_003": "Session invalide",
-      "AUTH_004": "Session expirée",
-      "SYST_001": "Validation échouée pour au moins un champ",
-      "SYST_002": "Erreur système",
-      "API_UNKNOWN_ERROR": "Une erreur inattendue est survenue."
-    }
+    "ACCESS_GRANTED": "Accès accordé!"
   },
   "PROFILE": {
     "TITLE": "Profil",
     "SECURITY": "Sécurité",
     "CHANGE_USER_NAME": "Changer nom d'utilisateur",
-    "ERRORS": {
-      "EMAIL_NOT_FOUND": "Impossible de récupérer l'email de l'utilisateur. Veuillez vous reconnecter."
-    },
     "PASSKEY": {
       "TITLE": "Passkey",
       "DESCRIPTION": "Enregistrez une Passkey pour vous connecter sans mot de passe ni lien email.",
@@ -75,25 +63,12 @@
       "BUTTON": "Enregistrer un nouveau nom d'utilisateur",
       "NAME_LABEL": "Nom d'utilisateur",
       "UPDATE": "Mettre à jour",
-      "USERNAME_UPDATED": "Nom d'utilisateur mis à jour avec succès.",
-      "USERNAME_HAS_WHITESPACE": "Le nom d'utilisateur ne peut pas contenir d'espace.",
-      "USERNAME_TOO_LONG": "Le nom d'utilisateur est trop long.",
-      "USERNAME_SAME": "Le nouveau nom d'utilisateur ne peut pas être identique à l'actuel."
+      "USERNAME_UPDATED": "Nom d'utilisateur mis à jour avec succès."
     }
   },
   "MAGIC_LINK": {
     "VERIFYING": "Vérification de votre lien magique...",
-    "HELLO": "Bonjour, {username}!",
-    "ERRORS": {
-      "AUTH_001": "Échec de l'authentification",
-      "AUTH_002": "Non autorisé",
-      "AUTH_003": "Session invalide",
-      "AUTH_004": "Session expirée",
-      "SYST_001": "Validation échouée pour au moins un champ",
-      "SYST_002": "Erreur système",
-      "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
-      "API_UNKNOWN_ERROR": "Une erreur inattendue est survenue."
-    }
+    "HELLO": "Bonjour, {username}!"
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Changer de langue ?",

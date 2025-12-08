@@ -11,9 +11,11 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { loginMagicLinkAction } from "@/app/actions/auth/magic-link/login.magic.link.actions";
 import { loginPasskeyAction } from "@/app/actions/auth/passkey/client.paskey.actions";
+import { useErrors } from "@/hooks/useErrors";
 
 export default function Auth() {
   const t = useTranslations("AUTH");
+  const errorT = useErrors();
   const form = useAuthMagicLinkForm();
   const router = useRouter();
 
@@ -91,10 +93,19 @@ export default function Auth() {
     } catch (error) {
       const errorFinal = error instanceof Error ? error.message : "GENERIC";
       setErrorText(errorFinal);
-      toast.error(t(`ERRORS.${errorFinal}`));
+      toast.error(errorT.getError(errorFinal));
     }
     setLoading(false);
-  }, [form, router, t, setLoading, setErrorText, setSuccessText, setIsPasskeyLogin]);
+  }, [
+    form,
+    router,
+    t,
+    errorT,
+    setLoading,
+    setErrorText,
+    setSuccessText,
+    setIsPasskeyLogin,
+  ]);
 
   const onSubmit = useCallback(
     async (data: { email: string }) => {
@@ -138,7 +149,7 @@ export default function Auth() {
           />
           {errorText && (
             <p className="ml-1 sm:ml-2 mt-1 text-xs sm:text-sm md:text-base text-red-500">
-              {t(`ERRORS.${errorText}`)}
+              {errorT.getError(errorText)}
             </p>
           )}
 

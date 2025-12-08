@@ -1,28 +1,36 @@
 {
+  "COMMON": {
+    "LOADING": "Loading..."
+  },
   "HOME_PAGE": {
     "META": {
       "TITLE": "Library shop - {name}",
       "DESCRIPTION": "Welcome to {name}'s library shop! Explore all our books."
     }
   },
-  "FORM": {
-    "LOADING": "Loading...",
-    "ERRORS": {
-      "GENERIC": "An unexpected error occurred.",
-      "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
-      "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
-      "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
-      "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
-      "PASSKEY_ALREADY_EXISTS": "Passkey already exists for this device",
-      "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
-      "AUTH_001": "Authentication failed",
-      "AUTH_002": "Unauthorized (NOT USED YET)",
-      "AUTH_003": "Invalid session",
-      "AUTH_004": "Session expired",
-      "SYST_001": "Validation failed for at least one field",
-      "SYST_002": "System error",
-      "API_UNKNOWN_ERROR": "An unexpected error occurred."
-    }
+  "ERRORS": {
+    "GENERIC": "An unexpected error occurred.",
+    "AUTH_001": "Authentication failed",
+    "AUTH_002": "Unauthorized",
+    "AUTH_003": "Invalid session",
+    "AUTH_004": "Session expired",
+    "SYST_001": "Validation failed for at least one field",
+    "SYST_002": "System error",
+    "API_UNKNOWN_ERROR": "An unexpected error occurred.",
+    "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
+    "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
+    "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
+    "PASSKEY_FAILED": "Passkey authentication failed.",
+    "PASSKEY_ALREADY_EXISTS": "Passkey already exists for this device",
+    "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
+    "EMAIL_NOT_FOUND": "Could not retrieve user email. Please log in again.",
+    "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
+    "TOO_SHORT": "Password is too short.",
+    "TOO_LONG": "Password is too long.",
+    "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
+    "USERNAME_HAS_WHITESPACE": "Username cannot have whitespace.",
+    "USERNAME_TOO_LONG": "Username is too long.",
+    "USERNAME_SAME": "New username cannot be the same as the current one."
   },
   "AUTH": {
     "LOADING": "Loading...",
@@ -36,32 +44,12 @@
     "CHECK_YOUR_EMAIL": "Check your email at ",
     "PASSWORD": "Password",
     "HELLO": "Hello, {username}!",
-    "ACCESS_GRANTED": "Access granted!",
-    "ERRORS": {
-      "TOO_SHORT": "Password is too short.",
-      "TOO_LONG": "Password is too long.",
-      "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
-      "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
-      "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
-      "PASSKEY_FAILED": "Passkey authentication failed.",
-      "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",
-      "MAGIC_LINK_FAILED": "Failed to send Magic Link.",
-      "AUTH_001": "Authentication failed",
-      "AUTH_002": "Unauthorized",
-      "AUTH_003": "Invalid session",
-      "AUTH_004": "Session expired",
-      "SYST_001": "Validation failed for at least one field",
-      "SYST_002": "System error",
-      "API_UNKNOWN_ERROR": "An unexpected error occurred."
-    }
+    "ACCESS_GRANTED": "Access granted!"
   },
   "PROFILE": {
     "TITLE": "Profile",
     "SECURITY": "Security",
     "CHANGE_USER_NAME": "Change user name",
-    "ERRORS": {
-      "EMAIL_NOT_FOUND": "Could not retrieve user email. Please log in again."
-    },
     "PASSKEY": {
       "TITLE": "Passkey",
       "DESCRIPTION": "Register a passkey to log in without a password or email link.",
@@ -75,25 +63,12 @@
       "BUTTON": "Register New Username",
       "NAME_LABEL": "Username",
       "UPDATE": "Update",
-      "USERNAME_UPDATED": "Username updated successfully.",
-      "USERNAME_HAS_WHITESPACE": "Username cannot have whitespace.",
-      "USERNAME_TOO_LONG": "Username is too long.",
-      "USERNAME_SAME": "New username cannot be the same as the current one."
+      "USERNAME_UPDATED": "Username updated successfully."
     }
   },
   "MAGIC_LINK": {
     "VERIFYING": "Verifying your magic link...",
-    "HELLO": "Hello, {username}!",
-    "ERRORS": {
-      "AUTH_001": "Authentication failed",
-      "AUTH_002": "Unauthorized",
-      "AUTH_003": "Invalid session",
-      "AUTH_004": "Session expired",
-      "SYST_001": "Validation failed for at least one field",
-      "SYST_002": "System error",
-      "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
-      "API_UNKNOWN_ERROR": "An unexpected error occurred."
-    }
+    "HELLO": "Hello, {username}!"
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Switch Language?",

@@ -7,6 +7,7 @@ import Form from "@/app/components/UI/shared/components/Form";
 import { useUpdateUsernameForm } from "@/hooks/forms/useUpdateUsernameForm";
 import { useRouter } from "next/navigation";
 import { updateUsernameAction } from "@/app/actions/user/user.actions";
+import { useErrors } from "@/hooks/useErrors";
 
 interface UserNameProps {
   username?: string;
@@ -14,6 +15,7 @@ interface UserNameProps {
 
 export default function UserName({ username }: UserNameProps) {
   const t = useTranslations("PROFILE.USERNAME");
+  const errorT = useErrors();
   const form = useUpdateUsernameForm(username);
   const [successText, setSuccessText] = useState<string | null>(null);
   const router = useRouter();
@@ -54,7 +56,7 @@ export default function UserName({ username }: UserNameProps) {
           focusOnMount
           error={
             form.formState.errors.username?.message &&
-            t(form.formState.errors.username?.message)
+            errorT.getError(form.formState.errors.username?.message)
           }
         />
       </Form>
