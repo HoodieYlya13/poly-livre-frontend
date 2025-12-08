@@ -1,3 +1,5 @@
+import { DEFAULT_LOCALE_UPPERCASE, LocaleLanguages, LocaleLanguagesUpperCase } from "@/i18n/utils";
+import { DEFAULT_LOCALE } from "@/utils/config";
 import { cookies } from "next/headers";
 
 export async function setServerCookie(
@@ -51,4 +53,28 @@ export async function deleteServerUserCookies() {
     "user_name",
   ])
     cookieStore.delete(name);
+}
+
+export async function getPreferredLocale(toUpperCase = false) {
+  const locale = await getServerCookie("preferred_locale");
+  return toUpperCase
+    ? ((locale?.toUpperCase() ||
+        DEFAULT_LOCALE_UPPERCASE) as LocaleLanguagesUpperCase)
+    : ((locale || DEFAULT_LOCALE) as LocaleLanguages);
+}
+
+export async function getUserAccessToken(): Promise<string | undefined> {
+  return getServerCookie("user_access_token");
+}
+
+export async function getUserCountryServer() {
+  const country = await getServerCookie("user_country");
+
+  if (!country || country === "unknown") return undefined;
+
+  return country as LocaleLanguagesUpperCase;
+}
+
+export async function getUserIp(): Promise<string | undefined> {
+  return getServerCookie("user_ip");
 }

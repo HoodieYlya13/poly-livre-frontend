@@ -1,6 +1,6 @@
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
-import { getUserIp } from "./cookies/server/getUserIp";
+import { getUserIp } from "./cookies/cookiesServer";
 
 function getRedisClient() {
   const url = process.env.UPSTASH_REDIS_REST_URL;
@@ -11,7 +11,7 @@ function getRedisClient() {
       throw new Error(
         "UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN not found. Rate limiting will be disabled."
       );
-      
+
     throw new Error(
       "UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN are required"
     );

@@ -6,7 +6,7 @@ import { LocaleLanguages } from "@/i18n/utils";
 import {
   deleteClientCookie,
   setClientCookie,
-} from "@/utils/cookies/client/cookiesClient";
+} from "@/utils/cookies/cookiesClient";
 import { useTranslations } from "next-intl";
 
 interface LocaleMismatchProps {
@@ -24,7 +24,6 @@ export default function LocaleMismatch({
 
   if (!isVisible) return null;
 
-  // FIXME: flashing when switching languages
   const handleSwitch = async () => {
     const pathname = window.location.pathname;
     const search = window.location.search;

@@ -4,9 +4,11 @@ import UserGeoInfo from "./CustomerGeoInfo/UserGeoInfo";
 import clsx from "clsx";
 import Aurora from "./NavBar/shared/Aurora";
 import LocaleMismatch from "./LocaleMismatch";
-import { getServerCookie } from "@/utils/cookies/server/cookiesServer";
 import { LocaleLanguages } from "@/i18n/utils";
-import { getPreferredLocale } from "@/utils/cookies/server/getPreferredLocale";
+import {
+  getPreferredLocale,
+  getServerCookie,
+} from "@/utils/cookies/cookiesServer";
 
 interface PageLayoutProps {
   children: React.ReactNode;

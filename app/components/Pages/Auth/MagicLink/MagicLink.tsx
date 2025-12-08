@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { verifyMagicLinkAction } from "@/app/actions/auth/magic-link/verify.magic.link.actions";
+import { verifyMagicLinkAction } from "@/actions/auth/magic-link/verify.magic.link.actions";
 import { useErrors } from "@/hooks/useErrors";
 
 interface MagicLinkProps {

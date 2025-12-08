@@ -1,8 +1,9 @@
 "use server";
 
-import { setServerCookie } from "@/utils/cookies/server/cookiesServer";
+import { setServerCookie } from "@/utils/cookies/cookiesServer";
 import { authApi } from "@/api/auth.api";
 import { checkRateLimit } from "@/utils/rateLimit";
+import { getErrorMessage } from "@/api/api.errors";
 
 export async function verifyMagicLinkAction(token: string) {
   try {
@@ -14,7 +15,7 @@ export async function verifyMagicLinkAction(token: string) {
     });
 
     await setServerCookie("user_id", result.userId, {
-      maxAge: result.expiresIn
+      maxAge: result.expiresIn,
     });
 
     await setServerCookie("user_email", result.email, {
@@ -30,12 +31,8 @@ export async function verifyMagicLinkAction(token: string) {
     return result.username;
   } catch (error) {
     console.error("Magic link verification error:");
-    const message =
-      error instanceof Error &&
-      (error.message.startsWith("AUTH_00") ||
-        error.message === "TOO_MANY_REQUESTS")
-        ? error.message
-        : "GENERIC";
+
+    const message = getErrorMessage(error);
 
     throw new Error(message);
   }

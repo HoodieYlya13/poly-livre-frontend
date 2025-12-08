@@ -1,7 +1,8 @@
 "use server";
 
+import { getErrorMessage } from "@/api/api.errors";
 import { authApi } from "@/api/auth.api";
-import { setServerCookie } from "@/utils/cookies/server/cookiesServer";
+import { setServerCookie } from "@/utils/cookies/cookiesServer";
 import { checkRateLimit } from "@/utils/rateLimit";
 
 export async function loginTestingModeAction(password: string) {
@@ -17,14 +18,8 @@ export async function loginTestingModeAction(password: string) {
     });
   } catch (error) {
     console.error("loginTestingMode error:");
-    let message = "GENERIC";
-
-    if (error instanceof Error) {
-      if (error.message === "PASSWORD_INCORRECT") {
-        message = "PASSWORD_INCORRECT";
-      } else if (error.message === "TOO_MANY_REQUESTS")
-        message = "TOO_MANY_REQUESTS";
-    }
+    
+    const message = getErrorMessage(error);
 
     throw new Error(message);
   }

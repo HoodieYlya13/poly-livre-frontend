@@ -16,7 +16,6 @@
     "AUTH_004": "Session expired",
     "SYST_001": "Validation failed for at least one field",
     "SYST_002": "System error",
-    "API_UNKNOWN_ERROR": "An unexpected error occurred.",
     "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
     "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
     "PASSKEY_ERROR": "Login with Passkey took too long or was cancelled. Please try again.",

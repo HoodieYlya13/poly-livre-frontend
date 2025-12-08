@@ -10,7 +10,7 @@ import {
   Theme,
   ThemeProvider,
 } from "../components/UI/shared/components/ThemeProvider";
-import { getServerCookie } from "@/utils/cookies/server/cookiesServer";
+import { getServerCookie } from "@/utils/cookies/cookiesServer";
 import { Toaster } from "../components/UI/shared/components/Toaster";
 
 interface LayoutProps {
@@ -57,7 +57,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       suppressHydrationWarning
       className={theme === "dark" ? "dark" : ""}
     >
-      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

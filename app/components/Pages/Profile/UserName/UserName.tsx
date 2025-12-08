@@ -6,8 +6,9 @@ import Input from "@/app/components/UI/shared/elements/Input";
 import Form from "@/app/components/UI/shared/components/Form";
 import { useUpdateUsernameForm } from "@/hooks/forms/useUpdateUsernameForm";
 import { useRouter } from "next/navigation";
-import { updateUsernameAction } from "@/app/actions/user/user.actions";
+import { updateUsernameAction } from "@/actions/user/user.actions";
 import { useErrors } from "@/hooks/useErrors";
+import { useAuth } from "@/hooks/useAuth";
 
 interface UserNameProps {
   username?: string;
@@ -19,6 +20,7 @@ export default function UserName({ username }: UserNameProps) {
   const form = useUpdateUsernameForm(username);
   const [successText, setSuccessText] = useState<string | null>(null);
   const router = useRouter();
+  const { reconnect } = useAuth();
 
   const onSubmit = useCallback(
     async (data: { username: string }) => {
@@ -29,12 +31,16 @@ export default function UserName({ username }: UserNameProps) {
         setSuccessText("USERNAME_UPDATED");
         router.push("/profile");
       } catch (error) {
-        form.setError("root", {
-          message: error instanceof Error ? error.message : "GENERIC",
-        });
+        if (error instanceof Error) {
+          form.setError("root", {
+            message: error.message,
+          });
+
+          if (error.message.startsWith("AUTH_00")) reconnect();
+        } else form.setError("root", { message: "GENERIC" });
       }
     },
-    [form, router]
+    [form, router, reconnect]
   );
 
   return (

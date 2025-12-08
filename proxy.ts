@@ -6,7 +6,7 @@ import { SUPPORTED_LOCALES } from "./i18n/utils";
 import {
   getProxyCookie,
   setProxyCookie,
-} from "./utils/cookies/proxy/cookiesProxy";
+} from "./utils/cookies/cookiesProxy";
 
 const intlMiddleware = createMiddleware(routing);
 

@@ -1,6 +1,5 @@
 import GeoFallbackFetcher from "./GeoFallbackFetcher";
-import { getUserCountryServer } from "@/utils/cookies/server/getUserCountryServer";
-import { getUserIp } from "@/utils/cookies/server/getUserIp";
+import { getUserCountryServer, getUserIp } from "@/utils/cookies/cookiesServer";
 
 export default async function UserGeoInfo() {
   const userIp = await getUserIp();

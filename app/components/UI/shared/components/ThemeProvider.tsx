@@ -6,7 +6,7 @@ import {
   useState,
   type FunctionComponent,
 } from "react";
-import { setClientCookie } from "@/utils/cookies/client/cookiesClient";
+import { setClientCookie } from "@/utils/cookies/cookiesClient";
 
 export type Theme = "dark" | "light";
 
@@ -47,7 +47,10 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
   const value = {
     theme,
     setTheme: (newTheme: Theme) => {
-      setClientCookie(storageKey, newTheme, { maxAge: 60 * 60 * 24 * 365 });
+      setClientCookie(storageKey, newTheme, {
+        maxAge: 60 * 60 * 24 * 365,
+        httpOnly: false,
+      });
       setTheme(newTheme);
     },
   };

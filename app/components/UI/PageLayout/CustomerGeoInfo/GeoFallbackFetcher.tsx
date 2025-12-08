@@ -1,23 +1,20 @@
-'use client';
+"use client";
 
-import { setClientCookie } from '@/utils/cookies/client/cookiesClient';
-import { useEffect } from 'react';
+import { setClientCookie } from "@/utils/cookies/cookiesClient";
+import { useEffect } from "react";
 
 export default function GeoFallbackFetcher() {
   useEffect(() => {
     fetch("https://ipinfo.io/json")
       .then((res) => res.json())
       .then((geo) => {
-        if (geo?.ip) setClientCookie("user_ip", geo.ip, {
-          maxAge: 60 * 60 * 24,
-        });
+        if (geo?.ip)
+          setClientCookie("user_ip", geo.ip);
         let country = "unknown";
         if (typeof geo?.country === "string" && geo.country.length === 2)
           country = geo.country.toUpperCase();
 
-        setClientCookie("user_country", country, {
-          maxAge: 60 * 60 * 24,
-        });
+        setClientCookie("user_country", country);
       })
       .catch((err) => {
         console.warn("GeoFallbackFetcher error:", err);

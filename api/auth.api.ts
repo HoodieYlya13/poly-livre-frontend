@@ -29,14 +29,14 @@ export const authApi = {
       body: JSON.stringify(credential),
     }),
 
-  registerPasskeyStart: (email: string, passkeyName: string, token: string) =>
+  registerPasskeyStart: (email: string, passkeyName: string) =>
     fetchApi<Response>(
       `/auth/passkey/register/start?email=${encodeURIComponent(
         email
       )}&name=${encodeURIComponent(passkeyName)}`,
       {
         method: "POST",
-        token,
+        userAuthenticated: true,
       },
       true
     ),

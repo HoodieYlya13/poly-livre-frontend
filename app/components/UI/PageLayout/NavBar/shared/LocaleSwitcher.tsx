@@ -1,7 +1,7 @@
 "use client";
 
 import { LocaleLanguages } from "@/i18n/utils";
-import { setClientCookie } from "@/utils/cookies/client/cookiesClient";
+import { setClientCookie } from "@/utils/cookies/cookiesClient";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

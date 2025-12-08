@@ -1,7 +1,9 @@
 import PageLayout from "../../components/UI/PageLayout/PageLayout";
-import { getUserAccessToken } from "@/utils/cookies/server/getUserAccessToken";
+import {
+  getServerCookie,
+  getUserAccessToken,
+} from "@/utils/cookies/cookiesServer";
 import { redirect } from "next/navigation";
-import { getServerCookie } from "@/utils/cookies/server/cookiesServer";
 import Profile from "@/app/components/Pages/Profile/Profile";
 
 export default async function ProfilePage() {

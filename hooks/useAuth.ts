@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { logoutAction } from "@/app/actions/auth/logout/logout.actions";
+import { logoutAction } from "@/actions/auth/logout/logout.actions";
 
 export const useAuth = () => {
   const router = useRouter();

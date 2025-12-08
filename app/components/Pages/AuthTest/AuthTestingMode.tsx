@@ -7,7 +7,7 @@ import { useAuthTestingModeForm } from "@/hooks/forms/useAuthTestingModeForm";
 import { useCallback } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { loginTestingModeAction } from "@/app/actions/auth/testing-mode/auth.testing.mode.actions";
+import { loginTestingModeAction } from "@/actions/auth/testing-mode/auth.testing.mode.actions";
 
 export default function AuthTestingMode() {
   const t = useTranslations("AUTH");

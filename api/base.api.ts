@@ -1,7 +1,8 @@
 import { BACKEND_URL } from "@/utils/config";
+import { getUserAccessToken } from "@/utils/cookies/cookiesServer";
 
 type FetchOptions = RequestInit & {
-  token?: string;
+  userAuthenticated?: boolean;
 };
 
 export interface APIErrorResponse {
@@ -45,7 +46,12 @@ export async function fetchApi<T>(
   options: FetchOptions = {},
   rawResponse: boolean = false
 ): Promise<T | Response> {
-  const { token, headers, ...rest } = options;
+  const { userAuthenticated, headers, ...rest } = options;
+  let token = null;
+  if (userAuthenticated) {
+    token = await getUserAccessToken();
+    if (!token) throw new Error("AUTH_004");
+  }
   const url = `${BACKEND_URL}${
     endpoint.startsWith("/") ? endpoint : `/${endpoint}`
   }`;
@@ -64,7 +70,7 @@ export async function fetchApi<T>(
 
     if (!response.ok) {
       let errorData;
-      let message = response.statusText || "API_UNKNOWN_ERROR";
+      let message = response.statusText || "";
 
       try {
         errorData = await response.json();

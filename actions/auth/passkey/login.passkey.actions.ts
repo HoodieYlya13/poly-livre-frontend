@@ -3,7 +3,7 @@
 import {
   getServerCookies,
   setServerCookie,
-} from "@/utils/cookies/server/cookiesServer";
+} from "@/utils/cookies/cookiesServer";
 import { authApi } from "@/api/auth.api";
 import { checkRateLimit } from "@/utils/rateLimit";
 
@@ -47,7 +47,7 @@ export async function verifyPasskeyLoginAction(credential: unknown) {
     });
 
     await setServerCookie("user_id", response.userId, {
-      maxAge: response.expiresIn
+      maxAge: response.expiresIn,
     });
 
     await setServerCookie("user_email", response.email, {

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import Form from "../../../UI/shared/components/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
 import { useAuth } from "@/hooks/useAuth";
-import { registerPasskeyAction } from "@/app/actions/auth/passkey/client.paskey.actions";
+import { registerPasskeyAction } from "@/actions/auth/passkey/client.paskey.actions";
 import { useErrors } from "@/hooks/useErrors";
 
 interface PasskeyRegistrationProps {

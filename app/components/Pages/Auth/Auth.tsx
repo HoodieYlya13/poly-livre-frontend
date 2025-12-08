@@ -9,9 +9,59 @@ import { useAuthMagicLinkForm } from "@/hooks/forms/useAuthMagicLinkForm";
 import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { loginMagicLinkAction } from "@/app/actions/auth/magic-link/login.magic.link.actions";
-import { loginPasskeyAction } from "@/app/actions/auth/passkey/client.paskey.actions";
+import { loginMagicLinkAction } from "@/actions/auth/magic-link/login.magic.link.actions";
+import { loginPasskeyAction } from "@/actions/auth/passkey/client.paskey.actions";
 import { useErrors } from "@/hooks/useErrors";
+
+function getEmailProvider(email: string) {
+  if (!email) return null;
+
+  const domainParts = email.split("@")[1]?.toLowerCase().split(".");
+  if (!domainParts || domainParts.length < 2) return null;
+
+  const tld = domainParts.slice(1).join(".");
+  const providerName = domainParts[0];
+
+  const map: Record<
+    string,
+    { name: string; url?: string; getUrl?: (tld: string) => string }
+  > = {
+    gmail: { name: "Gmail", url: "https://mail.google.com" },
+    yahoo: {
+      name: "Yahoo Mail",
+      getUrl: (tld) => `https://mail.yahoo.${tld}`,
+    },
+    hotmail: { name: "Outlook", url: "https://outlook.live.com" },
+    outlook: { name: "Outlook", url: "https://outlook.live.com" },
+    live: { name: "Outlook", url: "https://outlook.live.com" },
+    icloud: { name: "iCloud Mail", url: "https://www.icloud.com/mail" },
+    orange: {
+      name: "Orange Mail",
+      getUrl: (tld) => `https://messagerie.orange.${tld}`,
+    },
+    sfr: { name: "SFR Mail", getUrl: (tld) => `https://webmail.sfr.${tld}` },
+    laposte: {
+      name: "La Poste Mail",
+      url: "https://www.laposte.net/accueil",
+    },
+    free: {
+      name: "Free Mail",
+      getUrl: (tld) => `https://webmail.free.${tld}`,
+    },
+    proton: {
+      name: "Proton Mail",
+      url: "https://account.proton.me/",
+    },
+  };
+
+  const provider = map[providerName];
+  if (!provider) return null;
+
+  return {
+    name: provider.name,
+    url: provider.getUrl ? provider.getUrl(tld) : provider.url!,
+  };
+}
 
 export default function Auth() {
   const t = useTranslations("AUTH");
@@ -28,64 +78,12 @@ export default function Auth() {
   const [successText, setSuccessText] = useState<string | null>(null);
   const [errorText, setErrorText] = useState<string | null>(null);
 
-  const emailProviderLinkMemo = useMemo(() => {
-    const email = form.watch("email");
-    if (!email) return null;
+  const emailProviderLinkMemo = useMemo(
+    () => getEmailProvider(form.watch("email")),
+    [form]
+  );
 
-    const domainParts = email.split("@")[1]?.toLowerCase().split(".");
-    if (!domainParts || domainParts.length < 2) return null;
-
-    const tld = domainParts.slice(1).join(".");
-    const providerName = domainParts[0];
-
-    const map: Record<
-      string,
-      { name: string; url?: string; getUrl?: (tld: string) => string }
-    > = {
-      gmail: { name: "Gmail", url: "https://mail.google.com" },
-      yahoo: {
-        name: "Yahoo Mail",
-        getUrl: (tld) => `https://mail.yahoo.${tld}`,
-      },
-      hotmail: { name: "Outlook", url: "https://outlook.live.com" },
-      outlook: { name: "Outlook", url: "https://outlook.live.com" },
-      live: { name: "Outlook", url: "https://outlook.live.com" },
-      icloud: { name: "iCloud Mail", url: "https://www.icloud.com/mail" },
-      orange: {
-        name: "Orange Mail",
-        getUrl: (tld) => `https://messagerie.orange.${tld}`,
-      },
-      sfr: { name: "SFR Mail", getUrl: (tld) => `https://webmail.sfr.${tld}` },
-      laposte: {
-        name: "La Poste Mail",
-        url: "https://www.laposte.net/accueil",
-      },
-      free: {
-        name: "Free Mail",
-        getUrl: (tld) => `https://webmail.free.${tld}`,
-      },
-      proton: {
-        name: "Proton Mail",
-        url: "https://account.proton.me/",
-      },
-    };
-
-    const provider = map[providerName];
-    if (!provider) return null;
-
-    return {
-      name: provider.name,
-      url: provider.getUrl ? provider.getUrl(tld) : provider.url!,
-    };
-  }, [form]);
-
-  const onPasskeyLogin = useCallback(async () => {
-    setIsPasskeyLogin(true);
-    setEmailProviderLink(null);
-    setErrorText(null);
-    form.clearErrors();
-    setSuccessText(null);
-    setLoading(true);
+  const onPasskeySubmit = useCallback(async () => {
     try {
       const username = await loginPasskeyAction();
       router.push("/profile");
@@ -94,20 +92,22 @@ export default function Auth() {
       const errorFinal = error instanceof Error ? error.message : "GENERIC";
       setErrorText(errorFinal);
       toast.error(errorT.getError(errorFinal));
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-  }, [
-    form,
-    router,
-    t,
-    errorT,
-    setLoading,
-    setErrorText,
-    setSuccessText,
-    setIsPasskeyLogin,
-  ]);
+  }, [router, errorT, t, setErrorText, setLoading]);
 
-  const onSubmit = useCallback(
+  const onPasskeyLogin = () => {
+    setIsPasskeyLogin(true);
+    setEmailProviderLink(null);
+    setErrorText(null);
+    form.clearErrors();
+    setSuccessText(null);
+    setLoading(true);
+    onPasskeySubmit();
+  };
+
+  const onMagicLinkSubmit = useCallback(
     async (data: { email: string }) => {
       try {
         await loginMagicLinkAction(data.email);
@@ -128,7 +128,7 @@ export default function Auth() {
     form.clearErrors();
     setErrorText(null);
     setSuccessText(null);
-    form.handleSubmit(onSubmit)(e);
+    form.handleSubmit(onMagicLinkSubmit)(e);
   };
 
   return (

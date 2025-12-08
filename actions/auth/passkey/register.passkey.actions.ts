@@ -1,6 +1,5 @@
 "use server";
 
-import { getUserAccessToken } from "@/utils/cookies/server/getUserAccessToken";
 import { authApi } from "@/api/auth.api";
 import { checkRateLimit } from "@/utils/rateLimit";
 
@@ -11,15 +10,8 @@ export async function getPasskeyRegistrationOptionsAction(
   try {
     await checkRateLimit("authRegisterPasskeyStart");
 
-    const token = await getUserAccessToken();
-    if (!token) throw new Error("AUTH_004");
+    const response = await authApi.registerPasskeyStart(email, passkeyName);
 
-    const response = await authApi.registerPasskeyStart(
-      email,
-      passkeyName,
-      token
-    );
-    
     return await response.json();
   } catch (error) {
     console.error("getPasskeyRegistrationOptions error:");
@@ -35,11 +27,13 @@ export async function verifyPasskeyRegistrationAction(
   try {
     await checkRateLimit("authRegisterPasskeyFinish");
 
-    return await authApi.registerPasskeyFinish(
+    await authApi.registerPasskeyFinish(
       credential,
       email,
       passkeyName
     );
+
+    return true;
   } catch (error) {
     console.error("verifyPasskeyRegistration error:");
     throw error;
