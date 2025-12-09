@@ -8,7 +8,7 @@ function getRedisClient() {
 
   if (!url || !token) {
     if (process.env.NODE_ENV === "development")
-      throw new Error(
+      return console.warn(
         "UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN not found. Rate limiting will be disabled."
       );
 
