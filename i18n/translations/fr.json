@@ -1,6 +1,7 @@
 {
   "COMMON": {
-    "LOADING": "Chargement..."
+    "LOADING": "Chargement...",
+    "HELLO": "Bonjour, {value}!"
   },
   "HOME_PAGE": {
     "META": {
@@ -34,7 +35,6 @@
   },
   "AUTH": {
     "LOGIN": "Se connecter",
-    "LOADING": "Chargement...",
     "LOGIN_TITLE": "Connectez-vous à votre compte",
     "SIGN_IN_PASSKEY": "Se connecter avec une Passkey",
     "OR": "Ou continuer avec l'email",
@@ -43,7 +43,6 @@
     "MAGIC_LINK_SENT": "Lien magique envoyé ! Vérifiez votre email.",
     "CHECK_YOUR_EMAIL": "Vérifiez votre email à ",
     "PASSWORD": "Mot de passe",
-    "HELLO": "Bonjour, {username}!",
     "ACCESS_GRANTED": "Accès accordé!"
   },
   "PROFILE": {
@@ -67,8 +66,7 @@
     }
   },
   "MAGIC_LINK": {
-    "VERIFYING": "Vérification de votre lien magique...",
-    "HELLO": "Bonjour, {username}!"
+    "VERIFYING": "Vérification de votre lien magique..."
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Changer de langue ?",

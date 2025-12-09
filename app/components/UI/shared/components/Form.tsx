@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import SubmitButton from "../elements/SubmitButton";
-import { useTranslations } from "next-intl";
 import { UseFormReturn, FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { useErrors } from "@/hooks/useErrors";
+import { useCommon } from "@/hooks/useCommon";
 
 interface FormProps<T extends FieldValues> {
   children: React.ReactNode;
@@ -21,8 +21,8 @@ export default function Form<T extends FieldValues>({
   buttonLabel,
   successText,
 }: FormProps<T>) {
-  const t = useTranslations("COMMON");
   const errorT = useErrors();
+  const commonT = useCommon();
   const [isCoolingDown, setIsCoolingDown] = useState(false);
 
   const buttonError =
@@ -61,7 +61,7 @@ export default function Form<T extends FieldValues>({
       {children}
 
       <SubmitButton
-        label={form.formState.isSubmitting ? t("LOADING") : buttonLabel}
+        label={form.formState.isSubmitting ? commonT.getCommon("") : buttonLabel}
         error={buttonError}
         disabled={buttonDisabled}
       />

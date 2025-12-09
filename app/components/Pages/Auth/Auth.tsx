@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { loginMagicLinkAction } from "@/actions/auth/magic-link/login.magic.link.actions";
 import { loginPasskeyAction } from "@/actions/auth/passkey/client.paskey.actions";
 import { useErrors } from "@/hooks/useErrors";
+import { useCommon } from "@/hooks/useCommon";
 
 function getEmailProvider(email: string) {
   if (!email) return null;
@@ -66,6 +67,7 @@ function getEmailProvider(email: string) {
 export default function Auth() {
   const t = useTranslations("AUTH");
   const errorT = useErrors();
+  const commonT = useCommon();
   const form = useAuthMagicLinkForm();
   const router = useRouter();
 
@@ -87,7 +89,7 @@ export default function Auth() {
     try {
       const username = await loginPasskeyAction();
       router.push("/profile");
-      toast.success(t("HELLO", { username }));
+      toast.success(commonT.getCommon("HELLO", username));
     } catch (error) {
       const errorFinal = error instanceof Error ? error.message : "";
       setErrorText(errorFinal);
@@ -95,7 +97,7 @@ export default function Auth() {
     } finally {
       setLoading(false);
     }
-  }, [router, errorT, t, setErrorText, setLoading]);
+  }, [router, errorT, commonT, setErrorText, setLoading]);
 
   const onPasskeyLogin = () => {
     setIsPasskeyLogin(true);
@@ -145,7 +147,7 @@ export default function Auth() {
             onClick={onPasskeyLogin}
             type="button"
             disabled={loading}
-            child={loading ? t("LOADING") : t("SIGN_IN_PASSKEY")}
+            child={loading ? commonT.getCommon("") : t("SIGN_IN_PASSKEY")}
           />
           {errorText && (
             <p className="ml-1 sm:ml-2 mt-1 text-xs sm:text-sm md:text-base text-red-500">

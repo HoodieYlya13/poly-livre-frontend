@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { verifyMagicLinkAction } from "@/actions/auth/magic-link/verify.magic.link.actions";
 import { useErrors } from "@/hooks/useErrors";
+import { useCommon } from "@/hooks/useCommon";
 
 interface MagicLinkProps {
   token: string;
@@ -14,6 +15,7 @@ interface MagicLinkProps {
 export default function MagicLink({ token }: MagicLinkProps) {
   const t = useTranslations("MAGIC_LINK");
   const errorT = useErrors();
+  const commonT = useCommon();
   const router = useRouter();
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function MagicLink({ token }: MagicLinkProps) {
       try {
         const username = await verifyMagicLinkAction(token);
         if (!username) return router.push("/profile/user-name");
-        toast.success(t("HELLO", { username }));
+        toast.success(commonT.getCommon("HELLO", username));
         router.push("/profile");
       } catch (error) {
         toast.error(
@@ -34,7 +36,7 @@ export default function MagicLink({ token }: MagicLinkProps) {
     };
 
     verifyMagicLink();
-  }, [token, router, t, errorT]);
+  }, [token, router, commonT, errorT]);
 
   return (
     <p className="flex grow items-center justify-center">{t("VERIFYING")}</p>

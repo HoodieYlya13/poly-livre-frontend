@@ -1,6 +1,7 @@
 {
   "COMMON": {
-    "LOADING": "Loading..."
+    "LOADING": "Loading...",
+    "HELLO": "Hello, {value}!"
   },
   "HOME_PAGE": {
     "META": {
@@ -33,7 +34,6 @@
     "USERNAME_SAME": "New username cannot be the same as the current one."
   },
   "AUTH": {
-    "LOADING": "Loading...",
     "LOGIN": "Sign in",
     "LOGIN_TITLE": "Sign in to your account",
     "SIGN_IN_PASSKEY": "Sign in with Passkey",
@@ -43,7 +43,6 @@
     "MAGIC_LINK_SENT": "Magic Link sent! Check your email.",
     "CHECK_YOUR_EMAIL": "Check your email at ",
     "PASSWORD": "Password",
-    "HELLO": "Hello, {username}!",
     "ACCESS_GRANTED": "Access granted!"
   },
   "PROFILE": {
@@ -67,8 +66,7 @@
     }
   },
   "MAGIC_LINK": {
-    "VERIFYING": "Verifying your magic link...",
-    "HELLO": "Hello, {username}!"
+    "VERIFYING": "Verifying your magic link..."
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Switch Language?",

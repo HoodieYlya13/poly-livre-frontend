@@ -6,8 +6,8 @@ export const useErrors = () => {
 
   return useMemo(
     () => ({
-      getError: (code: string) => {
-        return t.has(code) ? t(code) : t("GENERIC");
+      getError: (code: string, value: string = "") => {
+        return t.has(code) ? t(code, { value }) : t("GENERIC");
       },
     }),
     [t]
