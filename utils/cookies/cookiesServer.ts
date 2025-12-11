@@ -1,4 +1,5 @@
 import { DEFAULT_LOCALE_UPPERCASE, LocaleLanguages, LocaleLanguagesUpperCase } from "@/i18n/utils";
+import { AuthResponse } from "@/models/auth.models";
 import { DEFAULT_LOCALE } from "@/utils/config";
 import { cookies } from "next/headers";
 
@@ -53,6 +54,26 @@ export async function deleteServerUserCookies() {
     "user_name",
   ])
     cookieStore.delete(name);
+}
+
+export async function setUserSessionCookies(user: AuthResponse) {
+  await setServerCookie("user_access_token", user.token, {
+    maxAge: user.expiresIn,
+  });
+
+  await setServerCookie("user_id", user.id, {
+    maxAge: user.expiresIn,
+  });
+
+  await setServerCookie("user_email", user.email, {
+    maxAge: user.expiresIn,
+  });
+
+  if (user.username) {
+    await setServerCookie("user_name", user.username, {
+      maxAge: user.expiresIn,
+    });
+  }
 }
 
 export async function getPreferredLocale(toUpperCase = false) {

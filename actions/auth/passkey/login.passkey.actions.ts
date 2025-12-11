@@ -3,6 +3,7 @@
 import {
   getServerCookies,
   setServerCookie,
+  setUserSessionCookies,
 } from "@/utils/cookies/cookiesServer";
 import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
@@ -36,34 +37,22 @@ export async function getPasskeyLoginOptionsAction() {
   );
 }
 
-export async function verifyPasskeyLoginAction(credential: AuthenticationResponseJSON) {
+export async function verifyPasskeyLoginAction(
+  credential: AuthenticationResponseJSON
+) {
   return baseServerAction(
     "authLoginPasskeyFinish",
     async () => {
       const cookieHeader = await getServerCookies();
 
-      const response = await authApi.loginPasskeyFinish(
+      const user = await authApi.loginPasskeyFinish(
         credential,
         cookieHeader
       );
 
-      await setServerCookie("user_access_token", response.token, {
-        maxAge: response.expiresIn,
-      });
+      await setUserSessionCookies(user);
 
-      await setServerCookie("user_id", response.userId, {
-        maxAge: response.expiresIn,
-      });
-
-      await setServerCookie("user_email", response.email, {
-        maxAge: response.expiresIn,
-      });
-
-      await setServerCookie("user_name", response.username, {
-        maxAge: response.expiresIn,
-      });
-
-      return response.username;
+      return user.username;
     },
     {
       rawError: true,
