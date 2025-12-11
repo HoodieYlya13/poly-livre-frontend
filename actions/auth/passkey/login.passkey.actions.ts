@@ -6,6 +6,7 @@ import {
 } from "@/utils/cookies/cookiesServer";
 import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
+import { AuthenticationResponseJSON } from "@simplewebauthn/browser";
 
 export async function getPasskeyLoginOptionsAction() {
   return baseServerAction(
@@ -35,7 +36,7 @@ export async function getPasskeyLoginOptionsAction() {
   );
 }
 
-export async function verifyPasskeyLoginAction(credential: unknown) {
+export async function verifyPasskeyLoginAction(credential: AuthenticationResponseJSON) {
   return baseServerAction(
     "authLoginPasskeyFinish",
     async () => {

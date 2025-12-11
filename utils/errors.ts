@@ -13,6 +13,7 @@ export function getErrorMessage(
 
     if (message === (fallback ?? "")) {
       switch (true) {
+        case error.message.startsWith("JWT_00"):
         case error.message.startsWith("AUTH_00"):
         case error.message.startsWith("SYST_00"):
         case error.message === "TOO_MANY_REQUESTS":

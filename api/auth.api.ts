@@ -1,3 +1,4 @@
+import { AuthenticationResponseJSON } from "@simplewebauthn/browser";
 import { fetchApi } from "./base.api";
 import { AuthResponse } from "@/models/auth.models";
 
@@ -20,7 +21,7 @@ export const authApi = {
       true
     ),
 
-  loginPasskeyFinish: (credential: unknown, cookieHeader: string) =>
+  loginPasskeyFinish: (credential: AuthenticationResponseJSON, cookieHeader: string) =>
     fetchApi<AuthResponse>("/auth/passkey/login/finish", {
       method: "POST",
       headers: {

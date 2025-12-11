@@ -2,6 +2,7 @@
 
 import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
+import { RegistrationResponseJSON } from "@simplewebauthn/browser";
 
 export async function getPasskeyRegistrationOptionsAction(
   email: string,
@@ -21,7 +22,7 @@ export async function getPasskeyRegistrationOptionsAction(
 }
 
 export async function verifyPasskeyRegistrationAction(
-  credential: unknown,
+  credential: RegistrationResponseJSON,
   email: string,
   passkeyName: string
 ) {
