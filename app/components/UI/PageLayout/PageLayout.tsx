@@ -1,8 +1,8 @@
 import Footer from "./Footer/Footer";
 import NavBar from "./NavBar/NavBar";
-import UserGeoInfo from "./CustomerGeoInfo/UserGeoInfo";
+import UserGeoInfo from "./UserGeoInfo/UserGeoInfo";
 import clsx from "clsx";
-import Aurora from "./NavBar/shared/Aurora";
+import Aurora from "../shared/components/Aurora";
 import LocaleMismatch from "./LocaleMismatch";
 import { LocaleLanguages } from "@/i18n/utils";
 import {
@@ -44,7 +44,7 @@ export default async function PageLayout({
       <div className="flex flex-col z-10">
         <main
           className={clsx("grow flex flex-col min-h-dvh", {
-            "p-5 pb-0 md:p-10 md:pb-0 pt-20 md:pt-30": padding,
+            "p-5 pb-0 pt-20 md:px-10": padding,
           })}
         >
           {children}

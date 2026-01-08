@@ -4,6 +4,7 @@ import { userApi } from "@/api/user.api";
 import { getUserAccessToken, setServerCookie } from "@/utils/cookies/cookiesServer";
 import { baseServerAction } from "../base.server.actions";
 import { decodeJwt } from "jose";
+import { ERROR_CODES } from "@/utils/errors";
 
 export async function updateUsernameAction(username: string) {
   return baseServerAction(
@@ -32,7 +33,7 @@ export async function updateUsernameAction(username: string) {
       });
     },
     {
-      fallback: "USERNAME_UPDATE_FAILED",
+      fallback: ERROR_CODES.USERNAME.UPDATE_FAILED,
     }
   );
 }

@@ -45,10 +45,7 @@ export async function verifyPasskeyLoginAction(
     async () => {
       const cookieHeader = await getServerCookies();
 
-      const user = await authApi.loginPasskeyFinish(
-        credential,
-        cookieHeader
-      );
+      const user = await authApi.loginPasskeyFinish(credential, cookieHeader);
 
       await setUserSessionCookies(user);
 

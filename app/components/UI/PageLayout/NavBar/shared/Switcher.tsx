@@ -12,6 +12,7 @@ interface SwitcherProps {
   }[];
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  activeKey?: string;
 }
 
 export default function Switcher({
@@ -19,6 +20,7 @@ export default function Switcher({
   elements,
   isOpen,
   setIsOpen,
+  activeKey,
 }: SwitcherProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -38,6 +40,13 @@ export default function Switcher({
     };
   }, [isOpen, setIsOpen]);
 
+  const sortedElements = activeKey
+    ? [
+        ...elements.filter((e) => e.key !== activeKey),
+        ...elements.filter((e) => e.key === activeKey),
+      ]
+    : elements;
+
   return (
     <motion.div
       className="space-x-2 flex overflow-hidden"
@@ -56,21 +65,26 @@ export default function Switcher({
             {currentElement}
           </motion.button>
         ) : (
-          elements.map(({ key, content, onClick }) => (
-            <motion.button
-              key={key}
-              initial={{ opacity: 0, x: 20, scale: 0.9 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 20, scale: 0.9 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => {
-                onClick();
-                setIsOpen(false);
-              }}
-            >
-              {content}
-            </motion.button>
-          ))
+          <motion.div
+            key="options"
+            className="flex space-x-2"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.2 }}
+          >
+            {sortedElements.map(({ key, content, onClick }) => (
+              <button
+                key={key}
+                onClick={() => {
+                  onClick();
+                  setIsOpen(false);
+                }}
+              >
+                {content}
+              </button>
+            ))}
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
