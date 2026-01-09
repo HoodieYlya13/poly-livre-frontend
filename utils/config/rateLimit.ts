@@ -1,8 +1,9 @@
+import "server-only";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
-import { getUserIp } from "./cookies/cookies.server";
-import { ERROR_CODES } from "./errors";
-import { TESTING_MODE } from "./config";
+import { getUserIp } from "../cookies/cookies.server";
+import { ERROR_CODES } from "../errors";
+import { TESTING_MODE } from "./config.client";
 
 function getRedisClient() {
   const url = process.env.UPSTASH_REDIS_REST_URL;

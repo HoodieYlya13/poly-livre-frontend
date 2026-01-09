@@ -5,7 +5,7 @@ import { setClientCookie } from "@/utils/cookies/cookies.client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Switcher from "./Switcher";
-import { DEFAULT_LOCALE } from "@/utils/config";
+import { DEFAULT_LOCALE } from "@/utils/config/config.client";
 
 const getIconPath = (t: string) => {
   switch (t) {

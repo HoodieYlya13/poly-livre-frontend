@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { APP_NAME } from "@/utils/config";
+import { APP_NAME } from "@/utils/config/config.client";
 import {
   Theme,
   ThemeProvider,
@@ -47,7 +47,7 @@ export async function generateMetadata({
 
 export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
-  const theme = (await getServerCookie("theme") || "dark") as Theme;
+  const theme = ((await getServerCookie("theme")) || "dark") as Theme;
 
   if (!hasLocale(routing.locales, locale)) notFound();
 
