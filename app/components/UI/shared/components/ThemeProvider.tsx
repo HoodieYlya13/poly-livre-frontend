@@ -49,7 +49,6 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
     setTheme: (newTheme: Theme) => {
       setClientCookie(storageKey, newTheme, {
         maxAge: 60 * 60 * 24 * 365,
-        httpOnly: false,
       });
       setTheme(newTheme);
     },

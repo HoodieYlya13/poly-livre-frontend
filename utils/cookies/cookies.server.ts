@@ -1,3 +1,4 @@
+import "server-only";
 import {
   DEFAULT_LOCALE_UPPERCASE,
   LocaleLanguages,
