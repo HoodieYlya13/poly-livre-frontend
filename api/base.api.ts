@@ -1,5 +1,5 @@
-import { BACKEND_URL } from "@/utils/config";
-import { getUserAccessToken } from "@/utils/cookies/cookiesServer";
+import { BACKEND_URL } from "@/utils/config.server";
+import { getUserAccessToken } from "@/utils/cookies/cookies.server";
 import { ERROR_CODES } from "@/utils/errors";
 import { tryCatch } from "@/utils/tryCatch";
 

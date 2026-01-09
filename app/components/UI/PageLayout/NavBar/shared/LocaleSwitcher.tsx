@@ -1,7 +1,7 @@
 "use client";
 
 import { LocaleLanguages } from "@/i18n/utils";
-import { setClientCookie } from "@/utils/cookies/cookiesClient";
+import { setClientCookie } from "@/utils/cookies/cookies.client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Switcher from "./Switcher";

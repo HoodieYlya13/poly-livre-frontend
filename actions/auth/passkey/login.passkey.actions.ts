@@ -4,7 +4,7 @@ import {
   getServerCookies,
   setServerCookie,
   setUserSessionCookies,
-} from "@/utils/cookies/cookiesServer";
+} from "@/utils/cookies/cookies.server";
 import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
 import { AuthenticationResponseJSON } from "@simplewebauthn/browser";

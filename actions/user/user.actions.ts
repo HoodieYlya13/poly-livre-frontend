@@ -1,7 +1,10 @@
 "use server";
 
 import { userApi } from "@/api/user.api";
-import { getUserAccessToken, setServerCookie } from "@/utils/cookies/cookiesServer";
+import {
+  getUserAccessToken,
+  setServerCookie,
+} from "@/utils/cookies/cookies.server";
 import { baseServerAction } from "../base.server.actions";
 import { decodeJwt } from "jose";
 import { ERROR_CODES } from "@/utils/errors";

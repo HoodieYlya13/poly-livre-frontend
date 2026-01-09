@@ -10,7 +10,7 @@ import {
   Theme,
   ThemeProvider,
 } from "../components/UI/shared/components/ThemeProvider";
-import { getServerCookie } from "@/utils/cookies/cookiesServer";
+import { getServerCookie } from "@/utils/cookies/cookies.server";
 import { Toaster } from "../components/UI/shared/components/Toaster";
 
 interface LayoutProps {

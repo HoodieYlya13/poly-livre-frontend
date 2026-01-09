@@ -8,7 +8,7 @@ import { LocaleLanguages } from "@/i18n/utils";
 import {
   getPreferredLocale,
   getServerCookie,
-} from "@/utils/cookies/cookiesServer";
+} from "@/utils/cookies/cookies.server";
 
 interface PageLayoutProps {
   children: React.ReactNode;

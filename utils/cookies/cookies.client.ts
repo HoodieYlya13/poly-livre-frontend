@@ -7,7 +7,7 @@ import {
   getServerCookie,
   getServerCookies,
   setServerCookie,
-} from "./cookiesServer";
+} from "./cookies.server";
 
 export async function setClientCookie(
   name: string,

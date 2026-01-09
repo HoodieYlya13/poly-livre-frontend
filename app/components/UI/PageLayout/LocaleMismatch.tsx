@@ -6,7 +6,7 @@ import { LocaleLanguages } from "@/i18n/utils";
 import {
   deleteClientCookie,
   setClientCookie,
-} from "@/utils/cookies/cookiesClient";
+} from "@/utils/cookies/cookies.client";
 import { useTranslations } from "next-intl";
 
 interface LocaleMismatchProps {
