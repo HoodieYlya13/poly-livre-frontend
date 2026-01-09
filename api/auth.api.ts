@@ -1,4 +1,4 @@
-import { AuthenticationResponseJSON } from "@simplewebauthn/browser";
+import { AuthenticationResponseJSON, RegistrationResponseJSON } from "@simplewebauthn/browser";
 import { fetchApi } from "./base.api";
 import { AuthResponse } from "@/models/auth.models";
 
@@ -6,10 +6,12 @@ export const authApi = {
   loginMagicLink: (email: string) =>
     fetchApi<{ success: boolean }>("/auth/magic-link/request?email=" + email, {
       method: "POST",
+      userAuthenticated: false,
     }),
   verifyMagicLink: (token: string) =>
     fetchApi<AuthResponse>("/auth/magic-link/verify?token=" + token, {
       method: "POST",
+      userAuthenticated: false,
     }),
 
   loginStartPasskey: () =>
@@ -17,6 +19,7 @@ export const authApi = {
       "/auth/passkey/login/start",
       {
         method: "POST",
+        userAuthenticated: false,
       },
       true
     ),
@@ -28,6 +31,7 @@ export const authApi = {
         Cookie: cookieHeader,
       },
       body: JSON.stringify(credential),
+      userAuthenticated: false,
     }),
 
   registerPasskeyStart: (email: string, passkeyName: string) =>
@@ -37,13 +41,12 @@ export const authApi = {
       )}&name=${encodeURIComponent(passkeyName)}`,
       {
         method: "POST",
-        userAuthenticated: true,
       },
       true
     ),
 
   registerPasskeyFinish: (
-    credential: unknown,
+    credential: RegistrationResponseJSON,
     email: string,
     passkeyName: string
   ) =>
@@ -54,6 +57,7 @@ export const authApi = {
       {
         method: "POST",
         body: JSON.stringify(credential),
+        userAuthenticated: false,
       },
       true
     ),
@@ -65,5 +69,6 @@ export const authApi = {
         "Content-Type": "text/plain",
       },
       body: password,
+      userAuthenticated: false,
     }),
 };

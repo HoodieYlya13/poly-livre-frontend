@@ -1,5 +1,4 @@
-"use server";
-
+import "server-only";
 import { getErrorMessage } from "@/utils/errors";
 import { checkRateLimit } from "@/utils/config/rateLimit";
 import { tryCatch } from "@/utils/tryCatch";
