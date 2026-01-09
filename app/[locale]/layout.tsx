@@ -47,7 +47,7 @@ export async function generateMetadata({
 
 export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
-  const theme = (await getServerCookie("theme")) as Theme | undefined;
+  const theme = (await getServerCookie("theme") || "dark") as Theme;
 
   if (!hasLocale(routing.locales, locale)) notFound();
 
