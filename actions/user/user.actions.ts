@@ -16,7 +16,7 @@ export async function updateUsernameAction(username: string) {
       const json = await userApi.updateUsername(username);
 
       const token = await getUserAccessToken();
-      if (!token) throw new Error("AUTH_001");
+      if (!token) throw new Error(ERROR_CODES.AUTH[1]);
 
       let maxAge = 0;
 
@@ -27,7 +27,7 @@ export async function updateUsernameAction(username: string) {
           maxAge = payload.exp - now;
         }
       } catch {
-        throw new Error("SYST_001");
+        throw new Error(ERROR_CODES.SYST[1]);
       }
 
       return await setServerCookie("user_name", json.username, {
