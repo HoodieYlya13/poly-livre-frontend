@@ -10,16 +10,16 @@ import { Passkey } from "@/models/passkey.models";
 
 export const authApi = {
   loginMagicLink: (email: string) =>
-    fetchApi<{ success: boolean }>(
-      `/auth/magic-link/request?email=${encodeURIComponent(email)}`,
-      {
-        method: "POST",
-        userAuthenticated: false,
-      }
-    ),
-  verifyMagicLink: (token: string) =>
-    fetchApi<AuthResponse>(`/auth/magic-link/verify?token=${token}`, {
+    fetchApi<{ success: boolean }>("/auth/magic-link/request", {
       method: "POST",
+      body: JSON.stringify({ email }),
+      userAuthenticated: false,
+    }),
+
+  verifyMagicLink: (token: string) =>
+    fetchApi<AuthResponse>("/auth/magic-link/verify", {
+      method: "POST",
+      body: JSON.stringify({ token }),
       userAuthenticated: false,
     }),
 
@@ -47,11 +47,10 @@ export const authApi = {
 
   registerPasskeyStart: (email: string, passkeyName: string) =>
     fetchApi<PublicKeyCredentialCreationOptionsJSON>(
-      `/auth/passkey/register/start?email=${encodeURIComponent(
-        email
-      )}&name=${encodeURIComponent(passkeyName)}`,
+      "/auth/passkey/register/start",
       {
         method: "POST",
+        body: JSON.stringify({ email, passkeyName }),
       }
     ),
 
@@ -60,16 +59,15 @@ export const authApi = {
     email: string,
     passkeyName: string
   ) =>
-    fetchApi<void>(
-      `/auth/passkey/register/finish?email=${encodeURIComponent(
-        email
-      )}&name=${encodeURIComponent(passkeyName)}`,
-      {
-        method: "POST",
-        body: JSON.stringify(credential),
-        userAuthenticated: false,
-      }
-    ),
+    fetchApi<void>("/auth/passkey/register/finish", {
+      method: "POST",
+      body: JSON.stringify({
+        ...credential,
+        email,
+        passkeyName,
+      }),
+      userAuthenticated: false,
+    }),
 
   loginTestingMode: (password: string) =>
     fetchApi<{ success: boolean }>("/auth/testing-mode", {
@@ -87,12 +85,10 @@ export const authApi = {
     }),
 
   renamePasskey: (userId: string, passkeyId: string, passkeyName: string) =>
-    fetchApi<void>(
-      `/auth/passkeys/${userId}/${passkeyId}?name=${encodeURIComponent(passkeyName)}`,
-      {
-        method: "PUT",
-      }
-    ),
+    fetchApi<void>(`/auth/passkeys/${userId}/${passkeyId}`, {
+      method: "PUT",
+      body: JSON.stringify({ passkeyName }),
+    }),
 
   deletePasskey: (userId: string, passkeyId: string) =>
     fetchApi<void>(`/auth/passkeys/${userId}/${passkeyId}`, {
