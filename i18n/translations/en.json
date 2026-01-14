@@ -30,7 +30,12 @@
       "ERROR_LOGIN": "Login with Passkey took too long or was cancelled. Please try again.",
       "ERROR_REGISTER": "Register a Passkey took too long or was cancelled. Please try again.",
       "FAILED": "Passkey authentication failed.",
-      "ALREADY_EXISTS": "Passkey already exists for this device"
+      "ALREADY_EXISTS": "Passkey already exists for this device",
+      "NAME_ALREADY_EXISTS": "A passkey with this name already exists.",
+      "RENAME_FAILED": "Failed to rename passkey.",
+      "DELETE_FAILED": "Failed to delete passkey.",
+      "TOO_LONG": "Passkey name is too long.",
+      "SAME": "New passkey name cannot be the same as the current one."
     },
     "MAGIC_LINK": {
       "FAILED": "Failed to send Magic Link."
@@ -63,13 +68,23 @@
   "PROFILE": {
     "TITLE": "Profile",
     "SECURITY": "Security",
-    "CHANGE_USER_NAME": "Change user name",
+    "CHANGE_USER_NAME": "Change user name: <important>{username}</important>",
     "PASSKEY": {
       "TITLE": "Passkey",
       "DESCRIPTION": "Register a passkey to log in without a password or email link.",
       "BUTTON": "Register New Passkey",
       "NAME_LABEL": "Passkey Name",
-      "PASSKEY_REGISTER_SUCCESS": "Passkey registered successfully."
+      "PASSKEY_REGISTER_SUCCESS": "Passkey registered successfully.",
+      "PASSKEY_LIST_TITLE": "Your Passkeys",
+      "NO_PASSKEYS": "No Passkeys found.",
+      "RENAME": "Rename",
+      "RENAME_PLACEHOLDER": "New name",
+      "SAVE": "Save",
+      "CANCEL": "Cancel",
+      "RENAME_SUCCESS": "Passkey renamed successfully.",
+      "DELETE": "Delete",
+      "DELETE_SUCCESS": "Passkey deleted successfully.",
+      "RENAME_PASSKEY_ARIA_LABEL": "Rename Passkey"
     },
     "USERNAME": {
       "TITLE": "Username",
@@ -79,9 +94,6 @@
       "UPDATE": "Update",
       "USERNAME_UPDATED": "Username updated successfully."
     }
-  },
-  "MAGIC_LINK": {
-    "VERIFYING": "Verifying your magic link..."
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Switch Language?",

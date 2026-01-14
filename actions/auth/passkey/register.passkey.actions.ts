@@ -2,18 +2,22 @@
 
 import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
+import { getServerCookie } from "@/utils/cookies/cookies.server";
 import { RegistrationResponseJSON } from "@simplewebauthn/browser";
+import { ERROR_CODES } from "@/utils/errors.utils";
+import { revalidatePath } from "next/cache";
 
-export async function getPasskeyRegistrationOptionsAction(
-  email: string,
-  passkeyName: string
-) {
+export async function getPasskeyRegistrationOptionsAction(passkeyName: string) {
   return baseServerAction(
     "authRegisterPasskeyStart",
     async () => {
-      const response = await authApi.registerPasskeyStart(email, passkeyName);
+      const userEmail = await getServerCookie("user_email");
+      if (!userEmail) throw new Error(ERROR_CODES.AUTH[1]);
 
-      return await response.json();
+      return authApi.registerPasskeyStart(
+        userEmail,
+        passkeyName
+      );
     },
     {
       rawError: true,
@@ -23,14 +27,18 @@ export async function getPasskeyRegistrationOptionsAction(
 
 export async function verifyPasskeyRegistrationAction(
   credential: RegistrationResponseJSON,
-  email: string,
   passkeyName: string
 ) {
   return baseServerAction(
     "authRegisterPasskeyFinish",
     async () => {
-      await authApi.registerPasskeyFinish(credential, email, passkeyName);
+      const userEmail = await getServerCookie("user_email");
+      if (!userEmail) throw new Error(ERROR_CODES.AUTH[1]);
 
+      await authApi.registerPasskeyFinish(credential, userEmail, passkeyName);
+
+      revalidatePath("/profile");
+      
       return true;
     },
     {

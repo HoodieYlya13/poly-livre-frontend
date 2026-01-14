@@ -30,7 +30,12 @@
       "ERROR_LOGIN": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
       "ERROR_REGISTER": "L'enregistrement d'une Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
       "FAILED": "Échec de l'authentification Passkey.",
-      "ALREADY_EXISTS": "Passkey déjà existante pour cet appareil"
+      "ALREADY_EXISTS": "Passkey déjà existante pour cet appareil",
+      "NAME_ALREADY_EXISTS": "Une Passkey avec ce nom existe déjà.",
+      "RENAME_FAILED": "Échec de la mise à jour du nom de la Passkey.",
+      "DELETE_FAILED": "Échec de la suppression de la Passkey.",
+      "TOO_LONG": "Le nom de la Passkey est trop long.",
+      "SAME": "Le nouveau nom de la Passkey ne peut pas être identique à l'actuel."
     },
     "MAGIC_LINK": {
       "FAILED": "Échec de l'envoi du lien magique."
@@ -63,13 +68,23 @@
   "PROFILE": {
     "TITLE": "Profil",
     "SECURITY": "Sécurité",
-    "CHANGE_USER_NAME": "Changer nom d'utilisateur",
+    "CHANGE_USER_NAME": "Changer nom d'utilisateur : <important>{username}</important>",
     "PASSKEY": {
       "TITLE": "Passkey",
       "DESCRIPTION": "Enregistrez une Passkey pour vous connecter sans mot de passe ni lien email.",
       "BUTTON": "Enregistrer une nouvelle Passkey",
       "NAME_LABEL": "Nom de la Passkey",
-      "PASSKEY_REGISTER_SUCCESS": "Passkey enregistrée avec succès."
+      "PASSKEY_REGISTER_SUCCESS": "Passkey enregistrée avec succès.",
+      "PASSKEY_LIST_TITLE": "Vos Passkeys",
+      "NO_PASSKEYS": "Aucune Passkey trouvée.",
+      "RENAME": "Renommer",
+      "RENAME_PLACEHOLDER": "Nouveau nom",
+      "SAVE": "Sauvegarder",
+      "CANCEL": "Annuler",
+      "RENAME_SUCCESS": "Passkey renommée avec succès.",
+      "DELETE": "Supprimer",
+      "DELETE_SUCCESS": "Passkey supprimée avec succès.",
+      "RENAME_PASSKEY_ARIA_LABEL": "Renommer Passkey"
     },
     "USERNAME": {
       "TITLE": "Nom d'utilisateur",
@@ -79,9 +94,6 @@
       "UPDATE": "Mettre à jour",
       "USERNAME_UPDATED": "Nom d'utilisateur mis à jour avec succès."
     }
-  },
-  "MAGIC_LINK": {
-    "VERIFYING": "Vérification de votre lien magique..."
   },
   "LOCALE_MISMATCH": {
     "TITLE": "Changer de langue ?",

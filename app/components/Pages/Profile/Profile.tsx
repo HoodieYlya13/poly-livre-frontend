@@ -1,14 +1,16 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import PasskeyRegistration from "./shared/PasskeyRegistration";
 import Link from "next/link";
+import { Passkey } from "@/models/passkey.models";
+import PasskeyManager from "./shared/PasskeysManager";
 
 interface ProfileProps {
-  email: string;
+  username: string;
+  passkeys?: Passkey[];
 }
 
-export default function Profile({ email }: ProfileProps) {
+export default function Profile({ username, passkeys }: ProfileProps) {
   const t = useTranslations("PROFILE");
 
   return (
@@ -16,10 +18,17 @@ export default function Profile({ email }: ProfileProps) {
       <h1 className="text-3xl font-bold">{t("TITLE")}</h1>
 
       <h2 className="text-xl font-bold mb-4">{t("SECURITY")}</h2>
-      
-      <PasskeyRegistration email={email} />
 
-      <Link href="/profile/user-name">{t("CHANGE_USER_NAME")}</Link>
+      <PasskeyManager initialPasskeys={passkeys} />
+
+      <Link href="/profile/user-name" className="font-bold">
+        {t.rich("CHANGE_USER_NAME", {
+          username,
+          important: (chunks) => (
+            <span className="font-black">{chunks}</span>
+          ),
+        })}
+      </Link>
     </div>
   );
 }

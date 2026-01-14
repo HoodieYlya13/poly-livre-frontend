@@ -1,7 +1,25 @@
+import { ERROR_CODES } from "@/utils/errors.utils";
 import { z } from "zod";
 
-export const UpdatePasskeyNameSchema = z.object({
-  name: z.string(),
-});
+export const createUpdatePasskeyNameSchema = (
+  defaultPasskeyName = "",
+  existingNames: string[] = []
+) =>
+  z.object({
+    passkeyName: z
+      .string()
+      .max(30, ERROR_CODES.PASSKEY.TOO_LONG)
+      .refine(
+        (val) => defaultPasskeyName === "" || val !== defaultPasskeyName,
+        {
+          message: ERROR_CODES.PASSKEY.SAME,
+        }
+      )
+      .refine((val) => !existingNames.includes(val), {
+        message: ERROR_CODES.PASSKEY.NAME_ALREADY_EXISTS,
+      }),
+  });
+
+export const UpdatePasskeyNameSchema = createUpdatePasskeyNameSchema("");
 
 export type UpdatePasskeyNameValues = z.infer<typeof UpdatePasskeyNameSchema>;

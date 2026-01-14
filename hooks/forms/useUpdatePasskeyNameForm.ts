@@ -1,10 +1,23 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdatePasskeyNameSchema, UpdatePasskeyNameValues } from "@/schemas/updatePasskeyNameFormSchema";
+import {
+  createUpdatePasskeyNameSchema,
+  UpdatePasskeyNameValues,
+} from "@/schemas/updatePasskeyNameFormSchema";
 
-export function useUpdatePasskeyNameForm() {
+export function useUpdatePasskeyNameForm(
+  passkeyName?: string,
+  existingNames: string[] = []
+) {
   const form = useForm<UpdatePasskeyNameValues>({
-    resolver: zodResolver(UpdatePasskeyNameSchema),
+    resolver: zodResolver(
+      createUpdatePasskeyNameSchema(passkeyName, existingNames)
+    ),
+    defaultValues: {
+      passkeyName,
+    },
+    mode: "onSubmit",
+    reValidateMode: "onChange",
   });
 
   return {
