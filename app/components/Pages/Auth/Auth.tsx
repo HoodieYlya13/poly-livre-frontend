@@ -14,7 +14,7 @@ import { loginPasskeyAction } from "@/actions/auth/passkey/client.paskey.actions
 import { useErrors } from "@/hooks/useErrors";
 import { useCommon } from "@/hooks/useCommon";
 import { useFormState, useWatch } from "react-hook-form";
-import { tryCatch } from "@/utils/tryCatch";
+import { tryCatch } from "@/utils/errors.utils";
 
 function getEmailProvider(email?: string) {
   if (!email) return null;
@@ -89,7 +89,7 @@ export default function Auth() {
   const emailProviderLinkMemo = getEmailProvider(values.email);
 
   const onPasskeySubmit = async () => {
-    const [username, error] = await tryCatch(loginPasskeyAction());
+    const [error, username] = await tryCatch(loginPasskeyAction());
 
     setLoading(false);
     
@@ -111,7 +111,7 @@ export default function Auth() {
   };
 
   const onMagicLinkSubmit = async (data: { email: string }) => {
-    const [, error] = await tryCatch(loginMagicLinkAction(data.email));
+    const [error] = await tryCatch(loginMagicLinkAction(data.email));
 
     if (error) return setError("root", { message: error.message });
 

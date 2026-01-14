@@ -1,4 +1,4 @@
-import { ERROR_CODES } from "@/utils/errors";
+import { ERROR_CODES } from "@/utils/errors.utils";
 import { z } from "zod";
 
 const noWhitespace = (val: string) => !/\s/.test(val);

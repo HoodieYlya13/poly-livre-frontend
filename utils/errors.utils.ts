@@ -25,16 +25,20 @@ export const ERROR_CODES = {
   },
 } as const;
 
-type DeepValue<T> = T extends string ? T : T extends object ? DeepValue<T[keyof T]> : never;
+type DeepValue<T> = T extends string
+  ? T
+  : T extends object
+    ? DeepValue<T[keyof T]>
+    : never;
 export type ErrorCode = DeepValue<typeof ERROR_CODES>;
 
 function getAllErrorCodes(obj: Record<string, unknown>): string[] {
   return Object.values(obj).flatMap((value) => {
     if (typeof value === "string") return value;
-    
+
     if (typeof value === "object" && value !== null)
       return getAllErrorCodes(value as Record<string, unknown>);
-    
+
     return [];
   });
 }
@@ -56,4 +60,21 @@ export function getErrorMessage(
   }
 
   return fallback ?? "";
+}
+
+type Result<T, E = Error> = [error: null, data: T] | [error: E, data: null];
+
+export async function tryCatch<T, E = Error>(
+  promiseOrFn: Promise<T> | (() => Promise<T> | T)
+): Promise<Result<T, E>> {
+  try {
+    const prom =
+      typeof promiseOrFn === "function" ? promiseOrFn() : promiseOrFn;
+
+    const data = await prom;
+
+    return [null, data];
+  } catch (error) {
+    return [error as E, null];
+  }
 }

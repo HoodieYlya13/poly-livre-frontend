@@ -7,8 +7,7 @@ import {
 } from "@/utils/cookies/cookies.server";
 import { baseServerAction } from "../base.server.actions";
 import { decodeJwt } from "jose";
-import { tryCatch } from "@/utils/tryCatch";
-import { ERROR_CODES } from "@/utils/errors";
+import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
 
 export async function updateUsernameAction(username: string) {
   return baseServerAction(
@@ -19,7 +18,7 @@ export async function updateUsernameAction(username: string) {
       const token = await getUserAccessToken();
       if (!token) throw new Error(ERROR_CODES.AUTH[4]);
 
-      const [payload, jwtError] = await tryCatch(async () => decodeJwt(token));
+      const [jwtError, payload] = await tryCatch(async () => decodeJwt(token));
 
       if (jwtError || !payload || !payload.exp)
         throw new Error(ERROR_CODES.SYST[1]);

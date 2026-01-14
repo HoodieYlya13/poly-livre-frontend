@@ -10,8 +10,7 @@ import { updateUsernameAction } from "@/actions/user/user.actions";
 import { useErrors } from "@/hooks/useErrors";
 import { useAuth } from "@/hooks/useAuth";
 import { useFormState } from "react-hook-form";
-import { tryCatch } from "@/utils/tryCatch";
-import { ERROR_CODES } from "@/utils/errors";
+import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
 
 interface UserNameProps {
   username?: string;
@@ -32,7 +31,7 @@ export default function UserName({ username }: UserNameProps) {
     clearErrors();
     setSuccessText(null);
 
-    const [, error] = await tryCatch(updateUsernameAction(data.username));
+    const [error] = await tryCatch(updateUsernameAction(data.username));
 
     if (error) {
       setError("root", { message: error.message });

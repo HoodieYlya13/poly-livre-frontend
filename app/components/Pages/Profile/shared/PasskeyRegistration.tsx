@@ -9,8 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { registerPasskeyAction } from "@/actions/auth/passkey/client.paskey.actions";
 import { useErrors } from "@/hooks/useErrors";
 import { useFormState } from "react-hook-form";
-import { ERROR_CODES } from "@/utils/errors";
-import { tryCatch } from "@/utils/tryCatch";
+import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
 
 interface PasskeyRegistrationProps {
   email: string;
@@ -33,7 +32,7 @@ export default function PasskeyRegistration({
     clearErrors();
     setSuccessText(null);
 
-    const [, error] = await tryCatch(registerPasskeyAction(email, data.name));
+    const [error] = await tryCatch(registerPasskeyAction(email, data.name));
 
     if (error) {
       setError("root", { message: error.message });
@@ -41,7 +40,8 @@ export default function PasskeyRegistration({
       if (
         error.message !== ERROR_CODES.PASSKEY.ERROR_REGISTER &&
         error.message !== ERROR_CODES.PASSKEY.ALREADY_EXISTS
-      ) reconnect();
+      )
+        reconnect();
 
       return;
     }

@@ -1,7 +1,6 @@
 import "server-only";
-import { getErrorMessage } from "@/utils/errors";
+import { getErrorMessage, tryCatch } from "@/utils/errors.utils";
 import { checkRateLimit } from "@/utils/config/rateLimit";
-import { tryCatch } from "@/utils/tryCatch";
 
 export async function baseServerAction<T>(
   actionName: string,
@@ -12,7 +11,7 @@ export async function baseServerAction<T>(
     rawError?: boolean;
   } = {}
 ) {
-  const [data, error] = await tryCatch(async () => {
+  const [error, data] = await tryCatch(async () => {
     await checkRateLimit(actionName);
     return await actions();
   });

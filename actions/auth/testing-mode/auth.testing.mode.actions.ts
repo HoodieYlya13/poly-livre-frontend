@@ -3,7 +3,7 @@
 import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
 import { setServerCookie } from "@/utils/cookies/cookies.server";
-import { ERROR_CODES } from "@/utils/errors";
+import { ERROR_CODES } from "@/utils/errors.utils";
 
 export async function loginTestingModeAction(password: string) {
   return baseServerAction(
