@@ -9,6 +9,7 @@ export async function verifyMagicLinkAction(token: string) {
     "authVerifyMagicLink",
     async () => {
       const user = await authApi.verifyMagicLink(token);
+      
       await setUserSessionCookies(user);
 
       return user.username;

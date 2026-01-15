@@ -66,7 +66,7 @@ export async function fetchApi<T>(
 
   if (fetchError) throw fetchError;
 
-  if (!response.ok) {    
+  if (!response.ok) {
     const [, errorData] = await tryCatch(response.json());
 
     const message =
