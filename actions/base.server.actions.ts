@@ -8,7 +8,6 @@ export async function baseServerAction<T>(
   errorHandling: {
     fallback?: string;
     overrides?: Record<string, string>;
-    rawError?: boolean;
   } = {}
 ) {
   const [error, data] = await tryCatch(async () => {
@@ -18,8 +17,6 @@ export async function baseServerAction<T>(
 
   if (error) {
     console.error(`${actionName} error:`);
-
-    if (errorHandling.rawError) throw error;
 
     const message = getErrorMessage(
       error,

@@ -11,9 +11,7 @@ export async function getPasskeyLoginOptionsAction() {
     async () => {
       return await authApi.loginStartPasskey();
     },
-    {
-      rawError: true,
-    }
+    {}
   );
 }
 
@@ -31,8 +29,6 @@ export async function verifyPasskeyLoginAction(
 
       return user.username;
     },
-    {
-      rawError: true,
-    }
+    {}
   );
 }

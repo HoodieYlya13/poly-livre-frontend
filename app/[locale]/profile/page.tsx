@@ -9,7 +9,11 @@ export default async function ProfilePage() {
   const username = await getServerCookie("user_name");
   if (!username) redirect("/profile/user-name"); // TODO: remove this at some point because handled in the proxy
 
-  const passkeys = await getUserPasskeysAction();
+  const passkeys = await getUserPasskeysAction(); // TODO: create a handler to reconnect
+
+  // const [error, passkeys] = await tryCatch(getUserPasskeysAction()); // TODO: create a handler to reconnect
+
+  // if (error) reconnect(); // TODO: create a handler to reconnect on the server if auth error
 
   return (
     <PageLayout>

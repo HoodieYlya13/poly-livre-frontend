@@ -12,16 +12,11 @@ export async function getPasskeyRegistrationOptionsAction(passkeyName: string) {
     "authRegisterPasskeyStart",
     async () => {
       const userEmail = await getServerCookie("user_email");
-      if (!userEmail) throw new Error(ERROR_CODES.AUTH[1]);
+      if (!userEmail) throw new Error(ERROR_CODES.AUTH[4]);
 
-      return authApi.registerPasskeyStart(
-        userEmail,
-        passkeyName
-      );
+      return authApi.registerPasskeyStart(userEmail, passkeyName);
     },
-    {
-      rawError: true,
-    }
+    {}
   );
 }
 
@@ -33,16 +28,14 @@ export async function verifyPasskeyRegistrationAction(
     "authRegisterPasskeyFinish",
     async () => {
       const userEmail = await getServerCookie("user_email");
-      if (!userEmail) throw new Error(ERROR_CODES.AUTH[1]);
+      if (!userEmail) throw new Error(ERROR_CODES.AUTH[4]);
 
       await authApi.registerPasskeyFinish(credential, userEmail, passkeyName);
 
       revalidatePath("/profile");
-      
+
       return true;
     },
-    {
-      rawError: true,
-    }
+    {}
   );
 }
