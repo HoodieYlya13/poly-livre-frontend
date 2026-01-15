@@ -16,12 +16,19 @@
 
 :root {
   --size: max(100vw, 100vh);
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: gray black;
+  scrollbar-color: gray var(--background);
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */
@@ -37,11 +44,11 @@
 *::-webkit-scrollbar-thumb {
   background-color: gray;
   border-radius: 6px;
-  border: 2px solid black;
+  border: 2px solid var(--background);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: black;
+  background-color: var(--background);
 }
 
 @layer utilities {
@@ -55,10 +62,11 @@
   }
 }
 
-html,
-body {
-  overscroll-behavior: none;
-  background-color: black;
+@layer base {
+  html,
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 .input-focus-glow:focus-within::after {
@@ -98,12 +106,22 @@ body {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.custom-shadow {
+/* .custom-shadow {
   box-shadow: 2px 4px 12px #00000014;
   transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
 
-.custom-shadow:hover {
+.custom-shadow-hover:hover {
   box-shadow: 2px 4px 16px #00000029;
+  transform: scale3d(1.01, 1.01, 1.01);
+} */
+
+.custom-shadow {
+  box-shadow: 2px 4px 16px #00000030;
+  transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
+}
+
+.custom-shadow-hover:hover {
+  box-shadow: 2px 4px 20px #00000060;
   transform: scale3d(1.01, 1.01, 1.01);
 }

@@ -1,10 +1,10 @@
-import PageBuilder from '../components/UI/PageBuilder/PageBuilder';
-import Home from '../components/Pages/Home/Home';
+import PageLayout from "../components/UI/PageLayout/PageLayout";
+import Home from "../components/Pages/Home/Home";
 
 export default function HomePage() {
   return (
-    <PageBuilder padding={false}>
+    <PageLayout padding={false}>
       <Home />
-    </PageBuilder>
+    </PageLayout>
   );
 }

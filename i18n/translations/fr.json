@@ -1,21 +1,98 @@
 {
+  "COMMON": {
+    "LOADING": "Chargement...",
+    "HELLO": "Bonjour, {value} !"
+  },
   "HOME_PAGE": {
     "META": {
-      "TITLE": "Librairie en ligne - {name}",
-      "DESCRIPTION": "Bienvenue dans la librairie en ligne de {name} ! Découvrez nos livres."
+      "TITLE": "{name}",
+      "DESCRIPTION": "Bienvenue dans {name} !"
+    }
+  },
+  "ERRORS": {
+    "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
+    "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
+    "SYST": {
+      "001": "Une erreur inattendue est survenue.",
+      "002": "Validation échouée pour au moins un champ."
+    },
+    "JWT": {
+      "001": "Clé privée invalide.",
+      "002": "Clé publique invalide."
+    },
+    "AUTH": {
+      "001": "Échec de l'authentification",
+      "002": "Non autorisé",
+      "003": "Session invalide",
+      "004": "Session expirée"
+    },
+    "PASSKEY": {
+      "ERROR_LOGIN": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
+      "ERROR_REGISTER": "L'enregistrement d'une Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
+      "FAILED": "Échec de l'authentification Passkey.",
+      "ALREADY_EXISTS": "Passkey déjà existante pour cet appareil",
+      "NAME_ALREADY_EXISTS": "Une Passkey avec ce nom existe déjà.",
+      "RENAME_FAILED": "Échec de la mise à jour du nom de la Passkey.",
+      "DELETE_FAILED": "Échec de la suppression de la Passkey.",
+      "TOO_LONG": "Le nom de la Passkey est trop long.",
+      "SAME": "Le nouveau nom de la Passkey ne peut pas être identique à l'actuel."
+    },
+    "MAGIC_LINK": {
+      "FAILED": "Échec de l'envoi du lien magique."
+    },
+    "PASSWORD": {
+      "INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
+      "TOO_SHORT": "Le mot de passe est trop court.",
+      "TOO_LONG": "Le mot de passe est trop long.",
+      "STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace."
+    },
+    "USERNAME": {
+      "UPDATE_FAILED": "Échec de la mise à jour du nom d'utilisateur.",
+      "HAS_WHITESPACE": "Le nom d'utilisateur ne peut pas contenir d'espace.",
+      "TOO_LONG": "Le nom d'utilisateur est trop long.",
+      "SAME": "Le nouveau nom d'utilisateur ne peut pas être identique à l'actuel."
     }
   },
   "AUTH": {
     "LOGIN": "Se connecter",
-    "LOADING": "Chargement...",
+    "LOGIN_TITLE": "Connectez-vous à votre compte",
+    "SIGN_IN_PASSKEY": "Se connecter avec une Passkey",
+    "OR": "Ou continuer avec l'email",
+    "EMAIL_LABEL": "Adresse email",
+    "SEND_MAGIC_LINK": "Envoyer un lien magique",
+    "MAGIC_LINK_SENT": "Lien magique envoyé ! Vérifiez votre email.",
+    "CHECK_YOUR_EMAIL": "Vérifiez votre email à ",
     "PASSWORD": "Mot de passe",
-    "ERRORS": {
-      "GENERIC": "Une erreur inattendue est survenue.",
-      "TOO_SHORT": "Le mot de passe est trop court.",
-      "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Le mot de passe ne peut pas commencer ou se terminer par un espace.",
-      "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
-      "PASSWORD_INCORRECT": "Mot de passe incorrect. Veuillez réessayer.",
-      "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard."
+    "ACCESS_GRANTED": "Accès accordé!"
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "SECURITY": "Sécurité",
+    "CHANGE_USER_NAME": "Changer nom d'utilisateur : <important>{username}</important>",
+    "PASSKEY": {
+      "TITLE": "Passkey",
+      "DESCRIPTION": "Enregistrez une Passkey pour vous connecter sans mot de passe ni lien email.",
+      "BUTTON": "Enregistrer une nouvelle Passkey",
+      "NAME_LABEL": "Nom de la Passkey",
+      "PASSKEY_REGISTER_SUCCESS": "Passkey enregistrée avec succès.",
+      "PASSKEY_LIST_TITLE": "Vos Passkeys",
+      "NO_PASSKEYS": "Aucune Passkey trouvée.",
+      "RENAME": "Renommer",
+      "RENAME_PLACEHOLDER": "Nouveau nom",
+      "SAVE": "Sauvegarder",
+      "CANCEL": "Annuler",
+      "RENAME_SUCCESS": "Passkey renommée avec succès.",
+      "DELETE": "Supprimer",
+      "DELETE_SUCCESS": "Passkey supprimée avec succès.",
+      "RENAME_PASSKEY_ARIA_LABEL": "Renommer Passkey"
+    },
+    "USERNAME": {
+      "TITLE": "Nom d'utilisateur",
+      "DESCRIPTION": "Enregistrez un nom d'utilisateur pour vous connecter sans mot de passe ni lien email.",
+      "BUTTON": "Enregistrer un nouveau nom d'utilisateur",
+      "NAME_LABEL": "Nom d'utilisateur",
+      "UPDATE": "Mettre à jour",
+      "USERNAME_UPDATED": "Nom d'utilisateur mis à jour avec succès."
     }
   },
   "LOCALE_MISMATCH": {

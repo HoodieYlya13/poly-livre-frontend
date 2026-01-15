@@ -40,8 +40,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# JetBrains
-/.idea/
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
 
 # Default ignored files
 /shelf/
@@ -49,4 +55,3 @@ next-env.d.ts
 
 # Editor-based HTTP Client requests
 /httpRequests/
-

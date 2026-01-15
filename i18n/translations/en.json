@@ -1,21 +1,98 @@
 {
+  "COMMON": {
+    "LOADING": "Loading...",
+    "HELLO": "Hello, {value}!"
+  },
   "HOME_PAGE": {
     "META": {
-      "TITLE": "Library shop - {name}",
-      "DESCRIPTION": "Welcome to {name}'s library shop! Explore all our books."
+      "TITLE": "{name}",
+      "DESCRIPTION": "Welcome to {name}!"
+    }
+  },
+  "ERRORS": {
+    "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
+    "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
+    "SYST": {
+      "001": "An unexpected error occurred.",
+      "002": "Validation failed for at least one field."
+    },
+    "JWT": {
+      "001": "Private key is invalid.",
+      "002": "Public key is invalid."
+    },
+    "AUTH": {
+      "001": "Authentication failed.",
+      "002": "Unauthorized.",
+      "003": "Invalid session.",
+      "004": "Session expired."
+    },
+    "PASSKEY": {
+      "ERROR_LOGIN": "Login with Passkey took too long or was cancelled. Please try again.",
+      "ERROR_REGISTER": "Register a Passkey took too long or was cancelled. Please try again.",
+      "FAILED": "Passkey authentication failed.",
+      "ALREADY_EXISTS": "Passkey already exists for this device",
+      "NAME_ALREADY_EXISTS": "A passkey with this name already exists.",
+      "RENAME_FAILED": "Failed to rename passkey.",
+      "DELETE_FAILED": "Failed to delete passkey.",
+      "TOO_LONG": "Passkey name is too long.",
+      "SAME": "New passkey name cannot be the same as the current one."
+    },
+    "MAGIC_LINK": {
+      "FAILED": "Failed to send Magic Link."
+    },
+    "PASSWORD": {
+      "INCORRECT": "Incorrect password. Please try again.",
+      "TOO_SHORT": "Password is too short.",
+      "TOO_LONG": "Password is too long.",
+      "STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace."
+    },
+    "USERNAME": {
+      "UPDATE_FAILED": "Failed to update username.",
+      "HAS_WHITESPACE": "Username cannot have whitespace.",
+      "TOO_LONG": "Username is too long.",
+      "SAME": "New username cannot be the same as the current one."
     }
   },
   "AUTH": {
-    "LOADING": "Loading...",
     "LOGIN": "Sign in",
+    "LOGIN_TITLE": "Sign in to your account",
+    "SIGN_IN_PASSKEY": "Sign in with Passkey",
+    "OR": "Or continue with email",
+    "EMAIL_LABEL": "Email address",
+    "SEND_MAGIC_LINK": "Send Magic Link",
+    "MAGIC_LINK_SENT": "Magic Link sent! Check your email.",
+    "CHECK_YOUR_EMAIL": "Check your email at ",
     "PASSWORD": "Password",
-    "ERRORS": {
-      "GENERIC": "An unexpected error occurred.",
-      "TOO_SHORT": "Password is too short.",
-      "PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE": "Password cannot start or end with whitespace.",
-      "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
-      "PASSWORD_INCORRECT": "Incorrect password. Please try again.",
-      "TOO_MANY_REQUESTS": "Too many requests. Please try again later."
+    "ACCESS_GRANTED": "Access granted!"
+  },
+  "PROFILE": {
+    "TITLE": "Profile",
+    "SECURITY": "Security",
+    "CHANGE_USER_NAME": "Change user name: <important>{username}</important>",
+    "PASSKEY": {
+      "TITLE": "Passkey",
+      "DESCRIPTION": "Register a passkey to log in without a password or email link.",
+      "BUTTON": "Register New Passkey",
+      "NAME_LABEL": "Passkey Name",
+      "PASSKEY_REGISTER_SUCCESS": "Passkey registered successfully.",
+      "PASSKEY_LIST_TITLE": "Your Passkeys",
+      "NO_PASSKEYS": "No Passkeys found.",
+      "RENAME": "Rename",
+      "RENAME_PLACEHOLDER": "New name",
+      "SAVE": "Save",
+      "CANCEL": "Cancel",
+      "RENAME_SUCCESS": "Passkey renamed successfully.",
+      "DELETE": "Delete",
+      "DELETE_SUCCESS": "Passkey deleted successfully.",
+      "RENAME_PASSKEY_ARIA_LABEL": "Rename Passkey"
+    },
+    "USERNAME": {
+      "TITLE": "Username",
+      "DESCRIPTION": "Register a username to log in without a password or email link.",
+      "BUTTON": "Register New Username",
+      "NAME_LABEL": "Username",
+      "UPDATE": "Update",
+      "USERNAME_UPDATED": "Username updated successfully."
     }
   },
   "LOCALE_MISMATCH": {
