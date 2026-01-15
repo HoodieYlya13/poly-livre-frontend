@@ -103,5 +103,10 @@
     "DESCRIPTION": "We detected that your preferred language is <important>{preferredLocale}</important>, but you are viewing the site in <important>{currentLocale}</important>.",
     "KEEP": "Keep {locale}",
     "SWITCH": "Switch to {locale}"
+  },
+  "COOKIE_CONSENT": {
+    "TITLE": "Cookie Policy",
+    "DESCRIPTION": "We use necessary cookies to ensure the website functions properly. No personal data is used for commercial purposes.",
+    "ACKNOWLEDGE": "I understand"
   }
 }
