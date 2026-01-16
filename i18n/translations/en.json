@@ -10,10 +10,16 @@
     },
     "HERO": {
       "TITLE": "<primary>Borrow</primary> books near you!",
-      "DESCRIPTION": "Reduce your purchases, discover new authors and support the local community. Reserve, pick up at a relay point or have it delivered.",
+      "DESCRIPTION": "Discover an unlimited access to thousands of books.\nBorrow, read and return them, all from home.\nYour next adventure awaits.",
       "DISCOVER_CATALOG": "Discover catalogue",
       "PROPOSE_BOOK": "Propose a book",
-      "IMAGE_ALT": "Woman studying"
+      "IMAGE_ALT": "Woman studying",
+      "STATS": {
+        "BOOKS_AVAILABLE": "Books available",
+        "READING_DAYS": "Days of reading",
+        "FREE": "Free",
+        "DELIVERY_RETURN": "Delivery and Return"
+      }
     }
   },
   "FOOTER": {

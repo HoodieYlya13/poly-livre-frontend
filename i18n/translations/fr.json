@@ -10,10 +10,16 @@
     },
     "HERO": {
       "TITLE": "<primary>Empruntez</primary> des livres près de chez vous !",
-      "DESCRIPTION": "Réduisez vos achats, découvrez de nouveaux auteurs et soutenez la communauté locale. Réservez, récupérez en point relais ou faites livrer.",
+      "DESCRIPTION": "Découvrez un accès illimité à des milliers de livres.\nLouez, lisez et rendez-les, le tout depuis chez vous.\nVotre prochaine aventure vous attend.",
       "DISCOVER_CATALOG": "Découvrir le catalogue",
       "PROPOSE_BOOK": "Proposer un livre",
-      "IMAGE_ALT": "Femme étudiant"
+      "IMAGE_ALT": "Femme étudiant",
+      "STATS": {
+        "BOOKS_AVAILABLE": "Livres disponibles",
+        "READING_DAYS": "Jours de lecture",
+        "FREE": "Gratuit",
+        "DELIVERY_RETURN": "Livraison et Retour"
+      }
     }
   },
   "FOOTER": {
