@@ -33,7 +33,7 @@ export default function NavBarClient({
   token,
 }: NavBarClientProps) {
   return (
-    <nav className="w-full flex items-center justify-between px-4 max-w-7xl mx-auto">
+    <nav className="w-full flex items-center justify-between px-5 md:px-10">
       <Logo />
 
       <div className="flex items-center gap-2">

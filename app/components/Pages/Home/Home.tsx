@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="flex grow flex-col items-center justify-center pt-20 font-normal">
       <div className="w-full flex flex-row gap-5">
-        <div className="w-full lg:w-1/2 flex flex-col gap-5 justify-center p-16">
+        <div className="w-full lg:w-1/2 flex flex-col gap-5 justify-center p-16 md:p-24 lg:p-32">
           <h1 className="text-5xl font-bold">
             {t.rich("HERO.TITLE", {
               primary: (chunks) => (
