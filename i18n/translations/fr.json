@@ -7,7 +7,20 @@
     "META": {
       "TITLE": "{name}",
       "DESCRIPTION": "Bienvenue dans {name} !"
+    },
+    "HERO": {
+      "TITLE": "<primary>Empruntez</primary> des livres près de chez vous !",
+      "DESCRIPTION": "Réduisez vos achats, découvrez de nouveaux auteurs et soutenez la communauté locale. Réservez, récupérez en point relais ou faites livrer.",
+      "DISCOVER_CATALOG": "Découvrir le catalogue",
+      "PROPOSE_BOOK": "Proposer un livre",
+      "IMAGE_ALT": "Femme étudiant"
     }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© Copyright {year} - <bold>{appName}</bold>",
+    "TERMS": "CGU",
+    "CONTACT": "Contact",
+    "HELP": "Aide"
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",

@@ -18,7 +18,8 @@
   --size: max(100vw, 100vh);
   --background: #ffffff;
   --foreground: #000000;
-  --primary: #FFEFE180;
+  --primary: #AA600E;
+  --secondary: #FFEFE180;
 }
 
 .dark {

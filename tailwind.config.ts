@@ -8,6 +8,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "var(--primary)",
+        secondary: "var(--secondary)",
       },
       screens: {
         xs: "24rem",

@@ -7,7 +7,20 @@
     "META": {
       "TITLE": "{name}",
       "DESCRIPTION": "Welcome to {name}!"
+    },
+    "HERO": {
+      "TITLE": "<primary>Borrow</primary> books near you!",
+      "DESCRIPTION": "Reduce your purchases, discover new authors and support the local community. Reserve, pick up at a relay point or have it delivered.",
+      "DISCOVER_CATALOG": "Discover catalogue",
+      "PROPOSE_BOOK": "Propose a book",
+      "IMAGE_ALT": "Woman studying"
     }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© Copyright {year} - <bold>{appName}</bold>",
+    "TERMS": "Terms",
+    "CONTACT": "Contact",
+    "HELP": "Help"
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",

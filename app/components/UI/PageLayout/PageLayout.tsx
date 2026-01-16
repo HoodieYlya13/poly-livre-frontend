@@ -51,7 +51,7 @@ export default async function PageLayout({
 
       <div className="flex flex-col z-10">
         <main
-          className={clsx("grow flex flex-col min-h-dvh", {
+          className={clsx("grow flex flex-col min-h-dvh max-w-7xl mx-auto", {
             "p-5 pb-0 pt-20 md:px-10": padding,
           })}
         >

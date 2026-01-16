@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import Logout from "./Logout";
-import { APP_NAME } from "@/utils/config/config.client";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { LocaleLanguages } from "@/i18n/utils";
 import ThemeSwitcher from "./ThemeSwitcher";
+import Logo from "../../../shared/components/Logo";
 
 function MyAccountIcon() {
   return (
@@ -34,18 +33,8 @@ export default function NavBarClient({
   token,
 }: NavBarClientProps) {
   return (
-    <nav className="w-full flex items-center justify-between px-4">
-      <Link href="/" className="flex items-center gap-2 md:gap-3">
-        <Image
-          src="/favicon.ico"
-          alt="Logo"
-          width={40}
-          height={40}
-          className="size-10 select-none"
-          priority
-        />
-        <span>{APP_NAME}</span>
-      </Link>
+    <nav className="w-full flex items-center justify-between px-4 max-w-7xl mx-auto">
+      <Logo />
 
       <div className="flex items-center gap-2">
         <ThemeSwitcher />
