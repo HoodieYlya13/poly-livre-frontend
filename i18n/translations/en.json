@@ -20,6 +20,28 @@
         "FREE": "Free",
         "DELIVERY_RETURN": "Delivery and Return"
       }
+    },
+    "HOW_IT_WORKS": {
+      "TITLE": "How does it work?",
+      "DESCRIPTION": "Finding your next favorite book has never been easier.\nFollow these easy steps to start your reading adventure.",
+      "STEPS": {
+        "STEP_1": {
+          "TITLE": "Browse and Select",
+          "DESCRIPTION": "Explore our vast collection of over 100,000 books. Use filters to find exactly what you're looking for."
+        },
+        "STEP_2": {
+          "TITLE": "Borrow Instantly",
+          "DESCRIPTION": "Choose your rental period and finalize your reservation in seconds. No fees!"
+        },
+        "STEP_3": {
+          "TITLE": "Free Delivery",
+          "DESCRIPTION": "Your books arrive at your home within 2-3 business days, carefully packaged and ready to read."
+        },
+        "STEP_4": {
+          "TITLE": "Return Easily",
+          "DESCRIPTION": "Once finished, use our prepaid return label. Drop it off at any post office."
+        }
+      }
     }
   },
   "FOOTER": {

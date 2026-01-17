@@ -20,6 +20,28 @@
         "FREE": "Gratuit",
         "DELIVERY_RETURN": "Livraison et Retour"
       }
+    },
+    "HOW_IT_WORKS": {
+      "TITLE": "Comment ça marche ?",
+      "DESCRIPTION": "Trouver votre prochain livre préféré n'a jamais été aussi simple.\nSuivez ces étapes faciles pour commencer votre aventure de lecture.",
+      "STEPS": {
+        "STEP_1": {
+          "TITLE": "Parcourir et sélectionner",
+          "DESCRIPTION": "Explorez notre vaste collection de plus de 100 000 livres. Utilisez les filtres pour trouver exactement ce que vous cherchez."
+        },
+        "STEP_2": {
+          "TITLE": "Emprunter instantanément",
+          "DESCRIPTION": "Choisissez votre période de location et finalisez votre réservation en quelques secondes. Sans aucun frais !"
+        },
+        "STEP_3": {
+          "TITLE": "Livraison gratuite",
+          "DESCRIPTION": "Vos livres arrivent chez vous sous 2 à 3 jours ouvrables, soigneusement emballés et prêts à être lus."
+        },
+        "STEP_4": {
+          "TITLE": "Retourner facilement",
+          "DESCRIPTION": "Une fois terminé, utilisez notre étiquette de retour prépayée. Déposez-la dans n'importe quel bureau de poste."
+        }
+      }
     }
   },
   "FOOTER": {

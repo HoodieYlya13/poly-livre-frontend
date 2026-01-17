@@ -14,6 +14,9 @@ const config: Config = {
         xs: "24rem",
         md: "54rem",
       },
+      containers: {
+        "8xl": "88rem",
+      },
     },
   },
   plugins: [tailwindcssAnimate],

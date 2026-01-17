@@ -6,7 +6,7 @@ export default function Footer() {
   const t = useTranslations("FOOTER");
 
   return (
-    <footer className="w-full h-20 md:h-30 border-t liquid-glass-border-color flex px-5 md:px-10 shadow-[0_-25px_50px_-12px_rgb(0_0_0/0.25)] bg-secondary font-normal">
+    <footer className="w-full h-20 md:h-30 border-t liquid-glass-border-color flex px-5 md:px-10 shadow-[0_-25px_50px_-12px_rgb(0_0_0/0.25)] bg-secondary/50 font-normal">
       <div className="w-full flex flex-col sm:flex-row gap-5 justify-center sm:justify-between items-center">
         <div>
           {t.rich("COPYRIGHT", {
