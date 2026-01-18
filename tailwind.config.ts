@@ -14,6 +14,9 @@ const config: Config = {
         xs: "24rem",
         md: "54rem",
       },
+      minHeight: {
+        fullscreen: "calc(100dvh - var(--nav-height))",
+      },
       containers: {
         "8xl": "88rem",
       },

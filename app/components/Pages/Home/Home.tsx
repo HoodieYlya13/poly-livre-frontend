@@ -10,15 +10,15 @@ export default function Home() {
   const t = useTranslations("HOME_PAGE.HOW_IT_WORKS");
 
   return (
-    <div className="flex grow flex-col gap-10 items-center justify-center font-normal">
-      <section className="flex md:landscape:min-h-dvh w-full pt-20">
+    <div className="flex grow flex-col gap-10 items-center justify-center font-normal pb-10">
+      <section className="flex md:landscape:min-h-fullscreen w-full">
         <div className="w-full grow flex flex-row gap-5 animate-in slide-in-from-bottom-10 fade-in duration-700 ease-out">
           <Information />
           <WomanStudying />
         </div>
       </section>
 
-      <section className="w-full flex flex-col gap-10 items-center justify-center px-2 xs:px-5">
+      <section className="w-full flex flex-col gap-10 items-center justify-center px-5 md:px-10">
         <div className="w-full flex flex-col gap-2 items-center justify-center">
           <h2 className="font-bold text-2xl sm:text-3xl">{t("TITLE")}</h2>
 
@@ -30,7 +30,7 @@ export default function Home() {
         <InformationTiles />
       </section>
 
-      <section className="w-full flex flex-col gap-10 items-center justify-center px-2 xs:px-5">
+      <section className="w-full flex flex-col gap-10 items-center justify-center px-5 md:px-10">
         <Image
           src="/img/rocket.png"
           alt="Rocket"
@@ -58,7 +58,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full flex flex-col gap-10 items-center justify-center px-2 pb-10 xs:px-5">
+      <section className="w-full flex flex-col gap-10 items-center justify-center px-5 md:px-10">
         <h2 className="font-bold text-2xl sm:text-3xl">
           Que disent nos lecteurs ?
         </h2>

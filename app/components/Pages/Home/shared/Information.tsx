@@ -5,7 +5,7 @@ export default function Information() {
   const t = useTranslations("HOME_PAGE");
 
   return (
-    <div className="w-full md:w-1/2 flex items-center justify-center px-2 pt-10 xs:px-5 md:p-12">
+    <div className="w-full md:w-1/2 flex items-center justify-center pt-10 px-5 md:p-10">
       <div className="w-full flex max-w-xl @container">
         <div className="w-full flex flex-col gap-5 text-xs @sm:text-sm @md:text-base">
           <h1 className="text-3xl @xs:text-4xl @md:text-5xl font-bold">
