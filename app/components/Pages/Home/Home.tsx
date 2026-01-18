@@ -50,7 +50,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="w-full flex flex-col sm:flex-row gap-2 items-center justify-center">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-3 justify-items-center mx-auto">
           <BookTile />
           <BookTile />
           <BookTile />
@@ -63,7 +63,7 @@ export default function Home() {
           Que disent nos lecteurs ?
         </h2>
 
-        <div className="w-full flex flex-col sm:flex-row gap-2 items-center justify-center">
+        <div className="w-full flex flex-col sm:flex-row gap-3 items-center justify-center">
           <ReviewTile />
           <ReviewTile />
           <ReviewTile />
