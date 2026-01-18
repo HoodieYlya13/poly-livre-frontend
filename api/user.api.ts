@@ -11,4 +11,12 @@ export const userApi = {
     fetchApi<UserDto>("/users/me", {
       method: "GET",
     }),
+
+  // TODO: create the endpoint
+  subscribeToNewsletter: (email: string) =>
+    fetchApi<void>(`/users/newsletter`, {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      userAuthenticated: false,
+    }),
 };

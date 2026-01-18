@@ -4,7 +4,11 @@ import Link from "next/link";
 
 export default function Logo() {
   return (
-    <Link href="/" className="h-8 w-auto cursor-pointer text-primary">
+    <Link
+      href="/"
+      prefetch
+      className="h-8 w-auto cursor-pointer text-primary"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"

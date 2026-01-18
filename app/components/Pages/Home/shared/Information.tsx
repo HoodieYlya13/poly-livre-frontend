@@ -21,6 +21,7 @@ export default function Information() {
           <div className="flex flex-col @sm:flex-row gap-5">
             <Link
               href="/catalog"
+              prefetch
               className="bg-primary text-white py-2 rounded w-full text-center"
             >
               {t("HERO.DISCOVER_CATALOG")}
@@ -28,6 +29,7 @@ export default function Information() {
 
             <Link
               href="/profile/add-book"
+              prefetch
               className="border border-foreground py-2 rounded w-full text-center"
             >
               {t("HERO.PROPOSE_BOOK")}

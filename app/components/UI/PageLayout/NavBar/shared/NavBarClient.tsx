@@ -41,7 +41,7 @@ export default function NavBarClient({
 
         <LocaleSwitcher storedLocale={locale} localeMismatch={localeMismatch} />
 
-        <Link href={token ? "/profile" : "/auth"}>
+        <Link href={token ? "/profile" : "/auth"} prefetch>
           <MyAccountIcon />
         </Link>
 

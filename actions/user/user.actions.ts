@@ -8,6 +8,7 @@ import {
 import { baseServerAction } from "../base.server.actions";
 import { decodeJwt } from "jose";
 import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
+import { MailSchema } from "@/schemas/mailFormSchema";
 
 export async function updateUsernameAction(username: string) {
   return baseServerAction(
@@ -33,7 +34,7 @@ export async function updateUsernameAction(username: string) {
     },
     {
       fallback: ERROR_CODES.USERNAME.UPDATE_FAILED,
-    }
+    },
   );
 }
 
@@ -43,6 +44,31 @@ export async function getCurrentUserAction() {
     async () => {
       return await userApi.getMe();
     },
-    {}
+    {},
+  );
+}
+
+export async function subscribeToNewsletterAction(
+  _: boolean | null,
+  formData: FormData,
+) {
+  const email = formData.get("email");
+
+  const validatedFields = MailSchema.safeParse({ email });
+
+  if (!validatedFields.success) return false;
+
+  return baseServerAction(
+    "subscribeToNewsletter",
+    async () => {
+      const [error] = await tryCatch(
+        userApi.subscribeToNewsletter(validatedFields.data.email),
+      );
+
+      if (error) return false;
+
+      return true;
+    },
+    {},
   );
 }
