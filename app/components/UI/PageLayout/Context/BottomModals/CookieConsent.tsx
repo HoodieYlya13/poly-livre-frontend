@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { setClientCookie } from "@/utils/cookies/cookies.client";
-import BottomModal from "../../../shared/components/BottomModal";
+import { BottomModal } from "../../../shared/elements/Modal";
 
 interface CookieConsentProps {
   initialHasConsent: boolean;

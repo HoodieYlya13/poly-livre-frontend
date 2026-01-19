@@ -6,16 +6,13 @@ import "../globals.css";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { APP_NAME } from "@/utils/config/config.client";
-import {
-  Theme,
-  ThemeProvider,
-} from "../components/UI/shared/components/ThemeProvider";
+import { Theme, ThemeProvider } from "../../utils/theme.utils";
 import {
   getLocaleMismatch,
   getPreferredLocale,
   getServerCookie,
 } from "@/utils/cookies/cookies.server";
-import { Toaster } from "../components/UI/shared/components/Toaster";
+import { Toaster } from "../components/UI/shared/elements/Toaster";
 import UserGeoInfo from "../components/UI/PageLayout/Context/UserGeoInfo/UserGeoInfo";
 import { LocaleLanguages } from "@/i18n/utils";
 import LocaleMismatch from "../components/UI/PageLayout/Context/BottomModals/LocaleMismatch";

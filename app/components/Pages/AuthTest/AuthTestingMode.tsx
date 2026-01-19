@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Input from "../../UI/shared/elements/Input";
-import Form from "../../UI/shared/components/Form";
+import Form from "../../UI/shared/elements/Form";
 import { useAuthTestingModeForm } from "@/hooks/forms/useAuthTestingModeForm";
 import { useRouter } from "next/navigation";
 import { loginTestingModeAction } from "@/actions/auth/testing-mode/auth.testing.mode.actions";
@@ -10,7 +10,6 @@ import { useErrors } from "@/hooks/useErrors";
 import { useFormState } from "react-hook-form";
 import { useState } from "react";
 import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
-import Aurora from "../../UI/shared/components/Aurora";
 
 export default function AuthTestingMode() {
   const t = useTranslations("AUTH");
@@ -44,27 +43,23 @@ export default function AuthTestingMode() {
   };
 
   return (
-    <div className="grow flex flex-col min-h-dvh">
-      <section className="flex flex-1 w-full items-center justify-center p-4">
-        <Form
-          form={form}
-          handleSubmit={handleSubmit(onSubmit)}
-          buttonLabel={t("LOGIN")}
-          successText={successText}
-        >
-          <Input
-            id="password"
-            type="password"
-            label={t("PASSWORD")}
-            {...register("password")}
-            error={errors.password?.message && errorT(errors.password.message)}
-            autoComplete="current-password"
-            focusOnMount
-          />
-        </Form>
-      </section>
-      
-      <Aurora speed={0.3} />
-    </div>
+    <section className="flex flex-1 w-full min-h-dvh items-center justify-center p-4">
+      <Form
+        form={form}
+        handleSubmit={handleSubmit(onSubmit)}
+        buttonLabel={t("LOGIN")}
+        successText={successText}
+      >
+        <Input
+          id="password"
+          type="password"
+          label={t("PASSWORD")}
+          {...register("password")}
+          error={errors.password?.message && errorT(errors.password.message)}
+          autoComplete="current-password"
+          focusOnMount
+        />
+      </Form>
+    </section>
   );
 }

@@ -2,7 +2,8 @@
   "COMMON": {
     "LOADING": "Loading...",
     "HELLO": "Hello, {value}!",
-    "SUBSCRIBE": "Subscribe"
+    "SUBSCRIBE": "Subscribe",
+    "SLOGAN": "Read more, buy less"
   },
   "HOME_PAGE": {
     "META": {

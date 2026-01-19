@@ -2,7 +2,8 @@
   "COMMON": {
     "LOADING": "Chargement...",
     "HELLO": "Bonjour, {value} !",
-    "SUBSCRIBE": "Souscrire"
+    "SUBSCRIBE": "Souscrire",
+    "SLOGAN": "Lisez plus, achetez moins"
   },
   "HOME_PAGE": {
     "META": {

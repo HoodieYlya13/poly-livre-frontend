@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { Suspense, useContext, useEffect } from "react";
 import { toast, Toaster as Sonner, type ToasterProps } from "sonner";
-import { ThemeProviderContext } from "./ThemeProvider";
+import { ThemeProviderContext } from "../../../../../utils/theme.utils";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useCommon } from "@/hooks/useCommon";
 import { useErrors } from "@/hooks/useErrors";

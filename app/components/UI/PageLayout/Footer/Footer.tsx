@@ -2,8 +2,8 @@ import { APP_NAME } from "@/utils/config/config.client";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import NewsletterForm from "./shared/NewsletterForm";
-import Logo from "../../shared/components/Logo";
-import Icon from "../../shared/elements/Icon";
+import Logo from "../../shared/elements/SVGs/Logo";
+import Icon from "../../shared/elements/SVGs/Icon";
 
 export default function Footer() {
   const t = useTranslations("FOOTER");

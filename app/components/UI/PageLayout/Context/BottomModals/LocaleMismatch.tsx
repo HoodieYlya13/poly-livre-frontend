@@ -8,7 +8,7 @@ import {
   setClientCookie,
 } from "@/utils/cookies/cookies.client";
 import { useTranslations } from "next-intl";
-import BottomModal from "../../../shared/components/BottomModal";
+import { BottomModal } from "../../../shared/elements/Modal";
 
 interface LocaleMismatchProps {
   locale: LocaleLanguages;

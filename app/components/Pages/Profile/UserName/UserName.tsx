@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Input from "@/app/components/UI/shared/elements/Input";
-import Form from "@/app/components/UI/shared/components/Form";
+import Form from "@/app/components/UI/shared/elements/Form";
 import { useUpdateUsernameForm } from "@/hooks/forms/useUpdateUsernameForm";
 import { useRouter } from "next/navigation";
 import { updateUsernameAction } from "@/actions/user/user.actions";

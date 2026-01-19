@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import SubmitButton from "../elements/SubmitButton";
+import { SubmitButton } from "./Button";
 import {
   UseFormReturn,
   FieldValues,

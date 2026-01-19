@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Input from "../../UI/shared/elements/Input";
 import Button from "../../UI/shared/elements/Button";
-import Form from "../../UI/shared/components/Form";
+import Form from "../../UI/shared/elements/Form";
 import { useAuthMagicLinkForm } from "@/hooks/forms/useAuthMagicLinkForm";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -73,7 +73,7 @@ export default function Auth() {
   const { commonT } = useCommon();
   const form = useAuthMagicLinkForm();
   const router = useRouter();
-  
+
   const [isPasskeyLogin, setIsPasskeyLogin] = useState(false);
   const [emailProviderLink, setEmailProviderLink] = useState<{
     name: string;
@@ -82,18 +82,18 @@ export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [successText, setSuccessText] = useState<string | null>(null);
   const [errorText, setErrorText] = useState<string | null>(null);
-  
+
   const { handleSubmit, register, control, setError, clearErrors } = form;
   const { errors } = useFormState({ control });
   const values = useWatch({ control });
-  
+
   const emailProviderLinkMemo = getEmailProvider(values.email);
 
   const onPasskeySubmit = async () => {
     const [error, username] = await tryCatch(loginPasskeyAction());
 
     setLoading(false);
-    
+
     if (error)
       return setErrorText(error.message), toast.error(errorT(error.message));
 
@@ -116,7 +116,8 @@ export default function Auth() {
 
     if (error) return setError("root", { message: error.message });
 
-    if (TESTING_MODE) setEmailProviderLink({ name: "Test", url: "http://localhost:8025/" });
+    if (TESTING_MODE)
+      setEmailProviderLink({ name: "Test", url: "http://localhost:8025/" });
 
     setSuccessText(t("MAGIC_LINK_SENT"));
   };

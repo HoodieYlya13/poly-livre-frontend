@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Input from "../../../UI/shared/elements/Input";
 import { useTranslations } from "next-intl";
-import Form from "../../../UI/shared/components/Form";
+import Form from "../../../UI/shared/elements/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
 import { useAuth } from "@/hooks/useAuth";
 import { useErrors } from "@/hooks/useErrors";

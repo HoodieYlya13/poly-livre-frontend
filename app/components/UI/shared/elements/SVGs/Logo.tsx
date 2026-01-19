@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useCommon } from "@/hooks/useCommon";
 
 export default function Logo({
   variant = "small",
   className = "h-8 w-auto text-primary",
   accentClassName = "",
 }) {
+  const { commonT } = useCommon();
+
   return (
     <Link href="/" prefetch className={`cursor-pointer ${className}`}>
       {variant === "full" ? (
@@ -18,7 +21,9 @@ export default function Logo({
         >
           <g fill="currentColor">
             <text
-              transform="translate(221.7 150)"
+              x="519.17"
+              y="150"
+              textAnchor="end"
               style={{
                 fontFamily: "var(--font-jali, sans-serif)",
                 fontSize: "27px",
@@ -26,7 +31,7 @@ export default function Logo({
                 letterSpacing: "-0.02em",
               }}
             >
-              Lisez plus, achetez moins
+              {commonT("SLOGAN")}
             </text>
 
             <path d="M0,8.33h22.44v98.26l-8.16-7.99h47.6l.34,16.66H0V8.33Z" />
