@@ -52,6 +52,13 @@ export async function subscribeToNewsletterAction(
   _: boolean | null,
   formData: FormData,
 ) {
+  const honeypot = formData.get('confirm_email');
+
+  if (honeypot) {
+    console.warn("Honeypot triggered by bot.");
+    return true;
+  }
+
   const email = formData.get("email");
 
   const validatedFields = MailSchema.safeParse({ email });

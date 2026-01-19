@@ -67,7 +67,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const hasCookieConsent = !!(await getServerCookie("cookie_consent"));
 
   return (
-    <html lang={locale} className={theme === "dark" ? "dark" : ""}>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={theme === "dark" ? "dark" : ""}
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -47,13 +47,25 @@
   },
   "FOOTER": {
     "COPYRIGHT": "© Copyright {year} - <bold>{appName}</bold>",
-    "TERMS": "CGU",
-    "CONTACT": "Contact",
-    "HELP": "Aide",
     "NEWSLETTER": {
+      "TITLE": "Restez informé des nouveautés",
+      "DESCRIPTION": "Recevez chaque semaine des recommandations et un accès anticipé exclusif aux nouveautés.",
       "EMAIL_PLACEHOLDER": "Entrez votre e-mail",
       "NEWSLETTER_SUCCESS": "Inscription réussie !"
-    }
+    },
+    "LINKS": {
+      "BLOG": "Blog",
+      "ABOUT_US": "À propos de nous",
+      "CLIENT_SUPPORT": "Support client",
+      "HELP_CENTER": "Centre d'aide",
+      "CONTACT_US": "Contactez-nous",
+      "FAQS": "FAQs",
+      "LEGAL": "Légal",
+      "PRIVACY_POLICY": "Politique de confidentialité",
+      "COOKIES_POLICY": "Politique relative aux cookies",
+      "TERMS_OF_USE": "Conditions d'utilisation"
+    },
+    "BRAND_DESCRIPTION": "Votre partenaire de confiance pour le prêt de livres. Découvrez, empruntez et rendez des livres en toute simplicité. Rejoignez dès aujourd'hui notre communauté de lecteurs passionnés."
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",

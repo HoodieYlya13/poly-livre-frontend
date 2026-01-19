@@ -28,20 +28,29 @@ export default function NewsletterForm() {
       action={formAction}
       className="flex flex-col gap-2 w-full items-center"
     >
-      <div className="flex flex-col sm:flex-row gap-2 w-full max-w-xs">
+      <input
+        type="text"
+        name="confirm_email"
+        tabIndex={-1}
+        autoComplete="off"
+        className="absolute opacity-0 -z-50 w-0 h-0"
+        aria-hidden="true"
+      />
+
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 w-full max-w-md">
         <input
           name="email"
           type="email"
           placeholder={t("EMAIL_PLACEHOLDER")}
           required
           disabled={isPending || !!state}
-          className="flex-1 px-3 py-2 rounded border border-primary text-sm disabled:bg-gray-100"
+          className="w-full px-3 py-2 rounded border border-primary text-sm disabled:bg-gray-100 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
         />
 
         <button
           type="submit"
           disabled={isPending || !!state}
-          className="bg-primary text-white py-2 rounded w-full text-center"
+          className="w-full sm:w-auto bg-primary text-white py-2 px-8 rounded text-center outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           {isPending ? commonT("") : commonT("SUBSCRIBE")}
         </button>

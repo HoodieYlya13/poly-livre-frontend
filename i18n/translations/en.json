@@ -51,9 +51,24 @@
     "CONTACT": "Contact",
     "HELP": "Help",
     "NEWSLETTER": {
+      "TITLE": "Stay updated",
+      "DESCRIPTION": "Receive weekly recommendations and exclusive early access to new arrivals.",
       "EMAIL_PLACEHOLDER": "Enter your email",
       "NEWSLETTER_SUCCESS": "Successfully subscribed!"
-    }
+    },
+    "LINKS": {
+      "BLOG": "Blog",
+      "ABOUT_US": "About Us",
+      "CLIENT_SUPPORT": "Client Support",
+      "HELP_CENTER": "Help Center",
+      "CONTACT_US": "Contact Us",
+      "FAQS": "FAQs",
+      "LEGAL": "Legal",
+      "PRIVACY_POLICY": "Privacy Policy",
+      "COOKIES_POLICY": "Cookies Policy",
+      "TERMS_OF_USE": "Terms of Use"
+    },
+    "BRAND_DESCRIPTION": "Your trusted partner for book lending. Discover, borrow, and return books with ease. Join our community of passionate readers today."
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
