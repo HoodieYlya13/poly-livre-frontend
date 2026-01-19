@@ -1,4 +1,4 @@
-export type AuthResponse = {
+export interface AuthResponse {
   id: string;
   username: string | null;
   email: string;

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Input from "@/app/components/UI/shared/elements/Input";
-import Form from "@/app/components/UI/shared/components/Form";
+import Form from "@/app/components/UI/shared/elements/Form";
 import { useUpdateUsernameForm } from "@/hooks/forms/useUpdateUsernameForm";
 import { useRouter } from "next/navigation";
 import { updateUsernameAction } from "@/actions/user/user.actions";
@@ -22,7 +22,7 @@ export default function UserName({ username }: UserNameProps) {
   const form = useUpdateUsernameForm(username);
   const [successText, setSuccessText] = useState<string | null>(null);
   const router = useRouter();
-  const { verifySession } = useAuth();
+  const { shouldReconnect } = useAuth();
 
   const { handleSubmit, register, control, setError, clearErrors } = form;
   const { errors } = useFormState({ control });
@@ -36,7 +36,7 @@ export default function UserName({ username }: UserNameProps) {
     if (error) {
       setError("root", { message: error.message });
 
-      verifySession(error);
+      shouldReconnect(error);
 
       return;
     }
@@ -46,7 +46,7 @@ export default function UserName({ username }: UserNameProps) {
   };
 
   return (
-    <div className="flex w-full grow justify-center items-center py-4">
+    <div className="flex w-full grow justify-center items-center p-5 py-10 md:p-10">
       <Form
         form={form}
         handleSubmit={handleSubmit(onSubmit)}

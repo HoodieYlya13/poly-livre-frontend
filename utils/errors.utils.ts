@@ -4,6 +4,7 @@ export const ERROR_CODES = {
   SYST: { 1: "SYST.001", 2: "SYST.002" },
   JWT: { 1: "JWT.001", 2: "JWT.002" },
   AUTH: { 1: "AUTH.001", 2: "AUTH.002", 3: "AUTH.003", 4: "AUTH.004" },
+  USER: { 1: "USER.001" },
   PASSKEY: {
     ERROR_LOGIN: "PASSKEY.ERROR_LOGIN",
     ERROR_REGISTER: "PASSKEY.ERROR_REGISTER",
@@ -28,6 +29,7 @@ export const ERROR_CODES = {
     TOO_LONG: "USERNAME.TOO_LONG",
     SAME: "USERNAME.SAME",
   },
+  NEWSLETTER: { FAILED: "NEWSLETTER.FAILED" },
 } as const;
 
 type DeepValue<T> = T extends string
@@ -53,7 +55,7 @@ const PUBLIC_ERRORS = new Set<string>(getAllErrorCodes(ERROR_CODES));
 export function getErrorMessage(
   error: unknown,
   fallback?: string,
-  overrides?: Record<string, string>
+  overrides?: Record<string, string>,
 ) {
   if (error instanceof Error) {
     if (overrides) {
@@ -70,7 +72,7 @@ export function getErrorMessage(
 type Result<T, E = Error> = [error: null, data: T] | [error: E, data: null];
 
 export async function tryCatch<T, E = Error>(
-  promiseOrFn: Promise<T> | (() => Promise<T> | T)
+  promiseOrFn: Promise<T> | (() => Promise<T> | T),
 ): Promise<Result<T, E>> {
   try {
     const prom =

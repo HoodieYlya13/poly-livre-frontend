@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-interface SubmitButtonProps
+interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   child: React.ReactNode;
   errorMessage?: string;
@@ -8,7 +8,7 @@ interface SubmitButtonProps
   disabled?: boolean;
 };
 
-export default function Button({ type, onClick, className, child, errorMessage, successMessage, disabled = false }: SubmitButtonProps) {
+export default function Button({ type, onClick, className, child, errorMessage, successMessage, disabled = false }: ButtonProps) {
   const baseClassName = clsx(
     "rounded-2xl sm:rounded-3xl md:rounded-[1.75rem] liquid-glass py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 font-semibold transition-all duration-300 ease-in-out outline-none shadow-sm focus:ring focus:ring-white focus:shadow-white hover:ring hover:ring-white hover:shadow-white text-lg sm:text-xl md:text-2xl text-center",
     disabled
@@ -27,6 +27,30 @@ export default function Button({ type, onClick, className, child, errorMessage, 
       </button>
       {successMessage && <p className="text-green-400">{successMessage}</p>}
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+    </>
+  );
+}
+
+interface SubmitButtonProps {
+  label: string;
+  error?: string;
+  disabled?: boolean;
+}
+
+export function SubmitButton({
+  label,
+  error,
+  disabled,
+}: SubmitButtonProps) {
+  return (
+    <>
+      <Button
+        type="submit"
+        disabled={disabled}
+        child={label}
+        className="w-full"
+      />
+      {error && <p className="text-sm text-red-500">{error}</p>}
     </>
   );
 }

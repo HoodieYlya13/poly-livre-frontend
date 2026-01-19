@@ -17,7 +17,7 @@ export async function setServerCookie(
     httpOnly?: boolean;
     secure?: boolean;
     sameSite?: "lax" | "strict" | "none";
-  }> = {}
+  }> = {},
 ) {
   (await cookies()).set({
     name,
@@ -41,7 +41,7 @@ export async function setServerCookieHeader(setCookieHeader: string) {
 
     let maxAge = 300;
     const maxAgePart = parts.find((p) =>
-      p.toLowerCase().startsWith("max-age=")
+      p.toLowerCase().startsWith("max-age="),
     );
     if (maxAgePart) {
       const parsedMaxAge = parseInt(maxAgePart.split("=")[1], 10);
@@ -53,7 +53,7 @@ export async function setServerCookieHeader(setCookieHeader: string) {
 }
 
 export async function getServerCookie(
-  name: string
+  name: string,
 ): Promise<string | undefined> {
   return (await cookies()).get(name)?.value;
 }
@@ -108,6 +108,12 @@ export async function getPreferredLocale(toUpperCase = false) {
     ? ((locale?.toUpperCase() ||
         DEFAULT_LOCALE_UPPERCASE) as LocaleLanguagesUpperCase)
     : ((locale || DEFAULT_LOCALE) as LocaleLanguages);
+}
+
+export async function getLocaleMismatch(): Promise<LocaleLanguages | undefined> {
+  return (await getServerCookie("locale_mismatch")) as
+    | LocaleLanguages
+    | undefined;
 }
 
 export async function getUserAccessToken(): Promise<string | undefined> {

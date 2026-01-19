@@ -7,10 +7,18 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
       },
       screens: {
         xs: "24rem",
         md: "54rem",
+      },
+      minHeight: {
+        fullscreen: "calc(100dvh - var(--nav-height))",
+      },
+      containers: {
+        "8xl": "88rem",
       },
     },
   },

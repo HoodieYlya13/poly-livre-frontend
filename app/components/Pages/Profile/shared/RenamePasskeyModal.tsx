@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Input from "../../../UI/shared/elements/Input";
 import { useTranslations } from "next-intl";
-import Form from "../../../UI/shared/components/Form";
+import Form from "../../../UI/shared/elements/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
 import { useErrors } from "@/hooks/useErrors";
 import { useFormState } from "react-hook-form";
@@ -15,7 +15,7 @@ interface RenamePasskeyModalProps {
   currentName: string;
   renamePasskey: (
     id: string,
-    newName: string
+    newName: string,
   ) => Promise<{ error: Error | null }>;
   onClose: () => void;
   existingNames: string[];
@@ -32,7 +32,7 @@ export default function RenamePasskeyModal({
   const { errorT } = useErrors();
   const form = useUpdatePasskeyNameForm(currentName, existingNames);
   const [successText, setSuccessText] = useState<string | null>(null);
-  const { verifySession } = useAuth();
+  const { shouldReconnect } = useAuth();
 
   const { handleSubmit, register, control, setError, clearErrors } = form;
   const { errors } = useFormState({ control });
@@ -44,7 +44,7 @@ export default function RenamePasskeyModal({
     if (error) {
       setError("root", { message: error.message });
 
-      verifySession(error);
+      shouldReconnect(error);
 
       return;
     }

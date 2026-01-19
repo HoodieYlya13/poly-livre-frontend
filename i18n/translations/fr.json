@@ -1,13 +1,85 @@
 {
   "COMMON": {
     "LOADING": "Chargement...",
-    "HELLO": "Bonjour, {value} !"
+    "HELLO": "Bonjour, {value} !",
+    "SUBSCRIBE": "Souscrire",
+    "SLOGAN": "Lisez plus, achetez moins"
   },
   "HOME_PAGE": {
     "META": {
       "TITLE": "{name}",
       "DESCRIPTION": "Bienvenue dans {name} !"
+    },
+    "HERO": {
+      "TITLE": "<primary>Empruntez</primary> des livres près de chez vous !",
+      "DESCRIPTION": "Découvrez un accès illimité à des milliers de livres.\nLouez, lisez et rendez-les, le tout depuis chez vous.\nVotre prochaine aventure vous attend.",
+      "DISCOVER_CATALOG": "Découvrir le catalogue",
+      "PROPOSE_BOOK": "Proposer un livre",
+      "IMAGE_ALT": "Femme étudiant",
+      "STATS": {
+        "BOOKS_AVAILABLE": "Livres disponibles",
+        "READING_DAYS": "Jours de lecture",
+        "FREE": "Gratuit",
+        "DELIVERY_RETURN": "Livraison et Retour"
+      }
+    },
+    "HOW_IT_WORKS": {
+      "TITLE": "Comment ça marche ?",
+      "DESCRIPTION": "Trouver votre prochain livre préféré n'a jamais été aussi simple.\nSuivez ces étapes faciles pour commencer votre aventure de lecture.",
+      "STEPS": {
+        "STEP_1": {
+          "TITLE": "Parcourir et sélectionner",
+          "DESCRIPTION": "Explorez notre vaste collection de plus de 100 000 livres. Utilisez les filtres pour trouver exactement ce que vous cherchez."
+        },
+        "STEP_2": {
+          "TITLE": "Emprunter instantanément",
+          "DESCRIPTION": "Choisissez votre période de location et finalisez votre réservation en quelques secondes. Sans aucun frais !"
+        },
+        "STEP_3": {
+          "TITLE": "Livraison gratuite",
+          "DESCRIPTION": "Vos livres arrivent chez vous sous 2 à 3 jours ouvrables, soigneusement emballés et prêts à être lus."
+        },
+        "STEP_4": {
+          "TITLE": "Retourner facilement",
+          "DESCRIPTION": "Une fois terminé, utilisez notre étiquette de retour prépayée. Déposez-la dans n'importe quel bureau de poste."
+        }
+      }
+    },
+    "TRENDING": {
+      "TITLE": "En tendance sur <primary>{appName}</primary>",
+      "DESCRIPTION": "Retrouvez les livres en tendance et faites votre choix selon votre goût de lecture !"
+    },
+    "TESTIMONIALS": {
+      "TITLE": "Que disent nos lecteurs ?",
+      "STATUS": {
+        "STUDENT": "Étudiant",
+        "TEACHER": "Professeur",
+        "WORKER": "Employé",
+        "OTHER": "Autre"
+      }
     }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© Copyright {year} - <bold>{appName}</bold>",
+    "NEWSLETTER": {
+      "TITLE": "Restez informé des nouveautés",
+      "DESCRIPTION": "Recevez chaque semaine des recommandations et un accès anticipé exclusif aux nouveautés.",
+      "EMAIL_PLACEHOLDER": "Entrez votre e-mail",
+      "NEWSLETTER_SUCCESS": "Inscription réussie !"
+    },
+    "LINKS": {
+      "BLOG": "Blog",
+      "ABOUT_US": "À propos de nous",
+      "CLIENT_SUPPORT": "Support client",
+      "HELP_CENTER": "Centre d'aide",
+      "CONTACT_US": "Contactez-nous",
+      "FAQS": "FAQs",
+      "LEGAL": "Légal",
+      "PRIVACY_POLICY": "Politique de confidentialité",
+      "COOKIES_POLICY": "Politique relative aux cookies",
+      "TERMS_OF_USE": "Conditions d'utilisation"
+    },
+    "BRAND_DESCRIPTION": "Votre partenaire de confiance pour le prêt de livres. Découvrez, empruntez et rendez des livres en toute simplicité. Rejoignez dès aujourd'hui notre communauté de lecteurs passionnés."
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
@@ -21,10 +93,13 @@
       "002": "Clé publique invalide."
     },
     "AUTH": {
-      "001": "Échec de l'authentification",
-      "002": "Non autorisé",
-      "003": "Session invalide",
-      "004": "Session expirée"
+      "001": "Échec de l'authentification.",
+      "002": "Non autorisé.",
+      "003": "Session invalide.",
+      "004": "Session expirée."
+    },
+    "USER": {
+      "001": "Utilisateur non trouvé."
     },
     "PASSKEY": {
       "ERROR_LOGIN": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
@@ -51,6 +126,9 @@
       "HAS_WHITESPACE": "Le nom d'utilisateur ne peut pas contenir d'espace.",
       "TOO_LONG": "Le nom d'utilisateur est trop long.",
       "SAME": "Le nouveau nom d'utilisateur ne peut pas être identique à l'actuel."
+    },
+    "NEWSLETTER": {
+      "FAILED": "Une erreur est survenue lors de l'inscription."
     }
   },
   "AUTH": {
@@ -100,5 +178,17 @@
     "DESCRIPTION": "Nous avons détecté que votre langue préférée est <important>{preferredLocale}</important>, mais vous consultez le site en <important>{currentLocale}</important>.",
     "KEEP": "Garder en {locale}",
     "SWITCH": "Passer en {locale}"
+  },
+  "COOKIE_CONSENT": {
+    "TITLE": "Politique de Cookies",
+    "DESCRIPTION": "Nous utilisons des cookies nécessaires au bon fonctionnement du site. Aucune donnée personnelle n'est utilisée à des fins commerciales.",
+    "ACKNOWLEDGE": "J'ai compris"
+  },
+  "BOOK_TILE": {
+    "WRITTEN_BY": "Écrit par :",
+    "MONTH": "/mois",
+    "OWNER": "Propriétaire :",
+    "DETAILS": "Détails",
+    "ADD_TO_CART": "Ajouter au panier"
   }
 }

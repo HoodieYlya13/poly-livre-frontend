@@ -16,13 +16,16 @@
 
 :root {
   --size: max(100vw, 100vh);
-  --background: #ffffff;
+  --nav-height: 5rem;
+  --background: #FFFFFF;
   --foreground: #000000;
+  --primary: #AA600E;
+  --secondary: #FFEFE1;
 }
 
 .dark {
   --background: #000000;
-  --foreground: #ffffff;
+  --foreground: #FFFFFF;
 }
 
 /* Firefox */

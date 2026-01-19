@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Input from "../../UI/shared/elements/Input";
-import Form from "../../UI/shared/components/Form";
+import Form from "../../UI/shared/elements/Form";
 import { useAuthTestingModeForm } from "@/hooks/forms/useAuthTestingModeForm";
 import { useRouter } from "next/navigation";
 import { loginTestingModeAction } from "@/actions/auth/testing-mode/auth.testing.mode.actions";
@@ -35,7 +35,7 @@ export default function AuthTestingMode() {
         error.message === ERROR_CODES.PASSWORD.INCORRECT ? "password" : "root",
         {
           message: error.message,
-        }
+        },
       );
 
     setSuccessText(t("ACCESS_GRANTED"));
@@ -43,7 +43,7 @@ export default function AuthTestingMode() {
   };
 
   return (
-    <section className="flex flex-1 w-full items-center justify-center p-4">
+    <section className="flex flex-1 w-full min-h-dvh items-center justify-center p-4">
       <Form
         form={form}
         handleSubmit={handleSubmit(onSubmit)}

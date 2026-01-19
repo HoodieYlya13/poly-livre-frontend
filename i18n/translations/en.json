@@ -1,13 +1,88 @@
 {
   "COMMON": {
     "LOADING": "Loading...",
-    "HELLO": "Hello, {value}!"
+    "HELLO": "Hello, {value}!",
+    "SUBSCRIBE": "Subscribe",
+    "SLOGAN": "Read more, buy less"
   },
   "HOME_PAGE": {
     "META": {
       "TITLE": "{name}",
       "DESCRIPTION": "Welcome to {name}!"
+    },
+    "HERO": {
+      "TITLE": "<primary>Borrow</primary> books near you!",
+      "DESCRIPTION": "Discover an unlimited access to thousands of books.\nBorrow, read and return them, all from home.\nYour next adventure awaits.",
+      "DISCOVER_CATALOG": "Discover catalogue",
+      "PROPOSE_BOOK": "Propose a book",
+      "IMAGE_ALT": "Woman studying",
+      "STATS": {
+        "BOOKS_AVAILABLE": "Books available",
+        "READING_DAYS": "Days of reading",
+        "FREE": "Free",
+        "DELIVERY_RETURN": "Delivery and Return"
+      }
+    },
+    "HOW_IT_WORKS": {
+      "TITLE": "How does it work?",
+      "DESCRIPTION": "Finding your next favorite book has never been easier.\nFollow these easy steps to start your reading adventure.",
+      "STEPS": {
+        "STEP_1": {
+          "TITLE": "Browse and Select",
+          "DESCRIPTION": "Explore our vast collection of over 100,000 books. Use filters to find exactly what you're looking for."
+        },
+        "STEP_2": {
+          "TITLE": "Borrow Instantly",
+          "DESCRIPTION": "Choose your rental period and finalize your reservation in seconds. No fees!"
+        },
+        "STEP_3": {
+          "TITLE": "Free Delivery",
+          "DESCRIPTION": "Your books arrive at your home within 2-3 business days, carefully packaged and ready to read."
+        },
+        "STEP_4": {
+          "TITLE": "Return Easily",
+          "DESCRIPTION": "Once finished, use our prepaid return label. Drop it off at any post office."
+        }
+      }
+    },
+    "TRENDING": {
+      "TITLE": "Trending on <primary>{appName}</primary>",
+      "DESCRIPTION": "Find trending books and make your choice according to your reading taste!"
+    },
+    "TESTIMONIALS": {
+      "TITLE": "What do our readers say?",
+      "STATUS": {
+        "STUDENT": "Student",
+        "TEACHER": "Teacher",
+        "WORKER": "Worker",
+        "OTHER": "Other"
+      }
     }
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© Copyright {year} - <bold>{appName}</bold>",
+    "TERMS": "Terms",
+    "CONTACT": "Contact",
+    "HELP": "Help",
+    "NEWSLETTER": {
+      "TITLE": "Stay updated",
+      "DESCRIPTION": "Receive weekly recommendations and exclusive early access to new arrivals.",
+      "EMAIL_PLACEHOLDER": "Enter your email",
+      "NEWSLETTER_SUCCESS": "Successfully subscribed!"
+    },
+    "LINKS": {
+      "BLOG": "Blog",
+      "ABOUT_US": "About Us",
+      "CLIENT_SUPPORT": "Client Support",
+      "HELP_CENTER": "Help Center",
+      "CONTACT_US": "Contact Us",
+      "FAQS": "FAQs",
+      "LEGAL": "Legal",
+      "PRIVACY_POLICY": "Privacy Policy",
+      "COOKIES_POLICY": "Cookies Policy",
+      "TERMS_OF_USE": "Terms of Use"
+    },
+    "BRAND_DESCRIPTION": "Your trusted partner for book lending. Discover, borrow, and return books with ease. Join our community of passionate readers today."
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
@@ -25,6 +100,9 @@
       "002": "Unauthorized.",
       "003": "Invalid session.",
       "004": "Session expired."
+    },
+    "USER": {
+      "001": "User not found."
     },
     "PASSKEY": {
       "ERROR_LOGIN": "Login with Passkey took too long or was cancelled. Please try again.",
@@ -50,7 +128,11 @@
       "UPDATE_FAILED": "Failed to update username.",
       "HAS_WHITESPACE": "Username cannot have whitespace.",
       "TOO_LONG": "Username is too long.",
-      "SAME": "New username cannot be the same as the current one."
+      "SAME": "The new username cannot be the same as the current one."
+    },
+    "NEWSLETTER": {
+      "FAILED": "An error occurred while subscribing.",
+      "SUCCESS": "Successfully subscribed!"
     }
   },
   "AUTH": {
@@ -100,5 +182,17 @@
     "DESCRIPTION": "We detected that your preferred language is <important>{preferredLocale}</important>, but you are viewing the site in <important>{currentLocale}</important>.",
     "KEEP": "Keep {locale}",
     "SWITCH": "Switch to {locale}"
+  },
+  "COOKIE_CONSENT": {
+    "TITLE": "Cookie Policy",
+    "DESCRIPTION": "We use necessary cookies to ensure the website functions properly. No personal data is used for commercial purposes.",
+    "ACKNOWLEDGE": "I understand"
+  },
+  "BOOK_TILE": {
+    "WRITTEN_BY": "Written by:",
+    "MONTH": "/month",
+    "OWNER": "Owner:",
+    "DETAILS": "Details",
+    "ADD_TO_CART": "Add to cart"
   }
 }

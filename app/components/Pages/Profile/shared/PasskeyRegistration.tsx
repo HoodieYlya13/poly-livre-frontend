@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Input from "../../../UI/shared/elements/Input";
 import { useTranslations } from "next-intl";
-import Form from "../../../UI/shared/components/Form";
+import Form from "../../../UI/shared/elements/Form";
 import { useUpdatePasskeyNameForm } from "@/hooks/forms/useUpdatePasskeyNameForm";
 import { useAuth } from "@/hooks/useAuth";
 import { useErrors } from "@/hooks/useErrors";
@@ -21,7 +21,7 @@ export default function PasskeyRegistration({
   const t = useTranslations("PROFILE.PASSKEY");
   const { errorT } = useErrors();
   const form = useUpdatePasskeyNameForm(undefined, existingNames);
-  const { verifySession } = useAuth();
+  const { shouldReconnect } = useAuth();
   const [successText, setSuccessText] = useState<string | null>(null);
 
   const { handleSubmit, control, setError, clearErrors, reset } = form;
@@ -36,7 +36,7 @@ export default function PasskeyRegistration({
     if (error) {
       setError("root", { message: error.message });
 
-      verifySession(error);
+      shouldReconnect(error);
 
       return;
     }
