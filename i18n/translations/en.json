@@ -49,8 +49,14 @@
       "TITLE": "Trending on <primary>{appName}</primary>",
       "DESCRIPTION": "Find trending books and make your choice according to your reading taste!"
     },
-    "REVIEWS": {
-      "TITLE": "What do our readers say?"
+    "TESTIMONIALS": {
+      "TITLE": "What do our readers say?",
+      "STATUS": {
+        "STUDENT": "Student",
+        "TEACHER": "Teacher",
+        "WORKER": "Worker",
+        "OTHER": "Other"
+      }
     }
   },
   "FOOTER": {

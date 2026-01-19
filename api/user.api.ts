@@ -1,14 +1,14 @@
 import { fetchApi } from "./base.api";
-import { UserDto } from "@/models/user.models";
+import { User } from "@/models/user.models";
 
 export const userApi = {
   updateUsername: (username: string) =>
-    fetchApi<UserDto>(`/users/${username}`, {
+    fetchApi<User>(`/users/${username}`, {
       method: "PUT",
     }),
 
   getMe: () =>
-    fetchApi<UserDto>("/users/me", {
+    fetchApi<User>("/users/me", {
       method: "GET",
     }),
 

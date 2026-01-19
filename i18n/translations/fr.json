@@ -49,8 +49,14 @@
       "TITLE": "En tendance sur <primary>{appName}</primary>",
       "DESCRIPTION": "Retrouvez les livres en tendance et faites votre choix selon votre goût de lecture !"
     },
-    "REVIEWS": {
-      "TITLE": "Que disent nos lecteurs ?"
+    "TESTIMONIALS": {
+      "TITLE": "Que disent nos lecteurs ?",
+      "STATUS": {
+        "STUDENT": "Étudiant",
+        "TEACHER": "Professeur",
+        "WORKER": "Employé",
+        "OTHER": "Autre"
+      }
     }
   },
   "FOOTER": {

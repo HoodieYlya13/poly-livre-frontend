@@ -2,7 +2,7 @@ import Information from "./shared/hero/Information";
 import InformationTiles from "./shared/how-it-works/InformationTiles";
 import WomanStudying from "./shared/hero/WomanStudying";
 import Image from "next/image";
-import ReviewsSection from "./shared/reviews/ReviewsSection";
+import TestimonialsSection from "./shared/testimonials/TestimonialsSection";
 import BookTiles from "./shared/trending-books/BookTiles";
 import Trending from "./shared/trending-books/Trending";
 import BusinessModelDescription from "./shared/how-it-works/BusinessModelDescription";
@@ -36,7 +36,7 @@ export default function Home() {
         <BookTiles />
       </section>
 
-      <ReviewsSection />
+      <TestimonialsSection />
     </div>
   );
 }
