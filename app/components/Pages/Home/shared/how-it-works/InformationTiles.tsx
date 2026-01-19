@@ -1,6 +1,6 @@
+import Icon from "@/app/components/UI/shared/elements/SVGs/Icon";
+import { IconName } from "@/app/components/UI/shared/elements/SVGs/IconRegistry";
 import { useTranslations } from "next-intl";
-import Icon from "../../../UI/shared/elements/SVGs/Icon";
-import { IconName } from "../../../UI/shared/elements/SVGs/IconRegistry";
 
 interface TileProps {
   icon: IconName;

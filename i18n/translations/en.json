@@ -44,6 +44,13 @@
           "DESCRIPTION": "Once finished, use our prepaid return label. Drop it off at any post office."
         }
       }
+    },
+    "TRENDING": {
+      "TITLE": "Trending on <primary>{appName}</primary>",
+      "DESCRIPTION": "Find trending books and make your choice according to your reading taste!"
+    },
+    "REVIEWS": {
+      "TITLE": "What do our readers say?"
     }
   },
   "FOOTER": {
@@ -174,5 +181,12 @@
     "TITLE": "Cookie Policy",
     "DESCRIPTION": "We use necessary cookies to ensure the website functions properly. No personal data is used for commercial purposes.",
     "ACKNOWLEDGE": "I understand"
+  },
+  "BOOK_TILE": {
+    "WRITTEN_BY": "Written by:",
+    "MONTH": "/month",
+    "OWNER": "Owner:",
+    "DETAILS": "Details",
+    "ADD_TO_CART": "Add to cart"
   }
 }

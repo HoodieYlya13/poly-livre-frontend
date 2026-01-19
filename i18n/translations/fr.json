@@ -44,6 +44,13 @@
           "DESCRIPTION": "Une fois terminé, utilisez notre étiquette de retour prépayée. Déposez-la dans n'importe quel bureau de poste."
         }
       }
+    },
+    "TRENDING": {
+      "TITLE": "En tendance sur <primary>{appName}</primary>",
+      "DESCRIPTION": "Retrouvez les livres en tendance et faites votre choix selon votre goût de lecture !"
+    },
+    "REVIEWS": {
+      "TITLE": "Que disent nos lecteurs ?"
     }
   },
   "FOOTER": {
@@ -170,5 +177,12 @@
     "TITLE": "Politique de Cookies",
     "DESCRIPTION": "Nous utilisons des cookies nécessaires au bon fonctionnement du site. Aucune donnée personnelle n'est utilisée à des fins commerciales.",
     "ACKNOWLEDGE": "J'ai compris"
+  },
+  "BOOK_TILE": {
+    "WRITTEN_BY": "Écrit par :",
+    "MONTH": "/mois",
+    "OWNER": "Propriétaire :",
+    "DETAILS": "Détails",
+    "ADD_TO_CART": "Ajouter au panier"
   }
 }

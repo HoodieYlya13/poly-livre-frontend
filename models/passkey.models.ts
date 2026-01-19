@@ -1,4 +1,4 @@
-export type Passkey = {
+export interface Passkey {
   id: string;
   name: string;
   createdAt: Date;

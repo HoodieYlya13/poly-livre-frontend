@@ -1,14 +1,13 @@
-import { useTranslations } from "next-intl";
-import Information from "./shared/Information";
-import InformationTiles from "./shared/InformationTiles";
-import WomanStudying from "./shared/WomanStudying";
+import Information from "./shared/hero/Information";
+import InformationTiles from "./shared/how-it-works/InformationTiles";
+import WomanStudying from "./shared/hero/WomanStudying";
 import Image from "next/image";
-import BookTile from "../../UI/shared/components/BookTile";
-import ReviewTile from "../../UI/shared/components/ReviewTile";
+import ReviewsSection from "./shared/reviews/ReviewsSection";
+import BookTiles from "./shared/trending-books/BookTiles";
+import Trending from "./shared/trending-books/Trending";
+import BusinessModelDescription from "./shared/how-it-works/BusinessModelDescription";
 
 export default function Home() {
-  const t = useTranslations("HOME_PAGE.HOW_IT_WORKS");
-
   return (
     <div className="flex grow flex-col gap-10 items-center justify-center font-normal pb-10">
       <section className="flex md:landscape:min-h-fullscreen w-full">
@@ -19,14 +18,7 @@ export default function Home() {
       </section>
 
       <section className="w-full flex flex-col gap-10 items-center justify-center px-5 md:px-10">
-        <div className="w-full flex flex-col gap-2 items-center justify-center">
-          <h2 className="font-bold text-2xl sm:text-3xl">{t("TITLE")}</h2>
-
-          <p className="text-center whitespace-pre-line text-xs xs:text-sm sm:text-base">
-            {t("DESCRIPTION")}
-          </p>
-        </div>
-
+        <BusinessModelDescription />
         <InformationTiles />
       </section>
 
@@ -39,36 +31,12 @@ export default function Home() {
           className="size-32"
         />
 
-        <div className="w-full flex flex-col gap-2 items-center justify-center">
-          <h2 className="font-bold text-2xl sm:text-3xl">
-            En tendance sur <span className="text-primary">Liprêrie</span>
-          </h2>
+        <Trending />
 
-          <p className="text-center whitespace-pre-line text-xs xs:text-sm sm:text-base">
-            Retrouvez les livres en tendance et faites votre choix selon votre
-            goût de lecture !
-          </p>
-        </div>
-
-        <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-3 justify-items-center mx-auto">
-          <BookTile />
-          <BookTile />
-          <BookTile />
-          <BookTile />
-        </div>
+        <BookTiles />
       </section>
 
-      <section className="w-full flex flex-col gap-10 items-center justify-center px-5 md:px-10">
-        <h2 className="font-bold text-2xl sm:text-3xl">
-          Que disent nos lecteurs ?
-        </h2>
-
-        <div className="w-full flex flex-col sm:flex-row gap-3 items-center justify-center">
-          <ReviewTile />
-          <ReviewTile />
-          <ReviewTile />
-        </div>
-      </section>
+      <ReviewsSection />
     </div>
   );
 }

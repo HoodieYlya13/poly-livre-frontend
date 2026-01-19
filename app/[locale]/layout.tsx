@@ -1,7 +1,7 @@
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../globals.css";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -25,13 +25,8 @@ interface LayoutProps {
   }>;
 }
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -69,9 +64,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       suppressHydrationWarning
       className={theme === "dark" ? "dark" : ""}
     >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider defaultTheme={theme}>
             {children}

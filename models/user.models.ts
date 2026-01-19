@@ -1,4 +1,4 @@
-export type UserDto = {
+export interface UserDto {
   email: string;
   userId: string;
   username: string;
