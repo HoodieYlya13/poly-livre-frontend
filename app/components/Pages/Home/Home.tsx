@@ -2,7 +2,7 @@ import Information from "./shared/Hero/Information";
 import InformationTiles from "./shared/HowItWorks/InformationTiles";
 import WomanStudying from "./shared/Hero/WomanStudying";
 import Image from "next/image";
-import TestimonialsSection from "./shared/Testimonials/TestimonialsSection";
+import TestimonialsSection from "@/app/components/Pages/Home/shared/Testimonials/TestimonialsSection";
 import BookTiles from "./shared/TrendingBooks/BookTiles";
 import Trending from "./shared/TrendingBooks/Trending";
 import BusinessModelDescription from "./shared/HowItWorks/BusinessModelDescription";
