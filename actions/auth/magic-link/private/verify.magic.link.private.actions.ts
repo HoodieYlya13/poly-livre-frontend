@@ -1,5 +1,3 @@
-"use server";
-
 import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
 import { setUserSessionCookies } from "@/utils/cookies/cookies.server";

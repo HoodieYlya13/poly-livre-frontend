@@ -1,5 +1,5 @@
 import BookTile from "@/app/components/UI/shared/components/BookTile";
-import { getTrendingBooksAction } from "@/actions/book/book.actions";
+import { getTrendingBooksAction } from "@/actions/book/private/book.private.actions";
 
 export default async function BookTiles() {
   const trendingBooks = await getTrendingBooksAction();

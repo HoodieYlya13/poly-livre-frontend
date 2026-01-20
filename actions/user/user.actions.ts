@@ -9,8 +9,6 @@ import { baseServerAction } from "../base.server.actions";
 import { decodeJwt } from "jose";
 import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
 import { MailSchema } from "@/schemas/mailFormSchema";
-import { LocaleLanguages } from "@/i18n/utils";
-import { TESTIMONIALS_MOCK_EN, TESTIMONIALS_MOCK_FR } from "@/utils/mock.utils";
 
 export async function updateUsernameAction(username: string) {
   return baseServerAction(
@@ -37,16 +35,6 @@ export async function updateUsernameAction(username: string) {
     {
       fallback: ERROR_CODES.USERNAME.UPDATE_FAILED,
     },
-  );
-}
-
-export async function getCurrentUserAction() {
-  return baseServerAction(
-    "getCurrentUser",
-    async () => {
-      return await userApi.getMe();
-    },
-    {},
   );
 }
 
@@ -77,16 +65,6 @@ export async function subscribeToNewsletterAction(
       if (error) return false;
 
       return true;
-    },
-    {},
-  );
-}
-
-export async function getTestimonialsAction(locale: LocaleLanguages) {
-  return baseServerAction(
-    "getTestimonials",
-    async () => {
-      return locale === "fr" ? TESTIMONIALS_MOCK_FR : TESTIMONIALS_MOCK_EN;
     },
     {},
   );

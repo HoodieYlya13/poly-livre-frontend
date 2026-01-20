@@ -1,11 +1,11 @@
-import Information from "./shared/hero/Information";
-import InformationTiles from "./shared/how-it-works/InformationTiles";
-import WomanStudying from "./shared/hero/WomanStudying";
+import Information from "./shared/Hero/Information";
+import InformationTiles from "./shared/HowItWorks/InformationTiles";
+import WomanStudying from "./shared/Hero/WomanStudying";
 import Image from "next/image";
-import TestimonialsSection from "./shared/testimonials/TestimonialsSection";
-import BookTiles from "./shared/trending-books/BookTiles";
-import Trending from "./shared/trending-books/Trending";
-import BusinessModelDescription from "./shared/how-it-works/BusinessModelDescription";
+import TestimonialsSection from "./shared/Testimonials/TestimonialsSection";
+import BookTiles from "./shared/TrendingBooks/BookTiles";
+import Trending from "./shared/TrendingBooks/Trending";
+import BusinessModelDescription from "./shared/HowItWorks/BusinessModelDescription";
 
 export default function Home() {
   return (
