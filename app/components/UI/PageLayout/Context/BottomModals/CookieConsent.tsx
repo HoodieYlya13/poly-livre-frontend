@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { setClientCookie } from "@/utils/cookies/cookies.client";
 import { BottomModal } from "../../../shared/elements/Modal";
+import Button from "../../../shared/elements/Button";
 
 interface CookieConsentProps {
   initialHasConsent: boolean;
@@ -30,12 +31,12 @@ export default function CookieConsent({
       description={t("DESCRIPTION")}
       isVisible={isVisible}
       actions={
-        <button
+        <Button
           onClick={handleAcknowledge}
-          className="w-full text-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-300 rounded-lg transition-colors cursor-pointer custom-shadow custom-shadow-hover"
-        >
-          {t("ACKNOWLEDGE")}
-        </button>
+          className="w-full"
+          child={t("ACKNOWLEDGE")}
+          secondary
+        />
       }
     />
   );

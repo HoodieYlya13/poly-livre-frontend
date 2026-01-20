@@ -45,7 +45,7 @@ function VisibilityButton({
       }}
       onTouchEnd={restoreCursorPosition}
       onContextMenu={(e) => e.preventDefault()}
-      className="absolute right-2 sm:right-3 md:right-4 top-1/2 transform -translate-y-1/2 text-gray-300 hover:text-white opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer"
+      className="absolute right-2 sm:right-3 md:right-4 top-1/2 transform -translate-y-1/2 opacity-80 hover:opacity-100 transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer"
       tabIndex={-1}
     >
       <Icon
@@ -62,10 +62,20 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type: string;
   error?: string;
   focusOnMount?: boolean;
+  secondary?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { id, label, type, error, focusOnMount = false, ...rest },
+  {
+    id,
+    label,
+    type,
+    error,
+    focusOnMount = false,
+    secondary = false,
+    disabled = false,
+    ...rest
+  },
   ref,
 ) {
   const [showPassword, setShowPassword] = useState(false);
@@ -82,20 +92,33 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     if (focusOnMount && inputRef.current) inputRef.current.focus();
   }, [focusOnMount]);
 
+  const className = clsx(
+    "liquid-glass-backdrop liquid-glass-background border block w-full rounded-lg shadow-sm placeholder-gray-400 outline-none p-2 transition-all duration-300 ease-in-out font-normal focus:ring-2 focus:ring-primary focus:ring-offset-2",
+    disabled
+      ? "opacity-30 cursor-not-allowed inset-shadow-sm inset-shadow-black"
+      : "cursor-pointer shadow-sm hover:shadow-primary focus:shadow-primary focus:shadow-md",
+    secondary
+      ? "border-foreground/50"
+      : "border-primary",
+    { "pr-10": type === "password" },
+    {
+      "border-red-500 focus:shadow-red-500 focus:shadow-md focus:ring-red-500":
+        error,
+    },
+  );
+
   return (
-    <>
+    <div className="flex flex-col gap-2 w-full">
       <div className="relative input-focus-glow rounded-2xl sm:rounded-3xl md:rounded-[1.75rem]">
         <input
           {...rest}
           id={id}
+          name={id}
           ref={setRefs}
           type={type !== "password" ? type : showPassword ? "text" : "password"}
           placeholder={label}
-          className={clsx(
-            "liquid-glass-backdrop liquid-glass-background border block w-full rounded-2xl sm:rounded-3xl md:rounded-[1.75rem] shadow-sm placeholder-gray-400 outline-none p-2 sm:p-3 md:p-4 transition-all duration-300 ease-in-out focus:ring focus:ring-white focus:shadow-white hover:ring hover:ring-white hover:shadow-white custom-shadow custom-shadow-hover",
-            error ? "border-red-500" : "liquid-glass-border-color",
-            { "pr-10": type === "password" },
-          )}
+          aria-label={label}
+          className={className}
         />
         {type === "password" && (
           <VisibilityButton
@@ -105,12 +128,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           />
         )}
       </div>
+
       {error && (
         <p className="ml-1 sm:ml-2 mt-1 text-xs sm:text-sm md:text-base text-red-500">
           {error}
         </p>
       )}
-    </>
+    </div>
   );
 });
 

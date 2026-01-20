@@ -83,7 +83,6 @@
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
-    "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
     "SYST": {
       "001": "Une erreur inattendue est survenue.",
       "002": "Validation échouée pour au moins un champ."

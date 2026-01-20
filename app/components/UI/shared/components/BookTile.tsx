@@ -4,6 +4,7 @@ import { Book } from "@/models/book.models";
 import Rating from "../elements/SVGs/Rating";
 import Link from "next/link";
 import { useTranslations, useFormatter } from "next-intl";
+import Button from "../elements/Button";
 
 export default function BookTile({ book }: { book: Book }) {
   const t = useTranslations("BOOK_TILE");
@@ -76,13 +77,16 @@ export default function BookTile({ book }: { book: Book }) {
         </div>
 
         <div className="flex flex-col @3xs:flex-row w-full gap-1 @2xs:gap-2 items-center justify-center font-semibold text-xs @2xs:text-sm @xs:text-base">
-          <button className="border border-foreground p-2 rounded-md w-full @3xs:w-1/2">
-            {t("DETAILS")}
-          </button>
+          <Button
+            className="w-full @3xs:w-1/2"
+            child={t("DETAILS")}
+            secondary
+          />
 
-          <button className="bg-primary text-background p-2 rounded-md w-full @3xs:w-1/2">
-            {t("ADD_TO_CART")}
-          </button>
+          <Button
+            className="w-full @3xs:w-1/2"
+            child={t("ADD_TO_CART")}
+          />
         </div>
       </div>
     </div>

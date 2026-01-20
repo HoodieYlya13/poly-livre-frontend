@@ -86,7 +86,6 @@
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Too many requests. Please try again later.",
-    "CORRECT_FIELDS_BEFORE_SUBMIT": "Please correct the fields before submitting.",
     "SYST": {
       "001": "An unexpected error occurred.",
       "002": "Validation failed for at least one field."

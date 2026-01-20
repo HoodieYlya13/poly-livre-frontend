@@ -83,7 +83,7 @@
   left: 0;
   height: 1rem;
   width: 100%;
-  background: linear-gradient(to right, transparent, white, transparent);
+  background: linear-gradient(to right, transparent, var(--primary), transparent);
   filter: blur(2rem);
   opacity: 0;
   transition: opacity 0.3s ease;
