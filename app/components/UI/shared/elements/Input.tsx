@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
-import clsx from "clsx";
 import Icon from "./SVGs/Icon";
+import { cn, inputVariants } from "@/utils/styles.utils";
 
 interface VisibilityButtonProps {
   showPassword: boolean;
@@ -92,21 +92,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     if (focusOnMount && inputRef.current) inputRef.current.focus();
   }, [focusOnMount]);
 
-  const className = clsx(
-    "liquid-glass-backdrop liquid-glass-background border block w-full rounded-lg shadow-sm placeholder-gray-400 outline-none p-2 transition-all duration-300 ease-in-out font-normal focus:ring-2 focus:ring-primary focus:ring-offset-2",
-    disabled
-      ? "opacity-30 cursor-not-allowed inset-shadow-sm inset-shadow-black"
-      : "cursor-pointer shadow-sm hover:shadow-primary focus:shadow-primary focus:shadow-md",
-    secondary
-      ? "border-foreground/50"
-      : "border-primary",
-    { "pr-10": type === "password" },
-    {
-      "border-red-500 focus:shadow-red-500 focus:shadow-md focus:ring-red-500":
-        error,
-    },
-  );
-
   return (
     <div className="flex flex-col gap-2 w-full">
       <div className="relative input-focus-glow rounded-2xl sm:rounded-3xl md:rounded-[1.75rem]">
@@ -118,7 +103,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           type={type !== "password" ? type : showPassword ? "text" : "password"}
           placeholder={label}
           aria-label={label}
-          className={className}
+          className={cn(
+            inputVariants({
+              variant: secondary ? "secondary" : "primary",
+              isPassword: type === "password",
+              error: !!error,
+            }),
+          )}
         />
         {type === "password" && (
           <VisibilityButton
