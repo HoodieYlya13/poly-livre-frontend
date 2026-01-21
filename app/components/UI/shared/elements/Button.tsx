@@ -17,7 +17,7 @@ export default function Button({
   ...rest
 }: ButtonProps) {
   const baseClassName = clsx(
-    "rounded-lg p-2 font-normal transition-all duration-300 ease-in-out outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-center",
+    "rounded-lg p-2 font-normal transition-all duration-300 ease-in-out outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-center whitespace-nowrap",
     disabled
       ? "opacity-30 cursor-not-allowed inset-shadow-sm inset-shadow-black"
       : "cursor-pointer shadow-sm hover:shadow-primary focus:shadow-primary focus:shadow-md",

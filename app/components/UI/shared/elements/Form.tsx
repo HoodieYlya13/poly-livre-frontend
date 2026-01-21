@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { useErrors } from "@/hooks/useErrors";
 import { useCommon } from "@/hooks/useCommon";
 import Modal from "./Modal";
+import clsx from "clsx";
 
 interface FormProps<T extends FieldValues> {
   children: React.ReactNode;
@@ -80,10 +81,10 @@ export default function Form<T extends FieldValues>({
 
   // TODO: use a utility function
   const baseClasses =
-    "flex flex-col p-8 sm:p-10 md:p-12 rounded-4xl sm:rounded-[3rem] md:rounded-[3.5rem] w-full max-w-md sm:max-w-lg md:max-w-xl gap-6 z-10";
+    "flex flex-col p-8 sm:p-10 md:p-12 rounded-4xl sm:rounded-[3rem] md:rounded-[3.5rem] w-full gap-6 z-10 @container";
 
   const modalClasses =
-    "liquid-glass relative animate-in fade-in zoom-in-95 duration-500 slide-in-from-bottom-2 custom-shadow";
+    "liquid-glass relative animate-in fade-in zoom-in-95 duration-500 slide-in-from-bottom-2 max-w-md sm:max-w-lg md:max-w-xl custom-shadow";
 
   const formClasses = modal ? `${baseClasses} ${modalClasses}` : baseClasses;
 
@@ -97,10 +98,10 @@ export default function Form<T extends FieldValues>({
 
       <div className="flex flex-col gap-2">
         {bottom?.separation && (
-          <div className="w-full border-t border-foreground" />
+          <div className="w-full border-t border-foreground pb-4" />
         )}
 
-        <div className="flex flex-row items-center justify-center">
+        <div className="flex flex-col @md:flex-row gap-2 items-center justify-center">
           {bottom?.children}
 
           <Button
@@ -108,7 +109,7 @@ export default function Form<T extends FieldValues>({
             disabled={buttonDisabled}
             error={buttonError}
             child={isSubmitting ? commonT("") : buttonLabel}
-            className="w-full"
+            className={clsx(bottom?.children ? "w-full @md:w-fit ml-auto" : "w-full")}
           />
         </div>
 
