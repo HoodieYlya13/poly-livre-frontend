@@ -8,6 +8,8 @@ import { ERROR_CODES } from "@/utils/errors.utils";
 import { revalidatePath } from "next/cache";
 import { PasskeyNameSchema } from "@/schemas/stringSchemas";
 
+// TODO: Add validation
+
 export async function getPasskeyRegistrationOptionsAction(passkeyName: string) {
   return baseServerAction(
     "authRegisterPasskeyStart",
