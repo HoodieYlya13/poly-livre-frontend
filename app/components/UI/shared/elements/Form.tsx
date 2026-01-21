@@ -12,6 +12,7 @@ import { useErrors } from "@/hooks/useErrors";
 import { useCommon } from "@/hooks/useCommon";
 import Modal from "./Modal";
 import clsx from "clsx";
+import { cn, formVariants } from "@/utils/styles.utils";
 
 interface FormProps<T extends FieldValues> {
   children: React.ReactNode;
@@ -81,19 +82,13 @@ export default function Form<T extends FieldValues>({
     handleSubmit(e);
   };
 
-  // TODO: use a utility function
-  const baseClasses = clsx(
-    "flex flex-col w-full gap-6 @container",
-    className,
-  );
-
-  const modalClasses =
-    "p-8 sm:p-10 md:p-12 rounded-4xl sm:rounded-[3rem] md:rounded-[3.5rem] z-10 liquid-glass relative animate-in fade-in zoom-in-95 duration-500 slide-in-from-bottom-2 max-w-md sm:max-w-lg md:max-w-xl custom-shadow";
-
-  const formClasses = modal ? `${baseClasses} ${modalClasses}` : baseClasses;
-
   const formContent = (
-    <form onSubmit={handleSubmitWithCooldown} className={formClasses}>
+    <form
+      onSubmit={handleSubmitWithCooldown}
+      className={cn(
+        formVariants({ variant: modal ? "modal" : "default", className }),
+      )}
+    >
       {children}
 
       {bottom?.children && rootErrors && (
