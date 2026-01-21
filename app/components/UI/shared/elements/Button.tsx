@@ -23,32 +23,16 @@ type LinkElementProps = ButtonBaseProps &
 type ButtonProps = ButtonElementProps | LinkElementProps;
 
 export default function Button(props: ButtonProps) {
-  const {
-    className,
-    child,
-    error,
-    disabled = false,
-    secondary = false,
-  } = props;
-
-  const classes = cn(
-    buttonVariants({
-      variant: secondary ? "secondary" : "primary",
-      error,
-    }),
-    className,
-  );
-
   if (props.type === "link") {
-    const {
-      type: _type,
-      child: _child,
-      error: _error,
-      secondary: _secondary,
-      className: _className,
-      disabled: _disabled,
-      ...rest
-    } = props;
+    const { child, error, secondary, className, disabled, ...rest } = props;
+
+    const classes = cn(
+      buttonVariants({
+        variant: secondary ? "secondary" : "primary",
+        error,
+      }),
+      className,
+    );
 
     return (
       <Link {...rest} className={classes} aria-disabled={disabled}>
@@ -57,15 +41,15 @@ export default function Button(props: ButtonProps) {
     );
   }
 
-  const {
-    type,
-    child: _child,
-    error: _error,
-    secondary: _secondary,
-    className: _className,
-    disabled: _disabled,
-    ...rest
-  } = props;
+  const { type, child, error, secondary, className, disabled, ...rest } = props;
+
+  const classes = cn(
+    buttonVariants({
+      variant: secondary ? "secondary" : "primary",
+      error,
+    }),
+    className,
+  );
 
   return (
     <button {...rest} type={type} disabled={disabled} className={classes}>
