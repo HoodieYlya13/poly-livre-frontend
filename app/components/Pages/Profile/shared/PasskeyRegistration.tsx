@@ -52,6 +52,7 @@ export default function PasskeyRegistration({
         handleSubmit={handleSubmit(onSubmit)}
         buttonLabel={t("BUTTON")}
         successText={successText}
+        className="max-w-md sm:max-w-lg md:max-w-xl"
       >
         <h3 className="text-lg font-bold">{t("TITLE")}</h3>
         <p className="text-sm text-gray-400">{t("DESCRIPTION")}</p>

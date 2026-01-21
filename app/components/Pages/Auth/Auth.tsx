@@ -89,6 +89,7 @@ export default function Auth() {
         handleSubmit={onMagicLinkLogin}
         buttonLabel={t("SEND_MAGIC_LINK")}
         successText={successText}
+        className="max-w-md sm:max-w-lg md:max-w-xl"
       >
         <h2 className="text-2xl font-bold text-center">{t("LOGIN_TITLE")}</h2>
         <div className="flex flex-col gap-4">

@@ -19,6 +19,7 @@ interface FormProps<T extends FieldValues> {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   buttonLabel: string;
   successText: string | null;
+  className?: string;
   modal?: {
     isOpen: boolean;
     onClose: () => void;
@@ -37,6 +38,7 @@ export default function Form<T extends FieldValues>({
   handleSubmit,
   buttonLabel,
   successText,
+  className,
   modal,
   bottom,
 }: FormProps<T>) {
@@ -81,7 +83,7 @@ export default function Form<T extends FieldValues>({
 
   // TODO: use a utility function
   const baseClasses =
-    "flex flex-col p-8 sm:p-10 md:p-12 rounded-4xl sm:rounded-[3rem] md:rounded-[3.5rem] w-full gap-6 z-10 @container";
+    "flex flex-col p-8 sm:p-10 md:p-12 rounded-4xl sm:rounded-[3rem] md:rounded-[3.5rem] w-full gap-6 z-10 @container" + className;
 
   const modalClasses =
     "liquid-glass relative animate-in fade-in zoom-in-95 duration-500 slide-in-from-bottom-2 max-w-md sm:max-w-lg md:max-w-xl custom-shadow";
