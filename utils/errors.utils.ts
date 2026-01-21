@@ -29,6 +29,8 @@ export const ERROR_CODES = {
     SAME: "USERNAME.SAME",
   },
   NEWSLETTER: { FAILED: "NEWSLETTER.FAILED" },
+  STRING: { REQUIRED: "STRING.REQUIRED" },
+  TOKEN: { REQUIRED: "TOKEN.REQUIRED" },
 } as const;
 
 type DeepValue<T> = T extends string

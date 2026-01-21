@@ -131,6 +131,12 @@
     },
     "NEWSLETTER": {
       "FAILED": "Une erreur est survenue lors de l'inscription."
+    },
+    "STRING": {
+      "REQUIRED": "Requis"
+    },
+    "TOKEN": {
+      "REQUIRED": "Le token est requis."
     }
   },
   "AUTH": {

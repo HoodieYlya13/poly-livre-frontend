@@ -133,8 +133,13 @@
       "SAME": "The new username cannot be the same as the current one."
     },
     "NEWSLETTER": {
-      "FAILED": "An error occurred while subscribing.",
-      "SUCCESS": "Successfully subscribed!"
+      "FAILED": "An error occurred while subscribing."
+    },
+    "STRING": {
+      "REQUIRED": "Required."
+    },
+    "TOKEN": {
+      "REQUIRED": "Token is required."
     }
   },
   "AUTH": {
