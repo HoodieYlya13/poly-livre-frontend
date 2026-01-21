@@ -73,7 +73,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     error,
     focusOnMount = false,
     secondary = false,
-    disabled = false,
     ...rest
   },
   ref,

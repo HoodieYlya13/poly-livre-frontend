@@ -4,14 +4,18 @@ import { Book } from "@/models/book.models";
 import Rating from "../elements/SVGs/Rating";
 import Link from "next/link";
 import { useTranslations, useFormatter } from "next-intl";
-import Button from "../elements/Button";
+import DetailsAndCartButtons from "./DetailsAndCartButtons";
+import BookStyles from "./BookStyles";
 
 export default function BookTile({ book }: { book: Book }) {
   const t = useTranslations("BOOK_TILE");
   const format = useFormatter();
 
   return (
-    <div className="w-full max-w-xs xl:max-w-md flex aspect-3/5 border border-foreground rounded-lg custom-shadow custom-shadow-hover overflow-hidden @container whitespace-nowrap">
+    <Link
+      href={`/book/${book.id}`}
+      className="w-full max-w-xs xl:max-w-md flex aspect-3/5 border border-foreground rounded-lg custom-shadow custom-shadow-hover overflow-hidden @container whitespace-nowrap"
+    >
       <div className="w-full h-full flex flex-col gap-2 items-center justify-between p-2 @3xs:p-4">
         <div className="relative w-full rounded-lg border liquid-glass-border-color aspect-6/5 overflow-hidden hidden @3xs:block">
           <Image
@@ -37,18 +41,7 @@ export default function BookTile({ book }: { book: Book }) {
             {t("WRITTEN_BY")} {book.author}
           </p>
 
-          <div className="w-full overflow-x-auto scrollbar-hide">
-            <div className="flex gap-2 mx-auto w-fit">
-              {book.styles.map((style) => (
-                <p
-                  key={style}
-                  className="border border-foreground rounded-lg px-2 py-1 text-sm"
-                >
-                  {style}
-                </p>
-              ))}
-            </div>
-          </div>
+          <BookStyles styles={book.styles} />
 
           <div className="flex gap-2">
             <Rating score={book.rating} />
@@ -76,19 +69,8 @@ export default function BookTile({ book }: { book: Book }) {
           </p>
         </div>
 
-        <div className="flex flex-col @3xs:flex-row w-full gap-1 @2xs:gap-2 items-center justify-center font-semibold text-xs @2xs:text-sm @xs:text-base">
-          <Button
-            className="w-full @3xs:w-1/2"
-            child={t("DETAILS")}
-            secondary
-          />
-
-          <Button
-            className="w-full @3xs:w-1/2"
-            child={t("ADD_TO_CART")}
-          />
-        </div>
+        <DetailsAndCartButtons />
       </div>
-    </div>
+    </Link>
   );
 }
