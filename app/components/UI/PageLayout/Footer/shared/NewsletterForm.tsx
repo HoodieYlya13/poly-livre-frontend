@@ -7,6 +7,8 @@ import { toast } from "sonner";
 import { useCommon } from "@/hooks/useCommon";
 import { useErrors } from "@/hooks/useErrors";
 import { ERROR_CODES } from "@/utils/errors.utils";
+import Button from "../../../shared/elements/Button";
+import Input from "../../../shared/elements/Input";
 
 export default function NewsletterForm() {
   const t = useTranslations("FOOTER.NEWSLETTER");
@@ -30,30 +32,30 @@ export default function NewsletterForm() {
     >
       <input
         type="text"
+        id="confirm_email"
         name="confirm_email"
         tabIndex={-1}
         autoComplete="off"
         className="absolute opacity-0 -z-50 w-0 h-0"
         aria-hidden="true"
+        aria-label="Confirm email"
       />
 
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 w-full max-w-md">
-        <input
-          name="email"
+        <Input
+          id="email"
           type="email"
-          placeholder={t("EMAIL_PLACEHOLDER")}
+          label={t("EMAIL_PLACEHOLDER")}
           required
           disabled={isPending || !!state}
-          className="w-full px-3 py-2 rounded border border-primary text-sm disabled:bg-gray-100 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
         />
 
-        <button
+        <Button
           type="submit"
           disabled={isPending || !!state}
-          className="w-full sm:w-auto bg-primary text-white py-2 px-8 rounded text-center outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        >
-          {isPending ? commonT("") : commonT("SUBSCRIBE")}
-        </button>
+          child={isPending ? commonT("") : commonT("SUBSCRIBE")}
+          className="w-full sm:w-auto px-8"
+        />
       </div>
     </form>
   );

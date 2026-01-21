@@ -1,8 +1,10 @@
-import Link from "next/link";
 import { useTranslations } from "next-intl";
+import Button from "@/app/components/UI/shared/elements/Button";
+import { useCommon } from "@/hooks/useCommon";
 
 export default function Information() {
   const t = useTranslations("HOME_PAGE");
+  const { commonT } = useCommon();
 
   return (
     <div className="w-full md:w-1/2 flex items-center justify-center pt-10 px-5 md:p-10">
@@ -19,21 +21,22 @@ export default function Information() {
           <p className="whitespace-pre-line">{t("HERO.DESCRIPTION")}</p>
 
           <div className="flex flex-col @sm:flex-row gap-5">
-            <Link
+            <Button
+              type="link"
               href="/catalog"
               prefetch
-              className="bg-primary text-white py-2 rounded w-full text-center"
-            >
-              {t("HERO.DISCOVER_CATALOG")}
-            </Link>
+              className="w-full"
+              child={t("HERO.DISCOVER_CATALOG")}
+            />
 
-            <Link
+            <Button
+              type="link"
               href="/profile/add-book"
               prefetch
-              className="border border-foreground py-2 rounded w-full text-center"
-            >
-              {t("HERO.PROPOSE_BOOK")}
-            </Link>
+              className="w-full"
+              child={commonT("ADD_BOOK")}
+              secondary
+            />
           </div>
 
           <div className="flex flex-row">

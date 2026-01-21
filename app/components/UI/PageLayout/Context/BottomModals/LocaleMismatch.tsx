@@ -9,6 +9,7 @@ import {
 } from "@/utils/cookies/cookies.client";
 import { useTranslations } from "next-intl";
 import { BottomModal } from "../../../shared/elements/Modal";
+import Button from "../../../shared/elements/Button";
 
 interface LocaleMismatchProps {
   locale: LocaleLanguages;
@@ -72,18 +73,19 @@ export default function LocaleMismatch({
       })}
       actions={
         <>
-          <button
+          <Button
             onClick={handleStay}
-            className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-300 rounded-lg transition-colors cursor-pointer custom-shadow custom-shadow-hover"
-          >
-            {t("KEEP", { locale: localeMismatch.toUpperCase() })}
-          </button>
-          <button
+            className="flex-1"
+            child={t("KEEP", { locale: localeMismatch.toUpperCase() })}
+            secondary
+          />
+
+          <Button
             onClick={handleSwitch}
-            className="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-300 rounded-lg transition-colors cursor-pointer custom-shadow custom-shadow-hover"
-          >
-            {t("SWITCH", { locale: locale.toUpperCase() })}
-          </button>
+            className="flex-1"
+            child={t("SWITCH", { locale: locale.toUpperCase() })}
+            secondary
+          />
         </>
       }
     />

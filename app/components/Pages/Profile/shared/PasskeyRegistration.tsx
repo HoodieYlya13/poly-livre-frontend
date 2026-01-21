@@ -46,12 +46,13 @@ export default function PasskeyRegistration({
   };
 
   return (
-    <div className="flex w-full grow justify-center items-center py-4">
+    <div className="flex w-full grow justify-center items-center">
       <Form
         form={form}
         handleSubmit={handleSubmit(onSubmit)}
         buttonLabel={t("BUTTON")}
         successText={successText}
+        className="max-w-md sm:max-w-lg"
       >
         <h3 className="text-lg font-bold">{t("TITLE")}</h3>
         <p className="text-sm text-gray-400">{t("DESCRIPTION")}</p>

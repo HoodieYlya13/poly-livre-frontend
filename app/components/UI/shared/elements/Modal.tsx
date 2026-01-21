@@ -99,7 +99,7 @@ export function BottomModal({
         <h3 className="font-semibold text-lg">{title}</h3>
         <div className="text-sm text-gray-600">{description}</div>
       </div>
-      <div className="flex gap-3">{actions}</div>
+      <div className="flex flex-row gap-3">{actions}</div>
     </div>
   );
 }

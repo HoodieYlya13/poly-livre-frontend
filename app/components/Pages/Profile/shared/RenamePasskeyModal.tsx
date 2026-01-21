@@ -77,7 +77,7 @@ export default function RenamePasskeyModal({
         }
       />
 
-      <Button type="button" onClick={onClose} child={t("CANCEL")} />
+      <Button type="button" onClick={onClose} child={t("CANCEL")} secondary />
     </Form>
   );
 }

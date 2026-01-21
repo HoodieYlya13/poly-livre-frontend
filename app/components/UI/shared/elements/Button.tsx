@@ -1,56 +1,59 @@
-import clsx from "clsx";
+import Link, { LinkProps } from "next/link";
+import { buttonVariants, cn } from "@/utils/styles.utils";
 
-interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonBaseProps = {
   child: React.ReactNode;
-  errorMessage?: string;
-  successMessage?: string;
+  error?: boolean;
+  secondary?: boolean;
+  className?: string;
   disabled?: boolean;
 };
 
-export default function Button({ type, onClick, className, child, errorMessage, successMessage, disabled = false }: ButtonProps) {
-  const baseClassName = clsx(
-    "rounded-2xl sm:rounded-3xl md:rounded-[1.75rem] liquid-glass py-2 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8 font-semibold transition-all duration-300 ease-in-out outline-none shadow-sm focus:ring focus:ring-white focus:shadow-white hover:ring hover:ring-white hover:shadow-white text-lg sm:text-xl md:text-2xl text-center",
-    disabled
-      ? "opacity-30 cursor-not-allowed inset-shadow-sm inset-shadow-black"
-      : "cursor-pointer custom-shadow custom-shadow-hover"
-  );
-  return (
-    <>
-      <button
-        type={type}
-        disabled={disabled}
-        className={clsx(baseClassName, className)}
-        onClick={onClick}
-      >
+type ButtonElementProps = ButtonBaseProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    type?: "button" | "submit" | "reset";
+  };
+
+type LinkElementProps = ButtonBaseProps &
+  LinkProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> & {
+    type: "link";
+  };
+
+type ButtonProps = ButtonElementProps | LinkElementProps;
+
+export default function Button(props: ButtonProps) {
+  if (props.type === "link") {
+    const { child, error, secondary, className, disabled, ...rest } = props;
+
+    const classes = cn(
+      buttonVariants({
+        variant: secondary ? "secondary" : "primary",
+        error,
+      }),
+      className,
+    );
+
+    return (
+      <Link {...rest} className={classes} aria-disabled={disabled}>
         {child}
-      </button>
-      {successMessage && <p className="text-green-400">{successMessage}</p>}
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-    </>
+      </Link>
+    );
+  }
+
+  const { type, child, error, secondary, className, disabled, ...rest } = props;
+
+  const classes = cn(
+    buttonVariants({
+      variant: secondary ? "secondary" : "primary",
+      error,
+    }),
+    className,
   );
-}
 
-interface SubmitButtonProps {
-  label: string;
-  error?: string;
-  disabled?: boolean;
-}
-
-export function SubmitButton({
-  label,
-  error,
-  disabled,
-}: SubmitButtonProps) {
   return (
-    <>
-      <Button
-        type="submit"
-        disabled={disabled}
-        child={label}
-        className="w-full"
-      />
-      {error && <p className="text-sm text-red-500">{error}</p>}
-    </>
+    <button {...rest} type={type} disabled={disabled} className={classes}>
+      {child}
+    </button>
   );
 }

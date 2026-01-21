@@ -1,4 +1,4 @@
-import { verifyMagicLinkAction } from "@/actions/auth/magic-link/verify.magic.link.actions";
+import { verifyMagicLinkAction } from "@/actions/auth/magic-link/private/verify.magic.link.private.actions";
 import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
 import { NextRequest, NextResponse } from "next/server";
 

@@ -1,7 +1,7 @@
 import { getServerCookie } from "@/utils/cookies/cookies.server";
 import { redirect } from "next/navigation";
 import Profile from "@/app/components/Pages/Profile/Profile";
-import { getUserPasskeysAction } from "@/actions/auth/passkey/management.passkey.actions";
+import { getUserPasskeysAction } from "@/actions/auth/passkey/private/management.passkey.private.actions";
 import { AUTH_ERRORS, tryCatch } from "@/utils/errors.utils";
 
 export default async function ProfilePage() {

@@ -2,8 +2,12 @@
   "COMMON": {
     "LOADING": "Chargement...",
     "HELLO": "Bonjour, {value} !",
+    "ADD_BOOK": "Proposer un livre",
     "SUBSCRIBE": "Souscrire",
     "SLOGAN": "Lisez plus, achetez moins"
+  },
+  "NAVBAR": {
+    "CATALOG": "Catalogue"
   },
   "HOME_PAGE": {
     "META": {
@@ -14,7 +18,6 @@
       "TITLE": "<primary>Empruntez</primary> des livres près de chez vous !",
       "DESCRIPTION": "Découvrez un accès illimité à des milliers de livres.\nLouez, lisez et rendez-les, le tout depuis chez vous.\nVotre prochaine aventure vous attend.",
       "DISCOVER_CATALOG": "Découvrir le catalogue",
-      "PROPOSE_BOOK": "Proposer un livre",
       "IMAGE_ALT": "Femme étudiant",
       "STATS": {
         "BOOKS_AVAILABLE": "Livres disponibles",
@@ -83,7 +86,6 @@
   },
   "ERRORS": {
     "TOO_MANY_REQUESTS": "Trop de requêtes. Veuillez réessayer plus tard.",
-    "CORRECT_FIELDS_BEFORE_SUBMIT": "Veuillez corriger les champs avant de soumettre.",
     "SYST": {
       "001": "Une erreur inattendue est survenue.",
       "002": "Validation échouée pour au moins un champ."
