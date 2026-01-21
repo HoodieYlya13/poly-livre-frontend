@@ -49,7 +49,7 @@ export default function AuthTestingMode() {
         handleSubmit={handleSubmit(onSubmit)}
         buttonLabel={t("LOGIN")}
         successText={successText}
-        className="max-w-md sm:max-w-lg md:max-w-xl"
+        className="max-w-md sm:max-w-lg"
       >
         <Input
           id="password"

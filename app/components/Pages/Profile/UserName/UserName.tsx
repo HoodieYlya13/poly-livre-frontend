@@ -52,7 +52,7 @@ export default function UserName({ username }: UserNameProps) {
         handleSubmit={handleSubmit(onSubmit)}
         buttonLabel={t("UPDATE")}
         successText={successText}
-        className="max-w-md sm:max-w-lg md:max-w-xl"
+        className="max-w-md sm:max-w-lg"
       >
         <h3 className="text-lg font-bold">{t("TITLE")}</h3>
         <p className="text-sm text-gray-400">{t("DESCRIPTION")}</p>

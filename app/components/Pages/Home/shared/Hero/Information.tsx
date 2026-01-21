@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 import Button from "@/app/components/UI/shared/elements/Button";
+import { useCommon } from "@/hooks/useCommon";
 
 export default function Information() {
   const t = useTranslations("HOME_PAGE");
+  const { commonT } = useCommon();
 
   return (
     <div className="w-full md:w-1/2 flex items-center justify-center pt-10 px-5 md:p-10">
@@ -32,7 +34,7 @@ export default function Information() {
               href="/profile/add-book"
               prefetch
               className="w-full"
-              child={t("HERO.PROPOSE_BOOK")}
+              child={commonT("ADD_BOOK")}
               secondary
             />
           </div>
