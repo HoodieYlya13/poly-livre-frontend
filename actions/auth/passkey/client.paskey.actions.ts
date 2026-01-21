@@ -13,6 +13,7 @@ import {
 
 import { baseClientAction } from "@/actions/base.client.actions";
 import { ERROR_CODES } from "@/utils/errors.utils";
+import { PasskeyNameSchema } from "@/schemas/stringSchemas";
 
 export async function loginPasskeyAction() {
   return await baseClientAction(
@@ -34,7 +35,11 @@ export async function registerPasskeyAction(passkeyName: string) {
   return await baseClientAction(
     "registerPasskeyAction",
     async () => {
-      const options = await getPasskeyRegistrationOptionsAction(passkeyName);
+      const validationResult = PasskeyNameSchema.safeParse({ passkeyName });
+
+      if (!validationResult.success) throw new Error();
+
+      const options = await getPasskeyRegistrationOptionsAction(validationResult.data.passkeyName);
 
       const attResp = await startRegistration({ optionsJSON: options });
 

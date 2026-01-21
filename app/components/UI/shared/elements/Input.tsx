@@ -66,15 +66,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  {
-    id,
-    label,
-    type,
-    error,
-    focusOnMount = false,
-    secondary = false,
-    ...rest
-  },
+  { id, label, type, error, focusOnMount = false, secondary = false, ...rest },
   ref,
 ) {
   const [showPassword, setShowPassword] = useState(false);
@@ -97,7 +89,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         <input
           {...rest}
           id={id}
-          name={id}
           ref={setRefs}
           type={type !== "password" ? type : showPassword ? "text" : "password"}
           placeholder={label}

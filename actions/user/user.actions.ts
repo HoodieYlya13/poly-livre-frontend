@@ -9,12 +9,17 @@ import { baseServerAction } from "../base.server.actions";
 import { decodeJwt } from "jose";
 import { ERROR_CODES, tryCatch } from "@/utils/errors.utils";
 import { MailSchema } from "@/schemas/mailFormSchema";
+import { UpdateUsernameSchema } from "@/schemas/updateUsernameFormSchema";
 
 export async function updateUsernameAction(username: string) {
   return baseServerAction(
     "updateUsername",
     async () => {
-      const json = await userApi.updateUsername(username);
+      const validatedFields = UpdateUsernameSchema.safeParse({ username });
+
+      if (!validatedFields.success) throw new Error();
+
+      const json = await userApi.updateUsername(validatedFields.data.username);
 
       const token = await getUserAccessToken();
       if (!token) throw new Error(ERROR_CODES.AUTH[4]);

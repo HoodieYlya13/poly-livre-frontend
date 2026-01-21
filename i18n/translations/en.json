@@ -134,6 +134,12 @@
     },
     "NEWSLETTER": {
       "FAILED": "An error occurred while subscribing."
+    },
+    "STRING": {
+      "REQUIRED": "Required."
+    },
+    "TOKEN": {
+      "REQUIRED": "Token is required."
     }
   },
   "AUTH": {
