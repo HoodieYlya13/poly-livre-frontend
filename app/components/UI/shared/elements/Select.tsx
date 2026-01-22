@@ -50,7 +50,6 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
         <select
           {...rest}
           id={id}
-          name={id}
           ref={setRefs}
           className={cn(
             inputVariants({
