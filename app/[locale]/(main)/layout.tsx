@@ -12,7 +12,7 @@ export default async function MainLayout({
   const { locale } = await params;
 
   return (
-    <div className="flex flex-col font-black transition-colors duration-300">
+    <div className="flex flex-col transition-colors duration-300">
       <NavBar locale={locale as LocaleLanguages} />
 
       <div className="flex flex-col">

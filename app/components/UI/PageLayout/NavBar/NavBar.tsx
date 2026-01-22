@@ -11,7 +11,7 @@ export default async function NavBar({ locale }: NavBarProps) {
   const localeMismatch = await getLocaleMismatch();
 
   return (
-    <header className="fixed w-full z-20 h-(--nav-height) backdrop-blur-md liquid-glass-background border-b liquid-glass-border-color shadow-xl flex">
+    <header className="fixed w-full z-20 h-(--nav-height) backdrop-blur-md liquid-glass-background border-b liquid-glass-border-color shadow-xl flex font-semibold">
       <NavBarClient
         locale={locale}
         localeMismatch={localeMismatch}

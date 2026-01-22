@@ -1,24 +1,26 @@
 import { LocaleLanguages } from "@/i18n/utils";
 
-export interface User {
-  email: string;
+export interface UserSession {
   userId: string;
   username: string;
+  email: string;
   expiresIn: number;
 }
 
-export interface BookReview {
-  reviewId: string;
+export interface User {
   userId: string;
   username: string;
+  email: string;
   firstName: string;
   lastName: string;
   status: Status;
-  bookId: string;
-  rating: number;
-  comment: string;
-  language: LocaleLanguages;
-  createdAt: string;
+  createdAt: Date;
+  updatedAt: Date;
+  bookIds: string[];
+  reviewIds: string[];
+  testimonialIds: string[];
+  favoriteIds: string[];
+  loanedBookIds: string[];
 }
 
 export interface Testimonial {

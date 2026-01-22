@@ -10,3 +10,13 @@ export async function getTrendingBooksAction() {
     {},
   );
 }
+
+export async function getBookByIdAction(id: string) {
+  return baseServerAction(
+    "getBookById",
+    async () => {
+      return MOCKED_BOOKS.find((book) => book.id === id) || MOCKED_BOOKS[0];
+    },
+    {},
+  );
+}

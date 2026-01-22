@@ -61,10 +61,10 @@ export default function BookTile({ book }: { book: Book }) {
           <p className="text-sm truncate w-full text-center">
             {t("OWNER")}{" "}
             <Link
-              href={`/users/${encodeURI(book.owner)}`}
+              href={`/user/${encodeURI(book.owner.username)}`}
               className="underline"
             >
-              {book.owner}
+              {book.owner.username}
             </Link>
           </p>
         </div>
