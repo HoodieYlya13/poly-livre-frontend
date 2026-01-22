@@ -7,6 +7,7 @@ import Icon from "../../UI/shared/elements/SVGs/Icon";
 import AddToCartAndFavorite from "./shared/AddToCartAndFavorite";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
+import { BACKEND_URL } from "@/utils/config/config.server";
 
 export default async function Book({ id }: { id: string }) {
   const book = await getBookByIdAction(id);
@@ -23,7 +24,7 @@ export default async function Book({ id }: { id: string }) {
         <div className="flex flex-col lg:flex-row gap-5 w-full justify-center items-start">
           <div className="relative w-full lg:w-1/2 aspect-square border border-foreground rounded-2xl max-w-2xl overflow-hidden">
             <Image
-              src={book.cover}
+              src={BACKEND_URL + book.cover}
               alt={book.title}
               fill
               className="object-contain"

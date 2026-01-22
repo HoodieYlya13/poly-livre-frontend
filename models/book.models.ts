@@ -17,7 +17,16 @@ export interface Book {
   loanDuration: number;
   loaned?: boolean;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
+}
+
+export interface addBookFormValues
+  extends Omit<
+    Book,
+    "id" | "createdAt" | "updatedAt" | "owner" | "cover" | "reviews"
+  > {
+  cover: FileList;
+  ownerId: string;
 }
 
 export type BookFormValues = Omit<

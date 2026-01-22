@@ -4,6 +4,8 @@ export const ERROR_CODES = {
   JWT: { 1: "JWT.001", 2: "JWT.002" },
   AUTH: { 1: "AUTH.001", 2: "AUTH.002", 3: "AUTH.003", 4: "AUTH.004" },
   USER: { 1: "USER.001" },
+  IMAGE: { 1: "IMAGE.001" },
+  BOOK: { 1: "BOOK.001" },
   PASSKEY: {
     ERROR_LOGIN: "PASSKEY.ERROR_LOGIN",
     ERROR_REGISTER: "PASSKEY.ERROR_REGISTER",

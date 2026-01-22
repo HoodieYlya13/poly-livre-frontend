@@ -103,6 +103,12 @@
     "USER": {
       "001": "Utilisateur non trouvé."
     },
+    "IMAGE": {
+      "001": "Image non trouvée."
+    },
+    "BOOK": {
+      "001": "Livre non trouvé."
+    },
     "PASSKEY": {
       "ERROR_LOGIN": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",
       "ERROR_REGISTER": "L'enregistrement d'une Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",

@@ -1,10 +1,8 @@
 import BookTile from "@/app/components/UI/shared/components/BookTile";
-import { getTrendingBooksAction } from "@/actions/book/private/book.private.actions";
 import clsx from "clsx";
+import { Book } from "@/models/book.models";
 
-export default async function BookTiles({ className }: { className?: string }) {
-  const trendingBooks = await getTrendingBooksAction();
-
+export default function BookTiles({ books, className }: { books?: Book[], className?: string }) {
   return (
     <div className="flex w-full @container">
       <div
@@ -13,7 +11,7 @@ export default async function BookTiles({ className }: { className?: string }) {
           className,
         )}
       >
-        {trendingBooks.map((book) => (
+        {books?.map((book) => (
           <BookTile book={book} key={book.id} />
         ))}
       </div>

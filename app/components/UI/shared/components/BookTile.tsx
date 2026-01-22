@@ -7,6 +7,7 @@ import { useTranslations, useFormatter } from "next-intl";
 import AddToCartButton from "./AddCartToButton";
 import BookStyles from "./BookStyles";
 import Button from "../elements/Button";
+import { BACKEND_URL } from "@/utils/config/config.server";
 
 export default function BookTile({ book }: { book: Book }) {
   const t = useTranslations("BOOK_TILE");
@@ -19,7 +20,7 @@ export default function BookTile({ book }: { book: Book }) {
       <div className="w-full h-full flex flex-col gap-2 items-center justify-between p-2 @3xs:p-4 pointer-events-none">
         <div className="relative w-full rounded-lg border liquid-glass-border-color aspect-6/5 overflow-hidden hidden @3xs:block">
           <Image
-            src={book.cover}
+            src={BACKEND_URL + book.cover}
             alt={book.title}
             fill
             className="object-contain"

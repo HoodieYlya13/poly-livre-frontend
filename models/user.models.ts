@@ -1,14 +1,7 @@
 import { LocaleLanguages } from "@/i18n/utils";
 
-export interface UserSession {
-  userId: string;
-  username: string;
-  email: string;
-  expiresIn: number;
-}
-
 export interface User {
-  userId: string;
+  id: string;
   username: string;
   email: string;
   firstName: string;
@@ -24,16 +17,12 @@ export interface User {
 }
 
 export interface Testimonial {
-  testimonialId: string;
-  userId: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  status: Status;
+  id: string;
+  user: User;
   rating: number;
   comment: string;
-  language: LocaleLanguages;
-  createdAt: string;
+  language?: LocaleLanguages;
+  createdAt?: string;
 }
 
 export type Status = "STUDENT" | "TEACHER" | "WORKER" | "OTHER";
