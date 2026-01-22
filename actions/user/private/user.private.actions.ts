@@ -19,6 +19,7 @@ export async function getTestimonialsAction() {
     async () => {
       const locale = await getPreferredLocale();
       return locale === "fr" ? TESTIMONIALS_MOCK_FR : TESTIMONIALS_MOCK_EN;
+      // return await userApi.getTestimonials();
     },
     {},
   );

@@ -7,14 +7,14 @@ export interface Book {
   description: string;
   author: string;
   cover: string;
-  favorite: boolean;
+  favorite?: boolean;
   styles: string[];
-  rating: number;
-  reviews: BookReview[];
+  rating?: number;
+  reviews?: BookReview[];
   price: number;
   owner: User;
   information: Information;
-  loaned: boolean;
+  loaned?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

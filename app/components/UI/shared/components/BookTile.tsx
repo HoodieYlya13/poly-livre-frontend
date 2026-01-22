@@ -43,10 +43,12 @@ export default function BookTile({ book }: { book: Book }) {
 
           <BookStyles styles={book.styles} />
 
-          <div className="flex gap-2">
-            <Rating score={book.rating} />
-            <p>{book.rating}/5</p>
-          </div>
+          {book.rating && (
+            <div className="flex gap-2">
+              <Rating score={book.rating} />
+              <p>{book.rating}/5</p>
+            </div>
+          )}
 
           <p>
             <span className="font-black text-4xl">
@@ -78,10 +80,7 @@ export default function BookTile({ book }: { book: Book }) {
             secondary
           />
 
-          <AddToCartButton
-            className="w-full @3xs:w-1/2"
-            bookId={book.id}
-          />
+          <AddToCartButton className="w-full @3xs:w-1/2" bookId={book.id} />
         </div>
       </div>
     </div>

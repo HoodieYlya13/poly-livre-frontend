@@ -6,9 +6,11 @@ import Button from "../../UI/shared/elements/Button";
 import Icon from "../../UI/shared/elements/SVGs/Icon";
 import AddToCartAndFavorite from "./shared/AddToCartAndFavorite";
 import { getTranslations } from "next-intl/server";
+import { redirect } from "next/navigation";
 
 export default async function Book({ id }: { id: string }) {
   const book = await getBookByIdAction(id);
+  if (!book) redirect("/catalog"); // TODO: create a real page
   const t = await getTranslations("BOOK_PAGE");
 
   return (
@@ -30,13 +32,15 @@ export default async function Book({ id }: { id: string }) {
           </div>
 
           <div className="flex flex-col gap-2 w-full lg:w-1/2 max-w-2xl lg:max-w-4xl">
-            <div className="flex gap-2">
-              <Rating score={book.rating} />
-              <p>{book.rating}/5</p>
-              <p className="text-foreground/50">
-                {t("REVIEWS", { count: book.reviews.length })}
-              </p>
-            </div>
+            {book.rating && book.reviews && (
+              <div className="flex gap-2">
+                <Rating score={book.rating} />
+                <p>{book.rating}/5</p>
+                <p className="text-foreground/50">
+                  {t("REVIEWS", { count: book.reviews.length })}
+                </p>
+              </div>
+            )}
 
             <div className="flex flex-row gap-2 w-full justify-between">
               <div className="flex flex-col gap-2">
@@ -98,7 +102,9 @@ export default async function Book({ id }: { id: string }) {
 
                 <div className="flex flex-col">
                   <p>{t("DETAILS.DELIVERY.TITLE")}</p>
-                  <p className="font-bold">{t(`DETAILS.DELIVERY.${book.information.delivery}`)}</p>
+                  <p className="font-bold">
+                    {t(`DETAILS.DELIVERY.${book.information.delivery}`)}
+                  </p>
                 </div>
               </div>
 
@@ -107,12 +113,14 @@ export default async function Book({ id }: { id: string }) {
 
                 <div className="flex flex-col">
                   <p>{t("DETAILS.LANGUAGE.TITLE")}</p>
-                  <p className="font-bold">{t(`DETAILS.LANGUAGE.${book.information.language}`)}</p>
+                  <p className="font-bold">
+                    {t(`DETAILS.LANGUAGE.${book.information.language}`)}
+                  </p>
                 </div>
               </div>
             </div>
 
-            <AddToCartAndFavorite bookId={book.id} favorite={book.favorite} />
+            <AddToCartAndFavorite bookId={book.id} favorite={!!book.favorite} />
           </div>
         </div>
       </div>

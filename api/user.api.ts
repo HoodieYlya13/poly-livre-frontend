@@ -1,5 +1,5 @@
 import { fetchApi } from "./base.api";
-import { UserSession } from "@/models/user.models";
+import { Testimonial, UserSession } from "@/models/user.models";
 
 export const userApi = {
   updateUsername: (username: string) =>
@@ -10,6 +10,13 @@ export const userApi = {
   getMe: () =>
     fetchApi<UserSession>("/users/me", {
       method: "GET",
+    }),
+
+  // TODO: create the endpoint
+  getTestimonials: () =>
+    fetchApi<Testimonial[]>("/users/testimonials", {
+      method: "GET",
+      userAuthenticated: false,
     }),
 
   // TODO: create the endpoint
