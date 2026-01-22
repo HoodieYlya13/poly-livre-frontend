@@ -40,16 +40,16 @@ export default function NewsletterForm() {
         aria-hidden="true"
         aria-label="Confirm email"
       />
-
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 w-full max-w-md">
+      
+      <div className="w-full flex flex-col sm:flex-row gap-2 sm:gap-5 items-end justify-center max-w-md">
         <Input
           id="email"
           type="email"
           label={t("EMAIL_PLACEHOLDER")}
           required
           disabled={isPending || !!state}
+          labelHidden
         />
-
         <Button
           type="submit"
           disabled={isPending || !!state}
@@ -57,6 +57,7 @@ export default function NewsletterForm() {
           className="w-full sm:w-auto px-8"
         />
       </div>
+      
     </form>
   );
 }

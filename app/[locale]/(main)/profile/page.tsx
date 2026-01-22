@@ -6,7 +6,7 @@ import { AUTH_ERRORS, tryCatch } from "@/utils/errors.utils";
 
 export default async function ProfilePage() {
   const username = await getServerCookie("user_name");
-  if (!username) redirect("/profile/user-name"); // TODO: remove this at some point because handled in the proxy
+  if (!username) redirect("/profile/create"); // TODO: remove this at some point because handled in the proxy
 
   const [error, passkeys] = await tryCatch(getUserPasskeysAction());
 

@@ -20,7 +20,7 @@ export interface Book {
   updatedAt?: Date;
 }
 
-export interface addBookFormValues
+export interface AddBookFormValues
   extends Omit<
     Book,
     "id" | "createdAt" | "updatedAt" | "owner" | "cover" | "reviews"
@@ -28,6 +28,22 @@ export interface addBookFormValues
   cover: FileList;
   ownerId: string;
 }
+
+export type BookFormValues = Omit<
+  Book,
+  | "id"
+  | "createdAt"
+  | "updatedAt"
+  | "owner"
+  | "cover"
+  | "reviews"
+  | "loanDuration"
+> & {
+  cover: FileList;
+  publishDate: string;
+  category: string;
+  loanDuration: number;
+};
 
 export interface BookReview {
   reviewId: string;

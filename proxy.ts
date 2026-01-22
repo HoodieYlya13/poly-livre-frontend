@@ -36,9 +36,9 @@ export async function proxy(req: NextRequest) {
   const userAccessToken = getProxyCookie(req, "user_access_token");
   if (userAccessToken) {
     const userName = getProxyCookie(req, "user_name");
-    if (!userName && !pathname.endsWith("/profile/user-name")) {
+    if (!userName && !pathname.endsWith("/profile/create")) {
       const redirectUrl = req.nextUrl.clone();
-      redirectUrl.pathname = "/profile/user-name";
+      redirectUrl.pathname = "/profile/create";
       return NextResponse.redirect(redirectUrl);
     }
   } else if (pathname.includes("/profile")) {

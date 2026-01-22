@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 export default function TestimonialTile({ testimonial }: { testimonial: Testimonial }) {
   const t = useTranslations("HOME_PAGE.TESTIMONIALS.STATUS");
   return (
-    <div className="w-full max-w-md flex flex-col gap-2 p-5 justify-between aspect-7/4 rounded-lg custom-shadow custom-shadow-hover border liquid-glass-border-color">
+    <div className="w-full max-w-md flex flex-col gap-2 p-5 justify-between aspect-7/4 rounded-lg shadow-lg custom-shadow-hover border liquid-glass-border-color">
       <Rating score={testimonial.rating} />
 
       <p>“{testimonial.comment}”</p>

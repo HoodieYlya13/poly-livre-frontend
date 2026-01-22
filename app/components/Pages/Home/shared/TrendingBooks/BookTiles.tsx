@@ -7,7 +7,7 @@ export default function BookTiles({ books, className }: { books?: Book[], classN
     <div className="flex w-full @container">
       <div
         className={clsx(
-          "w-full grid @xl:grid-cols-2 @7xl:grid-cols-4 gap-3 justify-items-center mx-auto max-w-2xl @7xl:max-w-8xl",
+          "w-full grid @xl:grid-cols-2 @7xl:grid-cols-4 gap-4 justify-items-center mx-auto max-w-2xl @7xl:max-w-8xl",
           className,
         )}
       >

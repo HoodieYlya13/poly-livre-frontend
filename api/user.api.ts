@@ -2,8 +2,15 @@ import { LocaleLanguages } from "@/i18n/utils";
 import { fetchApi } from "./base.api";
 import { Testimonial } from "@/models/user.models";
 import { AuthResponse } from "@/models/auth.models";
+import { UserValues } from "@/schemas/userSchema";
 
 export const userApi = {
+  createProfile: (data: UserValues) =>
+    fetchApi<AuthResponse>(`/users/${data.username}`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
   updateUsername: (username: string) =>
     fetchApi<AuthResponse>(`/users/${username}`, {
       method: "PUT",

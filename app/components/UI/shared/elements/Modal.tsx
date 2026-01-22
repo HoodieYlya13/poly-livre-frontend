@@ -48,7 +48,7 @@ export default function Modal({
       aria-label={ariaLabel}
     >
       <div
-        className="absolute inset-0 bg-background/20 backdrop-blur-sm animate-in fade-in duration-200"
+        className="absolute inset-0 bg-black/40 backdrop-blur-xs animate-in fade-in duration-200"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -56,7 +56,7 @@ export default function Modal({
       {childrenOnly ? (
         children
       ) : (
-        <div className="relative flex flex-col items-center justify-center w-full max-w-lg liquid-glass rounded-3xl p-6 sm:p-8 custom-shadow animate-in fade-in zoom-in-95 duration-500 slide-in-from-bottom-2">
+        <div className="relative flex flex-col items-center justify-center w-full max-w-[90vw] sm:max-w-md md:max-w-lg xl:max-w-xl max-h-[80vh] overflow-auto liquid-glass rounded-3xl p-6 sm:p-8 custom-shadow animate-in fade-in zoom-in-95 duration-500 slide-in-from-bottom-2">
           {title && (
             <div className="mb-6">
               <h3 className="text-xl font-bold text-center">{title}</h3>
