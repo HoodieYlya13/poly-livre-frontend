@@ -8,6 +8,12 @@ export const bookApi = {
       userAuthenticated: false,
     }),
 
+  getAllBooks: () =>
+    fetchApi<Book[]>("/books/all", {
+      method: "GET",
+      userAuthenticated: false,
+    }),  
+
   getBookById: (id: string) =>
     fetchApi<Book>(`/books/${id}`, {
       method: "GET",

@@ -1,8 +1,8 @@
 import BookTiles from "../Home/shared/TrendingBooks/BookTiles";
-import { getTrendingBooksAction } from "@/actions/book/private/book.private.actions";
+import { getAllBooksAction } from "@/actions/book/private/book.private.actions";
 
 export default async function Catalog() {
-  const trendingBooks = await getTrendingBooksAction();
+  const books = await getAllBooksAction();
 
   return (
     <div className="flex flex-col gap-5 py-10 px-5">
@@ -21,7 +21,7 @@ export default async function Catalog() {
           <div className="flex ml-auto">Tri</div>
 
           <div className="flex w-full">
-            <BookTiles books={trendingBooks} className=" @4xl:grid-cols-3 @4xl:max-w-5xl" />
+            <BookTiles books={books} className=" @4xl:grid-cols-3 @4xl:max-w-5xl" />
           </div>
         </div>
       </div>

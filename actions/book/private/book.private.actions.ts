@@ -11,6 +11,16 @@ export async function getTrendingBooksAction() {
   );
 }
 
+export async function getAllBooksAction() {
+  return baseServerAction(
+    "getAllBooks",
+    async () => {
+      return await bookApi.getAllBooks();
+    },
+    {},
+  );
+}
+
 export async function getBookByIdAction(id: string) {
   return baseServerAction(
     "getBookById",
