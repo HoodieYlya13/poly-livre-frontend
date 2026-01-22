@@ -14,9 +14,19 @@ export interface Book {
   price: number;
   owner: User;
   information: Information;
+  loanDuration: number;
   loaned?: boolean;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface addToCartBookFormValues
+  extends Omit<
+    Book,
+    "id" | "createdAt" | "updatedAt" | "owner" | "cover" | "reviews"
+  > {
+  cover: FileList;
+  ownerId: string;
 }
 
 export interface BookReview {

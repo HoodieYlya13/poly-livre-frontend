@@ -6,11 +6,13 @@ export const bookApi = {
   getTrendingBooks: () =>
     fetchApi<Book[]>("/books/trending", {
       method: "GET",
+      userAuthenticated: false,
     }),
 
   // TODO: create the endpoint
   getBookById: (id: string) =>
     fetchApi<Book>(`/books/${id}`, {
       method: "GET",
+      userAuthenticated: false,
     }),
 };
