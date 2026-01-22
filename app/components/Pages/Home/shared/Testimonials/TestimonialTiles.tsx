@@ -7,10 +7,7 @@ export default async function TestimonialTiles() {
   return (
     <div className="w-full flex flex-col xl:flex-row gap-3 items-center justify-center">
       {testimonials.map((testimonial) => (
-        <TestimonialTile
-          testimonial={testimonial}
-          key={testimonial.testimonialId}
-        />
+        <TestimonialTile testimonial={testimonial} key={testimonial.id} />
       ))}
     </div>
   );

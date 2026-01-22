@@ -12,14 +12,14 @@ export default function TestimonialTile({ testimonial }: { testimonial: Testimon
 
       <div className="flex flex-row items-center gap-2">
         <div className="size-12 rounded-full flex items-center justify-center bg-primary text-secondary font-bold">
-          {testimonial.firstName[0] + testimonial.lastName[0]}
+          {testimonial.user.firstName[0] + testimonial.user.lastName[0]}
         </div>
 
         <div>
           <p className="font-bold">
-            {testimonial.firstName} {testimonial.lastName}
+            {testimonial.user.firstName} {testimonial.user.lastName}
           </p>
-          <p>{t(testimonial.status)}</p>
+          <p>{t(testimonial.user.status)}</p>
         </div>
       </div>
     </div>

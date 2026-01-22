@@ -7,6 +7,15 @@ const nextConfig: NextConfig = {
   },
   reactCompiler: true,
   allowedDevOrigins: ["localhost:3000", "192.168.1.102"],
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

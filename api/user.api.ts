@@ -1,20 +1,21 @@
+import { LocaleLanguages } from "@/i18n/utils";
 import { fetchApi } from "./base.api";
-import { Testimonial, UserSession } from "@/models/user.models";
+import { Testimonial } from "@/models/user.models";
+import { AuthResponse } from "@/models/auth.models";
 
 export const userApi = {
   updateUsername: (username: string) =>
-    fetchApi<UserSession>(`/users/${username}`, {
+    fetchApi<AuthResponse>(`/users/${username}`, {
       method: "PUT",
     }),
 
   getMe: () =>
-    fetchApi<UserSession>("/users/me", {
+    fetchApi<AuthResponse>("/users/me", {
       method: "GET",
     }),
 
-  // TODO: create the endpoint
-  getTestimonials: () =>
-    fetchApi<Testimonial[]>("/users/testimonials", {
+  getTestimonials: (locale: LocaleLanguages) =>
+    fetchApi<Testimonial[]>(`/users/testimonials/${locale}`, {
       method: "GET",
       userAuthenticated: false,
     }),

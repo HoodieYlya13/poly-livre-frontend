@@ -17,10 +17,10 @@ export interface Book {
   loanDuration: number;
   loaned?: boolean;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
 }
 
-export interface addToCartBookFormValues
+export interface addBookFormValues
   extends Omit<
     Book,
     "id" | "createdAt" | "updatedAt" | "owner" | "cover" | "reviews"

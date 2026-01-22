@@ -106,6 +106,12 @@
     "USER": {
       "001": "User not found."
     },
+    "IMAGE": {
+      "001": "Image not found."
+    },
+    "BOOK": {
+      "001": "Book not found."
+    },
     "PASSKEY": {
       "ERROR_LOGIN": "Login with Passkey took too long or was cancelled. Please try again.",
       "ERROR_REGISTER": "Register a Passkey took too long or was cancelled. Please try again.",
