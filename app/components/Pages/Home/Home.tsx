@@ -6,8 +6,11 @@ import InformationTiles from "./shared/HowItWorks/InformationTiles";
 import Trending from "./shared/TrendingBooks/Trending";
 import BookTiles from "./shared/TrendingBooks/BookTiles";
 import TestimonialsSection from "./shared/Testimonials/TestimonialsSection";
+import { getTrendingBooksAction } from "@/actions/book/private/book.private.actions";
 
-export default function Home() {
+export default async function Home() {
+  const trendingBooks = await getTrendingBooksAction();
+
   return (
     <div className="flex grow flex-col gap-10 items-center justify-center font-normal pb-10">
       <section className="flex md:landscape:min-h-fullscreen w-full">
@@ -33,7 +36,7 @@ export default function Home() {
 
         <Trending />
 
-        <BookTiles />
+        <BookTiles books={trendingBooks} />
       </section>
 
       <TestimonialsSection />
