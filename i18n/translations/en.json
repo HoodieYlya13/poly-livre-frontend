@@ -133,8 +133,13 @@
       "SAME": "The new username cannot be the same as the current one."
     },
     "NEWSLETTER": {
-      "FAILED": "An error occurred while subscribing.",
-      "SUCCESS": "Successfully subscribed!"
+      "FAILED": "An error occurred while subscribing."
+    },
+    "STRING": {
+      "REQUIRED": "Required."
+    },
+    "TOKEN": {
+      "REQUIRED": "Token is required."
     }
   },
   "AUTH": {
@@ -196,5 +201,30 @@
     "OWNER": "Owner:",
     "DETAILS": "Details",
     "ADD_TO_CART": "Add to cart"
+  },
+  "BOOK_PAGE": {
+    "BACK": "Back to catalog",
+    "WRITTEN_BY": "Written by:",
+    "OWNER": "Owner:",
+    "PER_MONTH": "/month",
+    "ABOUT": "About the book",
+    "REVIEWS": "({count} reviews)",
+    "DETAILS": {
+      "PAGES": "Pages",
+      "YEAR": "Published in",
+      "DELIVERY": {
+        "TITLE": "Delivery",
+        "FREE": "Free (2-3 days)",
+        "PAID": "Paid (2-3 days)"
+      },
+      "LANGUAGE": {
+        "TITLE": "Language",
+        "FR": "French",
+        "EN": "English"
+      }
+    },
+    "ACTIONS": {
+      "ADD_TO_CART": "Add to cart"
+    }
   }
 }

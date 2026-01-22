@@ -131,6 +131,12 @@
     },
     "NEWSLETTER": {
       "FAILED": "Une erreur est survenue lors de l'inscription."
+    },
+    "STRING": {
+      "REQUIRED": "Requis"
+    },
+    "TOKEN": {
+      "REQUIRED": "Le token est requis."
     }
   },
   "AUTH": {
@@ -192,5 +198,30 @@
     "OWNER": "Propriétaire :",
     "DETAILS": "Détails",
     "ADD_TO_CART": "Ajouter au panier"
+  },
+  "BOOK_PAGE": {
+    "BACK": "Retour au catalogue",
+    "WRITTEN_BY": "Écrit par :",
+    "OWNER": "Propriétaire :",
+    "PER_MONTH": "/mois",
+    "ABOUT": "À propos du bouquin",
+    "REVIEWS": "({count} avis)",
+    "DETAILS": {
+      "PAGES": "Pages",
+      "YEAR": "Paru aux éditions en",
+      "DELIVERY": {
+        "TITLE": "Livraison",
+        "FREE": "Gratuit (2-3 jours)",
+        "PAID": "Payant (2-3 jours)"
+      },
+      "LANGUAGE": {
+        "TITLE": "Langue",
+        "FR": "Français",
+        "EN": "Anglais"
+      }
+    },
+    "ACTIONS": {
+      "ADD_TO_CART": "Ajouter au panier"
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { userApi } from "@/api/user.api";
 import { baseServerAction } from "../../base.server.actions";
-import { LocaleLanguages } from "@/i18n/utils";
 import { TESTIMONIALS_MOCK_EN, TESTIMONIALS_MOCK_FR } from "@/utils/mock.utils";
+import { getPreferredLocale } from "@/utils/cookies/cookies.server";
 
 export async function getCurrentUserAction() {
   return baseServerAction(
@@ -13,11 +13,13 @@ export async function getCurrentUserAction() {
   );
 }
 
-export async function getTestimonialsAction(locale: LocaleLanguages) {
+export async function getTestimonialsAction() {
   return baseServerAction(
     "getTestimonials",
     async () => {
+      const locale = await getPreferredLocale();
       return locale === "fr" ? TESTIMONIALS_MOCK_FR : TESTIMONIALS_MOCK_EN;
+      // return await userApi.getTestimonials();
     },
     {},
   );

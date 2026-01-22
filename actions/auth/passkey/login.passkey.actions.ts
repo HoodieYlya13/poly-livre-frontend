@@ -5,6 +5,8 @@ import { baseServerAction } from "@/actions/base.server.actions";
 import { authApi } from "@/api/auth.api";
 import { AuthenticationResponseJSON } from "@simplewebauthn/browser";
 
+// TODO: Add validation
+
 export async function getPasskeyLoginOptionsAction() {
   return baseServerAction(
     "authLoginStartPasskey",

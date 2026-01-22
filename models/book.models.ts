@@ -1,13 +1,43 @@
+import { LocaleLanguages, LocaleLanguagesUpperCase } from "@/i18n/utils";
+import { Status, User } from "./user.models";
+
 export interface Book {
   id: string;
   title: string;
+  description: string;
   author: string;
   cover: string;
-  favorite: boolean;
+  favorite?: boolean;
   styles: string[];
-  rating: number;
+  rating?: number;
+  reviews?: BookReview[];
   price: number;
-  owner: string;
+  owner: User;
+  information: Information;
+  loaned?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface BookReview {
+  reviewId: string;
+  userId: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  status: Status;
+  bookId: string;
+  rating: number;
+  comment: string;
+  language: LocaleLanguages;
+  createdAt: string;
+}
+
+interface Information {
+  pages: number;
+  year: number;
+  language: LocaleLanguagesUpperCase;
+  delivery: Delivery;
+}
+
+type Delivery = "FREE" | "PAID";

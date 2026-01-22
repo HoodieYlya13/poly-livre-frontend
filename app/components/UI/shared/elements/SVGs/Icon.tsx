@@ -26,6 +26,8 @@ export default function Icon({ name, className, ...props }: IconProps) {
         fill={icon.stroke ? "none" : "currentColor"}
         stroke={icon.stroke ? "currentColor" : "none"}
         strokeWidth={icon.strokeWidth}
+        strokeLinecap={icon.strokeLinecap}
+        strokeLinejoin={icon.strokeLinejoin}
       />
     </svg>
   );
