@@ -2,13 +2,18 @@ import React, { forwardRef, useEffect, useRef } from "react";
 import { FieldError } from "react-hook-form";
 import { cn, inputVariants } from "@/utils/styles.utils";
 
+interface SelectOption {
+  value: string;
+  label: string;
+}
+
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   id: string;
   label: string;
   error?: FieldError;
   focusOnMount?: boolean;
   secondary?: boolean;
-  options: string[];
+  options: string[] | SelectOption[];
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
@@ -57,11 +62,15 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
           <option value="" disabled>
             {label}
           </option>
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
+          {options.map((option) => {
+            const value = typeof option === "string" ? option : option.value;
+            const label = typeof option === "string" ? option : option.label;
+            return (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            );
+          })}
         </select>
       </div>
 

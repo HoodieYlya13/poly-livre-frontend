@@ -63,10 +63,11 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   focusOnMount?: boolean;
   secondary?: boolean;
+  labelHidden?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { id, label, type, error, focusOnMount = false, secondary = false, ...rest },
+  { id, label, type, error, focusOnMount = false, secondary = false, labelHidden = false, ...rest },
   ref,
 ) {
   const [showPassword, setShowPassword] = useState(false);
@@ -85,9 +86,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 
   return (
     <div className="flex flex-col gap-2 w-full">
-      <label htmlFor={id} className="block mb-2 text-sm font-medium">
-        {label}
-      </label>
+      {!labelHidden && (
+        <label htmlFor={id} className="block mb-2 text-sm font-medium">
+          {label}
+        </label>
+      )}
       <div className="relative input-focus-glow rounded-2xl sm:rounded-3xl md:rounded-[1.75rem]">
         <input
           {...rest}

@@ -188,6 +188,23 @@
       "NAME_LABEL": "Username",
       "UPDATE": "Update",
       "USERNAME_UPDATED": "Username updated successfully."
+    },
+    "CREATE": {
+      "TITLE": "Create Profile",
+      "DESCRIPTION": "Register a user.",
+      "BUTTON": "Register",
+      "NAME_LABEL": "Username",
+      "CREATE": "Create",
+      "USER_CREATED": "User created successfully.",
+      "FIRST_NAME_LABEL": "First Name",
+      "LAST_NAME_LABEL": "Last Name",
+      "STATUS_LABEL": "Status",
+      "STATUS_OPTIONS": [
+        { "value": "STUDENT", "label": "Student" },
+        { "value": "TEACHER", "label": "Teacher" },
+        { "value": "WORKER", "label": "Worker" },
+        { "value": "OTHER", "label": "Other" }
+      ]
     }
   },
   "LOCALE_MISMATCH": {
@@ -251,7 +268,14 @@
     "CATEGORY": "Category",
     "LANGUAGE": "Language",
     "CATEGORIES_OPTIONS": ["Science-Fiction", "Roman", "Fantasy", "Biography"],
-    "LANGUAGES_OPTIONS": ["French", "English", "Spanish", "Russian", "German", "Chinese"],
+    "LANGUAGES_OPTIONS": [
+      "French",
+      "English",
+      "Spanish",
+      "Russian",
+      "German",
+      "Chinese"
+    ],
     "RENTAL_DURATION_OPTIONS": ["14 days", "21 days", "30 days"],
     "FIELD_REQUIRED": "This field is required.",
     "PRICE_MIN": "The price must be at least 1 EUR.",

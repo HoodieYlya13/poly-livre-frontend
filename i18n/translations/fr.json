@@ -185,6 +185,23 @@
       "NAME_LABEL": "Nom d'utilisateur",
       "UPDATE": "Mettre à jour",
       "USERNAME_UPDATED": "Nom d'utilisateur mis à jour avec succès."
+    },
+    "CREATE": {
+      "TITLE": "Créer un profil",
+      "DESCRIPTION": "Enregistrez un nom d'utilisateur pour vous connecter sans mot de passe ni lien email.",
+      "BUTTON": "Enregistrer un nouveau nom d'utilisateur",
+      "NAME_LABEL": "Nom d'utilisateur",
+      "CREATE": "Créer",
+      "USER_CREATED": "Profil créé avec succès.",
+      "FIRST_NAME_LABEL": "Prénom",
+      "LAST_NAME_LABEL": "Nom",
+      "STATUS_LABEL": "Statut",
+      "STATUS_OPTIONS": [
+        { "value": "STUDENT", "label": "Étudiant" },
+        { "value": "TEACHER", "label": "Professeur" },
+        { "value": "WORKER", "label": "Salarié" },
+        { "value": "OTHER", "label": "Autre" }
+      ]
     }
   },
   "LOCALE_MISMATCH": {
@@ -248,7 +265,16 @@
     "CATEGORY": "Catégorie",
     "LANGUAGE": "Langue",
     "CATEGORIES_OPTIONS": ["Science-Fiction", "Roman", "Fantasy", "Biographie"],
-    "LANGUAGES_OPTIONS": ["Français", "Anglais", "Espagnol", "Russe", "Allemeand", "Chinois"],    "RENTAL_DURATION_OPTIONS": ["14 jours", "21 jours", "30 jours"],    "FIELD_REQUIRED": "Ce champ est requis.",
+    "LANGUAGES_OPTIONS": [
+      "Français",
+      "Anglais",
+      "Espagnol",
+      "Russe",
+      "Allemeand",
+      "Chinois"
+    ],
+    "RENTAL_DURATION_OPTIONS": ["14 jours", "21 jours", "30 jours"],
+    "FIELD_REQUIRED": "Ce champ est requis.",
     "PRICE_MIN": "Le prix doit être au moins de 1 EUR.",
     "RENTAL_DURATION_MIN": "La durée d’emprunt doit être au moins de 14 jours.",
     "PAGES_MIN": "Le nombre de pages doit être au moins de 1.",

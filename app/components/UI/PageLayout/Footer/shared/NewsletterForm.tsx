@@ -48,6 +48,7 @@ export default function NewsletterForm() {
           label={t("EMAIL_PLACEHOLDER")}
           required
           disabled={isPending || !!state}
+          labelHidden
         />
         <Button
           type="submit"

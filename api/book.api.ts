@@ -20,9 +20,9 @@ export const bookApi = {
       userAuthenticated: false,
     }),
 
-    addBook: (formData: FormData) =>
-        fetchApi<Book>("/books/add", {
-            method: "POST",
-            body: formData,
-        }),
+  addBook: (formData: FormData) =>
+    fetchApi<Book>("/books/add", {
+      method: "POST",
+      body: formData,
+    }),
 };
