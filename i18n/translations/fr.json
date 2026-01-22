@@ -223,5 +223,34 @@
     "ACTIONS": {
       "ADD_TO_CART": "Ajouter au panier"
     }
+  },
+  "ADD_BOOK": {
+    "TITLE": "Proposer un nouveau livre",
+    "DESCRIPTION_FORM": "Remplissez le formulaire ci-dessous pour mettre en ligne un exemplaire.",
+    "BOOK_INFORMATION": "Informations du livre",
+    "UPLOAD_IMAGE": "Charger une image",
+    "BOOK_TITLE": "Titre du livre",
+    "AUTHOR": "Auteur",
+    "DESCRIPTION": "Description du livre",
+    "SALES_OPTIONS": "Options de vente",
+    "PRICE_EUR": "Prix (EUR)",
+    "RENTAL_DURATION": "Durée d’emprunt (minimum 14 jours)",
+    "CANCEL": "Annuler",
+    "PUBLISH_BOOK": "Publier le livre",
+    "PAGES": "Nombre de pages",
+    "PUBLISH_DATE": "Date de publication",
+    "CATEGORY": "Catégorie",
+    "LANGUAGE": "Langue",
+    "CATEGORIES_OPTIONS": ["Science-Fiction", "Roman", "Fantasy", "Biographie"],
+    "LANGUAGES_OPTIONS": ["Français", "Anglais", "Espagnol", "Russe", "Allemeand", "Chinois"],    "RENTAL_DURATION_OPTIONS": ["14 jours", "21 jours", "30 jours"],    "FIELD_REQUIRED": "Ce champ est requis.",
+    "PRICE_MIN": "Le prix doit être au moins de 1 EUR.",
+    "RENTAL_DURATION_MIN": "La durée d’emprunt doit être au moins de 14 jours.",
+    "PAGES_MIN": "Le nombre de pages doit être au moins de 1.",
+    "INVALID_DATE": "Veuillez entrer une date valide.",
+    "IMAGE_REQUIRED": "L'image du livre est requise.",
+    "REMOVE_IMAGE": "Supprimer l'image",
+    "BOOK_PUBLISHED_SUCCESS": "Livre publié !",
+    "BOOK_PUBLISHED_SUCCESS_DESCRIPTION": "Merci d'avoir utilisé Liprêrie pour faire revivre votre bibliothèque.",
+    "FINISH": "Terminer"
   }
 }

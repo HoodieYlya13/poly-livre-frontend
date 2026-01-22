@@ -226,5 +226,36 @@
     "ACTIONS": {
       "ADD_TO_CART": "Add to cart"
     }
+  },
+  "ADD_BOOK": {
+    "TITLE": "Suggest a New Book",
+    "DESCRIPTION_FORM": "Fill out the form below to upload a copy of a book you'd like to share with our community.",
+    "BOOK_INFORMATION": "Book Information",
+    "UPLOAD_IMAGE": "Upload Image",
+    "BOOK_TITLE": "Book Title",
+    "AUTHOR": "Author",
+    "DESCRIPTION": "Book Description",
+    "SALES_OPTIONS": "Sales Options",
+    "PRICE_EUR": "Price (EUR)",
+    "RENTAL_DURATION": "Rental Duration (minimum 14 days)",
+    "CANCEL": "Cancel",
+    "PUBLISH_BOOK": "Publish Book",
+    "PAGES": "Page Count",
+    "PUBLISH_DATE": "Publish Date",
+    "CATEGORY": "Category",
+    "LANGUAGE": "Language",
+    "CATEGORIES_OPTIONS": ["Science-Fiction", "Roman", "Fantasy", "Biography"],
+    "LANGUAGES_OPTIONS": ["French", "English", "Spanish", "Russian", "German", "Chinese"],
+    "RENTAL_DURATION_OPTIONS": ["14 days", "21 days", "30 days"],
+    "FIELD_REQUIRED": "This field is required.",
+    "PRICE_MIN": "The price must be at least 1 EUR.",
+    "RENTAL_DURATION_MIN": "The rental duration must be at least 14 days.",
+    "PAGES_MIN": "The page count must be at least 1.",
+    "INVALID_DATE": "Please enter a valid date.",
+    "IMAGE_REQUIRED": "The book image is required.",
+    "REMOVE_IMAGE": "Remove image",
+    "BOOK_PUBLISHED_SUCCESS": "Book Published!",
+    "BOOK_PUBLISHED_SUCCESS_DESCRIPTION": "Thank you for using Liprêrie to give new life to your library.",
+    "FINISH": "Finish"
   }
 }

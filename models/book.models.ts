@@ -14,10 +14,21 @@ export interface Book {
   price: number;
   owner: User;
   information: Information;
+  loanDuration: number;
   loaned?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
+
+export type BookFormValues = Omit<
+  Book,
+  "id" | "createdAt" | "updatedAt" | "owner" | "cover" | "reviews" | "loanDuration"
+> & {
+  cover: FileList;
+  publishDate : string;
+  category : string;
+  loanDuration: number;
+};
 
 export interface BookReview {
   reviewId: string;

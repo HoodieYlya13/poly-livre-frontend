@@ -94,6 +94,7 @@ const BASE_BOOK: Omit<Book, "id"> = {
   price: 3,
   owner: MOCKED_OWNER,
   information: BOOK_INFO,
+  loanDuration: 14,
   loaned: false,
   createdAt: new Date(),
   updatedAt: new Date(),

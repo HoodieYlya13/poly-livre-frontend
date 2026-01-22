@@ -11,7 +11,8 @@ interface TileProps {
 
 function Tile({ icon, number, title, description }: TileProps) {
   return (
-    <div className="flex bg-secondary/50 rounded-xl custom-shadow custom-shadow-hover aspect-5/4 w-full max-w-xs overflow-hidden @container">
+    //{custom-shadow custom-shadow-hover aspect-5/4}
+    <div className="flex bg-secondary/50 rounded-xl w-full max-w-xs overflow-hidden @container">
       <div className="flex flex-col gap-3 @2xs:gap-4 @xs:gap-5 p-3 @2xs:p-4 @xs:p-5 w-full">
         <div className="flex flex-row justify-between items-center gap-2">
           <div className="size-10 @3xs:size-12 rounded-md bg-primary text-secondary flex items-center justify-center">
