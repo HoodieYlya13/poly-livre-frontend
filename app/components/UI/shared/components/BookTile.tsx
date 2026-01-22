@@ -4,19 +4,19 @@ import { Book } from "@/models/book.models";
 import Rating from "../elements/SVGs/Rating";
 import Link from "next/link";
 import { useTranslations, useFormatter } from "next-intl";
-import DetailsAndCartButtons from "./DetailsAndCartButtons";
+import AddToCartButton from "./AddCartToButton";
 import BookStyles from "./BookStyles";
+import Button from "../elements/Button";
 
 export default function BookTile({ book }: { book: Book }) {
   const t = useTranslations("BOOK_TILE");
   const format = useFormatter();
 
   return (
-    <Link
-      href={`/book/${book.id}`}
-      className="w-full max-w-xs xl:max-w-md flex aspect-3/5 border border-foreground rounded-lg custom-shadow custom-shadow-hover overflow-hidden @container whitespace-nowrap"
-    >
-      <div className="w-full h-full flex flex-col gap-2 items-center justify-between p-2 @3xs:p-4">
+    <div className="w-full max-w-xs xl:max-w-md flex aspect-3/5 border border-foreground rounded-lg custom-shadow custom-shadow-hover overflow-hidden @container whitespace-nowrap relative group">
+      <Link href={`/book/${book.id}`} className="absolute inset-0 z-0" />
+
+      <div className="w-full h-full flex flex-col gap-2 items-center justify-between p-2 @3xs:p-4 pointer-events-none">
         <div className="relative w-full rounded-lg border liquid-glass-border-color aspect-6/5 overflow-hidden hidden @3xs:block">
           <Image
             src={book.cover}
@@ -28,7 +28,7 @@ export default function BookTile({ book }: { book: Book }) {
 
           <Icon
             name={book.favorite ? "heartFull" : "heartEmpty"}
-            className="absolute top-2 left-2 size-8 text-primary bg-secondary p-2 rounded-md"
+            className="absolute top-2 left-2 z-10 pointer-events-auto size-8 text-primary bg-secondary p-2 rounded-md"
           />
         </div>
 
@@ -58,19 +58,32 @@ export default function BookTile({ book }: { book: Book }) {
             {t("MONTH")}
           </p>
 
-          <p className="text-sm truncate w-full text-center">
+          <p className="text-sm truncate w-full text-center relative z-10 pointer-events-auto">
             {t("OWNER")}{" "}
             <Link
               href={`/user/${encodeURI(book.owner.username)}`}
-              className="underline"
+              className="underline hover:text-primary"
             >
               {book.owner.username}
             </Link>
           </p>
         </div>
 
-        <DetailsAndCartButtons />
+        <div className="flex flex-col @3xs:flex-row w-full z-10 pointer-events-auto relative gap-1 @2xs:gap-2 items-center justify-center font-semibold text-xs @2xs:text-sm @xs:text-base">
+          <Button
+            type="link"
+            href={`/book/${book.id}`}
+            className="w-full @3xs:w-1/2"
+            child={t("DETAILS")}
+            secondary
+          />
+
+          <AddToCartButton
+            className="w-full @3xs:w-1/2"
+            bookId={book.id}
+          />
+        </div>
       </div>
-    </Link>
+    </div>
   );
 }
