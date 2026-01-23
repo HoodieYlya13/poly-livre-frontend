@@ -5,7 +5,9 @@
     "MY_BOOKS": "My books",
     "ADD_BOOK": "Propose a book",
     "SUBSCRIBE": "Subscribe",
-    "SLOGAN": "Read more, buy less"
+    "SLOGAN": "Read more, buy less",
+    "DELETE_SUCCESS": "Book deleted successfully!",
+    "FAVORITE_SUCCESS": "Book added to favorites successfully!"
   },
   "NAVBAR": {
     "CATALOG": "Catalog"
@@ -111,7 +113,10 @@
       "001": "Image not found."
     },
     "BOOK": {
-      "001": "Book not found."
+      "001": "Book not found.",
+      "ADD_FAILED": "Failed to add book.",
+      "DELETE_FAILED": "Failed to delete book.",
+      "TOGGLE_FAVORITE_FAILED": "Failed to toggle book favorite."
     },
     "PASSKEY": {
       "ERROR_LOGIN": "Login with Passkey took too long or was cancelled. Please try again.",

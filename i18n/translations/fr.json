@@ -5,7 +5,9 @@
     "MY_BOOKS": "Mes livres",
     "ADD_BOOK": "Proposer un livre",
     "SUBSCRIBE": "Souscrire",
-    "SLOGAN": "Lisez plus, achetez moins"
+    "SLOGAN": "Lisez plus, achetez moins",
+    "DELETE_SUCCESS": "Livre supprimé avec succès !",
+    "FAVORITE_SUCCESS": "Livre ajouté aux favoris avec succès !"
   },
   "NAVBAR": {
     "CATALOG": "Catalogue"
@@ -108,7 +110,10 @@
       "001": "Image non trouvée."
     },
     "BOOK": {
-      "001": "Livre non trouvé."
+      "001": "Livre non trouvé.",
+      "ADD_FAILED": "Échec de l'ajout du livre.",
+      "DELETE_FAILED": "Échec de la suppression du livre.",
+      "TOGGLE_FAVORITE_FAILED": "Échec de l'ajout/suppression du livre des favoris."
     },
     "PASSKEY": {
       "ERROR_LOGIN": "La connexion avec Passkey a pris trop de temps ou a été annulée. Veuillez réessayer.",

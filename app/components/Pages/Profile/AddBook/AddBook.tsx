@@ -14,7 +14,7 @@ import Select from "@/app/components/UI/shared/elements/Select";
 import { addBookAction } from "@/actions/book/book.actions";
 import { useAddBookForm } from "@/hooks/forms/useAddBookForm";
 
-export default function AddBook() {
+export default function AddBook({ userId }: { userId: string }) {
   const t = useTranslations("ADD_BOOK");
   const { errorT } = useErrors();
   const form = useAddBookForm();
@@ -40,7 +40,7 @@ export default function AddBook() {
     }
 
     setSuccessText(t("BOOK_PUBLISHED_SUCCESS"));
-    router.push("/");
+    router.push("/user/" + userId);
   };
 
   return (

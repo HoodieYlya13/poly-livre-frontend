@@ -17,15 +17,12 @@ export interface APIErrorResponse {
 
 export async function fetchApi<T>(
   endpoint: string,
-  options: FetchOptions = {}
+  options: FetchOptions = {},
 ): Promise<T> {
   const { userAuthenticated = true, headers, ...rest } = options;
 
-  let token = null;
-  if (userAuthenticated) {
-    token = await getUserAccessToken();
-    if (!token) throw new Error(ERROR_CODES.AUTH[4]);
-  }
+  const token = await getUserAccessToken();
+  if (userAuthenticated && !token) throw new Error(ERROR_CODES.AUTH[4]);
 
   if (!BACKEND_URL) throw new Error(ERROR_CODES.SYST[1]);
 
@@ -43,7 +40,7 @@ export async function fetchApi<T>(
     fetch(url, {
       headers: { ...defaultHeaders, ...headers },
       ...rest,
-    })
+    }),
   );
 
   if (fetchError) throw fetchError;

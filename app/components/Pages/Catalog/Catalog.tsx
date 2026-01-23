@@ -11,6 +11,7 @@ export default async function Catalog({
   ownerId?: string;
 }) {
   const userId = await getServerCookie("user_id");
+  const myBooks = userId === ownerId;
 
   return (
     <div className="flex flex-col gap-5 py-10 px-5">
@@ -29,10 +30,11 @@ export default async function Catalog({
           <div className="flex ml-auto">Tri</div>
 
           <div className="flex flex-col gap-5 w-full items-center">
-            {userId === ownerId && <AddBookButton />}
+            {myBooks && <AddBookButton />}
 
             <BookTiles
               books={books}
+              myBooks={myBooks}
               className=" @4xl:grid-cols-3 @4xl:max-w-5xl"
             />
           </div>

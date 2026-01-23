@@ -2,7 +2,15 @@ import BookTile from "@/app/components/UI/shared/components/BookTile";
 import clsx from "clsx";
 import { Book } from "@/models/book.models";
 
-export default function BookTiles({ books, className }: { books?: Book[], className?: string }) {
+export default function BookTiles({
+  books,
+  myBooks,
+  className,
+}: {
+  books?: Book[];
+  myBooks?: boolean;
+  className?: string;
+}) {
   return (
     <div className="flex w-full @container">
       <div
@@ -12,7 +20,12 @@ export default function BookTiles({ books, className }: { books?: Book[], classN
         )}
       >
         {books?.map((book) => (
-          <BookTile book={book} key={book.id} />
+          <BookTile
+            book={book}
+            key={book.id}
+            myBook={myBooks}
+            bookId={book.id}
+          />
         ))}
       </div>
     </div>

@@ -31,4 +31,14 @@ export const bookApi = {
       method: "POST",
       body: JSON.stringify(data),
     }),
+
+  deleteBook: (id: string) =>
+    fetchApi<Book>(`/books/${id}`, {
+      method: "DELETE",
+    }),
+
+  toggleBookFavorite: (id: string) =>
+    fetchApi<Book>(`/books/${id}/favorite`, {
+      method: "POST",
+    }),
 };

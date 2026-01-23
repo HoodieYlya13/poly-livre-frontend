@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Icon from "../elements/SVGs/Icon";
 import { Book } from "@/models/book.models";
 import Rating from "../elements/SVGs/Rating";
 import Link from "next/link";
@@ -8,8 +7,17 @@ import AddToCartButton from "./AddCartToButton";
 import BookStyles from "./BookStyles";
 import Button from "../elements/Button";
 import { BACKEND_URL } from "@/utils/config/config.server";
+import TopLeftIcon from "./TopLeftIcon";
 
-export default function BookTile({ book }: { book: Book }) {
+export default function BookTile({
+  book,
+  myBook,
+  bookId,
+}: {
+  book: Book;
+  myBook?: boolean;
+  bookId: string;
+}) {
   const t = useTranslations("BOOK_TILE");
   const format = useFormatter();
 
@@ -27,9 +35,11 @@ export default function BookTile({ book }: { book: Book }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
 
-          <Icon
-            name={book.favorite ? "heartFull" : "heartEmpty"}
-            className="absolute top-2 left-2 z-10 pointer-events-auto size-8 text-primary bg-secondary p-2 rounded-md"
+          <TopLeftIcon
+            icon={
+              myBook ? "trash" : book.favorite ? "heartFull" : "heartEmpty"
+            }
+            bookId={bookId}
           />
         </div>
 

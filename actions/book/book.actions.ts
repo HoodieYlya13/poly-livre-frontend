@@ -7,6 +7,7 @@ import { getServerCookie } from "@/utils/cookies/cookies.server";
 import { ERROR_CODES } from "@/utils/errors.utils";
 import { LocaleLanguagesUpperCase } from "@/i18n/utils";
 import { Delivery } from "@/models/book.models";
+import { revalidatePath } from "next/cache";
 
 export async function addBookAction(data: AddBookValues) {
   return baseServerAction(
@@ -40,6 +41,40 @@ export async function addBookAction(data: AddBookValues) {
 
       return await bookApi.addBook(book);
     },
-    {},
+    {
+      fallback: ERROR_CODES.BOOK.ADD_FAILED,
+    },
+  );
+}
+
+export async function deleteBookAction(id: string) {
+  return baseServerAction(
+    "deleteBook",
+    async () => {
+      await bookApi.deleteBook(id);
+
+      revalidatePath("/user");
+
+      return true;
+    },
+    {
+      fallback: ERROR_CODES.BOOK.DELETE_FAILED,
+    },
+  );
+}
+
+export async function toggleBookFavoriteAction(id: string) {
+  return baseServerAction(
+    "toggleBookFavorite",
+    async () => {
+      await bookApi.toggleBookFavorite(id);
+
+      revalidatePath("/user"); // TODO: revalidate the right path
+
+      return true;
+    },
+    {
+      fallback: ERROR_CODES.BOOK.TOGGLE_FAVORITE_FAILED,
+    },
   );
 }
