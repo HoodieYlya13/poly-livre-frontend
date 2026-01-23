@@ -64,7 +64,7 @@ export default function BookTile({ book }: { book: Book }) {
           <p className="text-sm truncate w-full text-center relative z-10 pointer-events-auto">
             {t("OWNER")}{" "}
             <Link
-              href={`/user/${encodeURI(book.owner.username)}`}
+              href={`/user/${encodeURI(book.owner.id)}`}
               className="underline hover:text-primary"
             >
               {book.owner.username}

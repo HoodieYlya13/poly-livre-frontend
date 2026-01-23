@@ -30,3 +30,14 @@ export async function getBookByIdAction(id: string) {
     {},
   );
 }
+
+export async function getBooksByUserIdAction(id: string) {
+  return baseServerAction(
+    "getBooksByUserId",
+    async () => {
+      return await bookApi.getBooksByUserId(id);
+    },
+    {},
+  );
+}
+

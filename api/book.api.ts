@@ -20,6 +20,12 @@ export const bookApi = {
       userAuthenticated: false,
     }),
 
+  getBooksByUserId: (id: string) =>
+    fetchApi<Book[]>(`/books/user/${id}`, {
+      method: "GET",
+      userAuthenticated: false,
+    }),
+
   addBook: (data: AddBookFormValues) =>
     fetchApi<Book>("/books/add", {
       method: "POST",

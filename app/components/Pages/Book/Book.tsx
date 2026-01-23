@@ -49,7 +49,7 @@ export default async function Book({ id }: { id: string }) {
                 <p>
                   {t("WRITTEN_BY")} {book.author} | {t("OWNER")}{" "}
                   <Link
-                    href={`/user/${book.owner.username}`}
+                    href={`/user/${encodeURI(book.owner.id)}`}
                     className="underline"
                   >
                     {book.owner.username}

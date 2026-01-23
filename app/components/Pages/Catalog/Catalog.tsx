@@ -1,9 +1,7 @@
+import { Book } from "@/models/book.models";
 import BookTiles from "../Home/shared/TrendingBooks/BookTiles";
-import { getAllBooksAction } from "@/actions/book/private/book.private.actions";
 
-export default async function Catalog() {
-  const books = await getAllBooksAction();
-
+export default function Catalog({ books }: { books: Book[] }) {
   return (
     <div className="flex flex-col gap-5 py-10 px-5">
       <h1 className="text-2xl">Catalog</h1>
