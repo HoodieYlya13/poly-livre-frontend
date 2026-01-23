@@ -6,12 +6,13 @@ import { AUTH_ERRORS, tryCatch } from "@/utils/errors.utils";
 
 export default async function ProfilePage() {
   const username = await getServerCookie("user_name");
-  if (!username) redirect("/profile/create"); // TODO: remove this at some point because handled in the proxy
+  const userId = await getServerCookie("user_id");
+  if (!username || !userId) redirect("/profile/create"); // TODO: remove this at some point because handled in the proxy
 
   const [error, passkeys] = await tryCatch(getUserPasskeysAction());
 
   if (error && AUTH_ERRORS.includes(error.message))
     redirect("/auth/session-clear");
 
-  return <Profile username={username} passkeys={passkeys ?? undefined} />
+  return <Profile username={username} userId={userId} passkeys={passkeys ?? undefined} />
 }

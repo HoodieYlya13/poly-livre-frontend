@@ -1,7 +1,17 @@
 import { Book } from "@/models/book.models";
 import BookTiles from "../Home/shared/TrendingBooks/BookTiles";
+import { getServerCookie } from "@/utils/cookies/cookies.server";
+import AddBookButton from "./shared/AddBookButton";
 
-export default function Catalog({ books }: { books: Book[] }) {
+export default async function Catalog({
+  books,
+  ownerId,
+}: {
+  books: Book[];
+  ownerId?: string;
+}) {
+  const userId = await getServerCookie("user_id");
+
   return (
     <div className="flex flex-col gap-5 py-10 px-5">
       <h1 className="text-2xl">Catalog</h1>
@@ -18,8 +28,13 @@ export default function Catalog({ books }: { books: Book[] }) {
         <div className="flex flex-col gap-5 w-full">
           <div className="flex ml-auto">Tri</div>
 
-          <div className="flex w-full">
-            <BookTiles books={books} className=" @4xl:grid-cols-3 @4xl:max-w-5xl" />
+          <div className="flex flex-col gap-5 w-full items-center">
+            {userId === ownerId && <AddBookButton />}
+
+            <BookTiles
+              books={books}
+              className=" @4xl:grid-cols-3 @4xl:max-w-5xl"
+            />
           </div>
         </div>
       </div>

@@ -6,5 +6,5 @@ export default async function UserPage(props: {
 }) {
   const { id } = await props.params;
   const books = await getBooksByUserIdAction(id);
-  return <Catalog books={books} />;
+  return <Catalog books={books} ownerId={id} />;
 }

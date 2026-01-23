@@ -2,6 +2,7 @@
   "COMMON": {
     "LOADING": "Chargement...",
     "HELLO": "Bonjour, {value} !",
+    "MY_BOOKS": "Mes livres",
     "ADD_BOOK": "Proposer un livre",
     "SUBSCRIBE": "Souscrire",
     "SLOGAN": "Lisez plus, achetez moins"

@@ -2,6 +2,7 @@
   "COMMON": {
     "LOADING": "Loading...",
     "HELLO": "Hello, {value}!",
+    "MY_BOOKS": "My books",
     "ADD_BOOK": "Propose a book",
     "SUBSCRIBE": "Subscribe",
     "SLOGAN": "Read more, buy less"

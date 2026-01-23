@@ -9,10 +9,11 @@ import { useCommon } from "@/hooks/useCommon";
 
 interface ProfileProps {
   username: string;
+  userId: string;
   passkeys?: Passkey[];
 }
 
-export default function Profile({ username, passkeys }: ProfileProps) {
+export default function Profile({ username, userId, passkeys }: ProfileProps) {
   const t = useTranslations("PROFILE");
   const { commonT } = useCommon();
 
@@ -21,12 +22,12 @@ export default function Profile({ username, passkeys }: ProfileProps) {
       <h1 className="text-3xl font-bold">{t("TITLE")}</h1>
 
       <section className="flex flex-col items-center justify-center gap-4 w-full">
-        <h2 className="text-xl font-bold mb-4">{commonT("ADD_BOOK")}</h2>
+        <h2 className="text-xl font-bold mb-4">{commonT("MY_BOOKS")}</h2>
 
         <Button
           type="link"
-          href="/profile/add-book"
-          child={commonT("ADD_BOOK")}
+          href={`/user/${userId}`}
+          child={commonT("MY_BOOKS")}
           prefetch
         />
       </section>
