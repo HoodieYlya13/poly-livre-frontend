@@ -25,25 +25,9 @@ export interface AddBookFormValues
     Book,
     "id" | "createdAt" | "updatedAt" | "owner" | "cover" | "reviews"
   > {
-  cover: FileList;
+  // cover: FileList;
   ownerId: string;
 }
-
-export type BookFormValues = Omit<
-  Book,
-  | "id"
-  | "createdAt"
-  | "updatedAt"
-  | "owner"
-  | "cover"
-  | "reviews"
-  | "loanDuration"
-> & {
-  cover: FileList;
-  publishDate: string;
-  category: string;
-  loanDuration: number;
-};
 
 export interface BookReview {
   reviewId: string;
@@ -66,4 +50,4 @@ interface Information {
   delivery: Delivery;
 }
 
-type Delivery = "FREE" | "PAID";
+export type Delivery = "FREE" | "PAID";

@@ -1,5 +1,5 @@
 import { fetchApi } from "./base.api";
-import { Book } from "@/models/book.models";
+import { AddBookFormValues, Book } from "@/models/book.models";
 
 export const bookApi = {
   getTrendingBooks: () =>
@@ -20,9 +20,9 @@ export const bookApi = {
       userAuthenticated: false,
     }),
 
-  addBook: (formData: FormData) =>
+  addBook: (data: AddBookFormValues) =>
     fetchApi<Book>("/books/add", {
       method: "POST",
-      body: formData,
+      body: JSON.stringify(data),
     }),
 };

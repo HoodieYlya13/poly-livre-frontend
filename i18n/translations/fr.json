@@ -262,6 +262,7 @@
     "PUBLISH_BOOK": "Publier le livre",
     "PAGES": "Nombre de pages",
     "PUBLISH_DATE": "Date de publication",
+    "YEAR_LABEL": "Paru aux éditions en",
     "CATEGORY": "Catégorie",
     "LANGUAGE": "Langue",
     "CATEGORIES_OPTIONS": ["Science-Fiction", "Roman", "Fantasy", "Biographie"],
@@ -273,7 +274,9 @@
       "Allemeand",
       "Chinois"
     ],
+    "LANGUAGE_OPTIONS": ["FR", "EN"],
     "RENTAL_DURATION_OPTIONS": ["14 jours", "21 jours", "30 jours"],
+    "LOAN_DURATION_LABEL": "Durée d’emprunt",
     "FIELD_REQUIRED": "Ce champ est requis.",
     "PRICE_MIN": "Le prix doit être au moins de 1 EUR.",
     "RENTAL_DURATION_MIN": "La durée d’emprunt doit être au moins de 14 jours.",
