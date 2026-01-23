@@ -13,10 +13,12 @@ export default function BookTile({
   book,
   myBook,
   bookId,
+  authenticated,
 }: {
   book: Book;
   myBook?: boolean;
   bookId: string;
+  authenticated?: boolean;
 }) {
   const t = useTranslations("BOOK_TILE");
   const format = useFormatter();
@@ -35,12 +37,14 @@ export default function BookTile({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
 
-          <TopLeftIcon
-            icon={
-              myBook ? "trash" : book.favorite ? "heartFull" : "heartEmpty"
-            }
-            bookId={bookId}
-          />
+          {authenticated && (
+            <TopLeftIcon
+              icon={
+                myBook ? "trash" : book.favorite ? "heartFull" : "heartEmpty"
+              }
+              bookId={bookId}
+            />
+          )}
         </div>
 
         <div className="flex flex-col gap-2 items-center justify-center w-full">

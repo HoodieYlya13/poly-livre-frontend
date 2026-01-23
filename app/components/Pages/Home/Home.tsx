@@ -7,9 +7,11 @@ import Trending from "./shared/TrendingBooks/Trending";
 import BookTiles from "./shared/TrendingBooks/BookTiles";
 import TestimonialsSection from "./shared/Testimonials/TestimonialsSection";
 import { getTrendingBooksAction } from "@/actions/book/private/book.private.actions";
+import { getUserAccessToken } from "@/utils/cookies/cookies.server";
 
 export default async function Home() {
   const trendingBooks = await getTrendingBooksAction();
+  const authenticated = await getUserAccessToken();
 
   return (
     <div className="flex grow flex-col gap-10 items-center justify-center font-normal pb-10">
@@ -36,7 +38,7 @@ export default async function Home() {
 
         <Trending />
 
-        <BookTiles books={trendingBooks} />
+        <BookTiles books={trendingBooks} authenticated={!!authenticated} />
       </section>
 
       <TestimonialsSection />

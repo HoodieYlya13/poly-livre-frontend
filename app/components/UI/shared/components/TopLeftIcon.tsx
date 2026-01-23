@@ -34,7 +34,7 @@ export default function TopLeftIcon({
       if (error) {
         toast.error(errorT(error.message)); // TODO: maybe put the toast in the verify session function
         shouldReconnect(error);
-      } else toast.success(commonT(icon === "trash" ? "DELETE_SUCCESS" : "FAVORITE_SUCCESS"));
+      } else if (icon === "trash") toast.success(commonT("DELETE_SUCCESS"));
     });
   };
 

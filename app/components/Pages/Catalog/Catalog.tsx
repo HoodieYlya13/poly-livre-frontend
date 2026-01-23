@@ -1,6 +1,6 @@
 import { Book } from "@/models/book.models";
 import BookTiles from "../Home/shared/TrendingBooks/BookTiles";
-import { getServerCookie } from "@/utils/cookies/cookies.server";
+import { getServerCookie, getUserAccessToken } from "@/utils/cookies/cookies.server";
 import AddBookButton from "./shared/AddBookButton";
 
 export default async function Catalog({
@@ -11,7 +11,8 @@ export default async function Catalog({
   ownerId?: string;
 }) {
   const userId = await getServerCookie("user_id");
-  const myBooks = userId === ownerId;
+  const myBooks = userId && ownerId && userId === ownerId;
+  const authenticated = await getUserAccessToken();
 
   return (
     <div className="flex flex-col gap-5 py-10 px-5">
@@ -34,8 +35,9 @@ export default async function Catalog({
 
             <BookTiles
               books={books}
-              myBooks={myBooks}
+              myBooks={myBooks || false}
               className=" @4xl:grid-cols-3 @4xl:max-w-5xl"
+              authenticated={!!authenticated}
             />
           </div>
         </div>

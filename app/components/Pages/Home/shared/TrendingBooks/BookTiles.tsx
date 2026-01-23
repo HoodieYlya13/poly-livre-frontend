@@ -6,10 +6,12 @@ export default function BookTiles({
   books,
   myBooks,
   className,
+  authenticated,
 }: {
   books?: Book[];
   myBooks?: boolean;
   className?: string;
+  authenticated?: boolean;
 }) {
   return (
     <div className="flex w-full @container">
@@ -25,6 +27,7 @@ export default function BookTiles({
             key={book.id}
             myBook={myBooks}
             bookId={book.id}
+            authenticated={authenticated}
           />
         ))}
       </div>

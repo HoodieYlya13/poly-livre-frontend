@@ -8,11 +8,13 @@ import AddToCartAndFavorite from "./shared/AddToCartAndFavorite";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { BACKEND_URL } from "@/utils/config/config.server";
+import { getUserAccessToken } from "@/utils/cookies/cookies.server";
 
 export default async function Book({ id }: { id: string }) {
   const book = await getBookByIdAction(id);
   if (!book) redirect("/catalog"); // TODO: create a real page
   const t = await getTranslations("BOOK_PAGE");
+  const userAccessToken = await getUserAccessToken();
 
   return (
     <div className="flex justify-center w-full">
@@ -121,7 +123,11 @@ export default async function Book({ id }: { id: string }) {
               </div>
             </div>
 
-            <AddToCartAndFavorite bookId={book.id} favorite={!!book.favorite} />
+            <AddToCartAndFavorite
+              bookId={book.id}
+              favorite={!!book.favorite}
+              authenticated={!!userAccessToken}
+            />
           </div>
         </div>
       </div>

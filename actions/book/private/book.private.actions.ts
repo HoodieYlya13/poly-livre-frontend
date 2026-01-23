@@ -41,3 +41,12 @@ export async function getBooksByUserIdAction(id: string) {
   );
 }
 
+export async function getBooksByStyleAction(style: string) {
+  return baseServerAction(
+    "getBooksByStyle",
+    async () => {
+      return await bookApi.getBooksByStyle(style);
+    },
+    {},
+  );
+}

@@ -41,4 +41,10 @@ export const bookApi = {
     fetchApi<Book>(`/books/${id}/favorite`, {
       method: "POST",
     }),
+
+  getBooksByStyle: (style: string) =>
+    fetchApi<Book[]>(`/books/style/${style}`, {
+      method: "GET",
+      userAuthenticated: false,
+    }),
 };
