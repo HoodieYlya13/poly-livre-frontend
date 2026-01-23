@@ -12,6 +12,27 @@
   "NAVBAR": {
     "CATALOG": "Catalog"
   },
+  "CATALOG_PAGE": {
+    "TITLE": "Catalog",
+    "FILTERS": {
+      "TITLE": "Filters",
+      "CATEGORY": "Category",
+      "PRICE": "Price",
+      "RESET": "Reset filters",
+      "NO_RESULTS": "No books found matching your criteria.",
+      "MIN": "Min",
+      "MAX": "Max"
+    },
+    "SORT": {
+      "LABEL": "Sort by",
+      "OPTIONS": {
+        "PRICE_ASC": "Price: Low to High",
+        "PRICE_DESC": "Price: High to Low",
+        "NEWEST": "Newest Arrivals",
+        "OLDEST": "Oldest"
+      }
+    }
+  },
   "HOME_PAGE": {
     "META": {
       "TITLE": "{name}",

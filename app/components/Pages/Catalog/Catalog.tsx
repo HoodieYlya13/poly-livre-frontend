@@ -1,7 +1,9 @@
 import { Book } from "@/models/book.models";
-import BookTiles from "../Home/shared/TrendingBooks/BookTiles";
-import { getServerCookie, getUserAccessToken } from "@/utils/cookies/cookies.server";
-import AddBookButton from "./shared/AddBookButton";
+import {
+  getServerCookie,
+  getUserAccessToken,
+} from "@/utils/cookies/cookies.server";
+import CatalogContent from "./CatalogContent";
 
 export default async function Catalog({
   books,
@@ -11,37 +13,15 @@ export default async function Catalog({
   ownerId?: string;
 }) {
   const userId = await getServerCookie("user_id");
-  const myBooks = userId && ownerId && userId === ownerId;
+  const myBooks = !!(userId && ownerId && userId === ownerId);
   const authenticated = await getUserAccessToken();
 
   return (
-    <div className="flex flex-col gap-5 py-10 px-5">
-      <h1 className="text-2xl">Catalog</h1>
-
-      <div className="flex flex-col sm:flex-row gap-5 w-full">
-        <div className="flex flex-col gap-5">
-          <div>Filtres</div>
-
-          <div>Categorie</div>
-
-          <div>Prix</div>
-        </div>
-
-        <div className="flex flex-col gap-5 w-full">
-          <div className="flex ml-auto">Tri</div>
-
-          <div className="flex flex-col gap-5 w-full items-center">
-            {myBooks && <AddBookButton />}
-
-            <BookTiles
-              books={books}
-              myBooks={myBooks || false}
-              className=" @4xl:grid-cols-3 @4xl:max-w-5xl"
-              authenticated={!!authenticated}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <CatalogContent
+      books={books}
+      myBooks={myBooks}
+      ownerId={ownerId}
+      authenticated={!!authenticated}
+    />
   );
 }

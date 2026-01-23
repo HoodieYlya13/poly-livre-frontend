@@ -12,6 +12,27 @@
   "NAVBAR": {
     "CATALOG": "Catalogue"
   },
+  "CATALOG_PAGE": {
+    "TITLE": "Catalogue",
+    "FILTERS": {
+      "TITLE": "Filtres",
+      "CATEGORY": "Catégorie",
+      "PRICE": "Prix",
+      "RESET": "Réinitialiser les filtres",
+      "NO_RESULTS": "Aucun livre ne correspond à vos critères.",
+      "MIN": "Min",
+      "MAX": "Max"
+    },
+    "SORT": {
+      "LABEL": "Trier par",
+      "OPTIONS": {
+        "PRICE_ASC": "Prix : Croissant",
+        "PRICE_DESC": "Prix : Décroissant",
+        "NEWEST": "Nouveautés",
+        "OLDEST": "Plus anciens"
+      }
+    }
+  },
   "HOME_PAGE": {
     "META": {
       "TITLE": "{name}",

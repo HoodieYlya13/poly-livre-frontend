@@ -6,7 +6,7 @@ import { useTranslations, useFormatter } from "next-intl";
 import AddToCartButton from "./AddCartToButton";
 import BookStyles from "./BookStyles";
 import Button from "../elements/Button";
-import { BACKEND_URL } from "@/utils/config/config.server";
+import { BACKEND_URL } from "@/utils/config/config.client";
 import TopLeftIcon from "./TopLeftIcon";
 
 export default function BookTile({
