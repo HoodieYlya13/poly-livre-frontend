@@ -1,6 +1,6 @@
-# 🖥️ Poly Livre - Next.js Frontend Client
+# 🖥️ Liprerie - Next.js Frontend Client
 
-This is the Next.js frontend client for the **Poly Livre** platform. It provides a state-of-the-art interactive interface for book sharing and library management.
+This is the Next.js frontend client for the **Liprerie** platform. It provides a state-of-the-art interactive interface for book sharing and library management.
 
 Collaborators:
 * [HoodieYlya13](https://github.com/HoodieYlya13) (Core Frontend & Integrations)
@@ -68,4 +68,4 @@ docker run -p 3000:3000 poly-livre-frontend
 
 ---
 
-*Part of the Poly Livre Fullstack Infrastructure Suite.*
+*Part of the Liprerie Fullstack Infrastructure Suite.*
