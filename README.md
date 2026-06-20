@@ -3,9 +3,9 @@
 This is the Next.js frontend client for the **Liprerie** platform. It provides a state-of-the-art interactive interface for book sharing and library management.
 
 Collaborators:
-* [HoodieYlya13](https://github.com/HoodieYlya13) (Core Frontend & Integrations)
-* [Akaby](https://github.com/Akaby) (Client Routing & State)
-* [Algebrino](https://github.com/Algebrino) (Design & Multi-language)
+* [HoodieYlya13](https://github.com/HoodieYlya13)
+* [Akaby](https://github.com/Akaby)
+* [Algebrino](https://github.com/Algebrino)
 
 ---
 
